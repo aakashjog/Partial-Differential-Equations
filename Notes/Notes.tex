@@ -1,0 +1,248 @@
+\documentclass[titlepage, fleqn, a4paper, 12pt, twoside]{article}
+\usepackage{geometry}
+\usepackage{exsheets} %question and solution environments
+\usepackage{amsmath, amssymb, amsthm} %standard AMS packages
+\usepackage{esint} %integral signs
+\usepackage{marginnote} %marginnotes
+\usepackage{gensymb} %miscellaneous symbols
+\usepackage{commath} %differential symbols
+\usepackage{xcolor} %colours
+\usepackage{cancel} %cancelling terms
+\usepackage[free-standing-units]{siunitx} %formatting units
+\usepackage{tikz, pgfplots} %diagrams
+	\usetikzlibrary{calc, hobby, patterns, intersections, angles, quotes, spy}
+\usepackage{graphicx} %inserting graphics
+\usepackage{epstopdf} %converting and inserting eps graphics
+\usepackage{hyperref} %hyperlinks
+\usepackage{datetime} %date and time
+\usepackage{enumerate, enumitem} %numbered lists
+\usepackage{float} %inserting floats
+\usepackage{microtype} %micro-typography
+\usepackage{todonotes}
+\usepackage{booktabs}
+
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}} %adds numbers to specific equations in non-numbered list of equations
+
+\theoremstyle{definition}
+\newtheorem{example}{Example}
+\newtheorem{definition}{Definition}
+
+\theoremstyle{theorem}
+\newtheorem{theorem}{Theorem}
+\newtheorem{law}{Law}
+
+\makeatletter
+\@addtoreset{section}{part} %resets section numbers in new part
+\makeatother
+
+\newcommand\blfootnote[1]{%
+	\begingroup
+	\renewcommand\thefootnote{}\footnote{#1}%
+	\addtocounter{footnote}{-1}%
+	\endgroup
+}
+
+\renewcommand{\marginfont}{\scriptsize \color{blue}}
+
+\renewcommand{\tilde}{\widetilde}
+
+\SetupExSheets{solution/print = true} %prints all solutions by default
+
+%opening
+\title{Partial Differential Equations}
+\author{Aakash Jog}
+\date{2015-16}
+
+\begin{document}
+
+\pagenumbering{roman}
+\begin{titlepage}
+\newgeometry{margin=0cm}
+\maketitle
+\end{titlepage}
+\restoregeometry
+%\setlength{\mathindent}{0pt}
+
+\blfootnote
+{	
+	\begin{figure}[H]
+		\includegraphics[height = 12pt]{cc.pdf}
+		\includegraphics[height = 12pt]{by.pdf}
+		\includegraphics[height = 12pt]{nc.pdf}
+		\includegraphics[height = 12pt]{sa.pdf}
+	\end{figure}
+	This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy of this license, visit \url{http://creativecommons.org/licenses/by-nc-sa/4.0/}.
+} %CC-BY-NC-SA license
+
+\tableofcontents
+
+\clearpage
+\section{Lecturer Information}
+
+\textbf{Prof. Yakov Yakubov}\\
+~\\
+Office: Schreiber 233\\
+E-mail: \href{mailto:yakubov@post.tau.ac.il}{yakubov@post.tau.ac.il}\\
+
+\section{Recommended Reading}
+
+\begin{enumerate}
+	\item Tikhonov, A.N. and Samarskii, N.A: Equations of Mathematical Physics, Pergamon Press, Oxfort, 1963.
+	\item Weinberger, H.F, A first Course in Partial Differential Equations, Dover, NY, 1995.
+\end{enumerate}
+
+\clearpage
+\pagenumbering{arabic}
+
+\part{Introduction}
+
+\section{String Equations}
+
+\begin{definition}[Partial differential equation]
+	An equation
+	\begin{align*}
+		F(x_1,x_2,\dots,u,u_{x_1},u_{x_2},\dots,u_{x_1 x_2},\dots) & = 0
+	\end{align*}
+	where all $x_i$ are independent variables, and $u(x_1,..,x_n)$ is an unknown function, is called a partial differential equation.\\
+	A partial differential equation describes a connection between an unknown function of several variables and its partial derivatives.
+\end{definition}
+
+\begin{definition}[Order of a PDE]
+	The order of a PDE is defined to be the highest order of partial derivatives in the equation.
+\end{definition}
+
+\begin{definition}[Linear PDE]
+	A PDE is said o be linear if and only if it is a linear function of $u$ and its partial derivatives.
+\end{definition}
+
+\begin{definition}[String equation/1D Wave Equation]
+	Consider an ideal string on the $x$-axis.
+	Let the string oscillate in the direction normal to the $x$-axis.
+	Let $u$ be the position function of a point on the string.
+	Therefore, $u$ depends on the position of the point on the string and on the time, i.e. it is a function of $x$ and $t$.\\
+	Therefore, solving using Newton's Laws,
+	\begin{align*}
+		\rho(x) u_{t t}(x,t) & = T u_{x x}(x,t)
+	\end{align*}
+	where $\rho$ is the mass density of the string, and $T$ is the tension in the string.\\
+	If
+	\begin{align*}
+		\rho(x_0) & = \rho_0
+	\end{align*}
+	then,
+	\begin{align*}
+		u_{t t}(x,t) & = a^2 u_{x x}(x,t)
+	\end{align*}
+	where
+	\begin{align*}
+		a & = \sqrt{\frac{T}{\rho_0}}
+	\end{align*}
+	If there is an external force applied to the string,
+	\begin{align*}
+		\rho(x) u_{t t}(x,t) & = a^2 u_{x x}(x,t) + F(x,t)
+	\end{align*}
+\end{definition}
+
+\begin{definition}[Cauchy problem]
+	Consider an infinite string, i.e. $x \in (-\infty,\infty)$.
+	If the initial position and the initial velocity of the string are given to be $f(x)$ and $g(x)$ respectively, then,
+	\begin{align*}
+		u(x,0)   & = f(x) \\
+		u_x(x,0) & = g(x)
+	\end{align*}
+	The problem
+	\begin{align*}
+		u_{t t}(x,t) & = a^2 u_{x x}(x,t) \\
+		u(x,0)       & = f(x)             \\
+		u_x(x,0)     & = g(x)
+	\end{align*}
+	is called the Cauchy problem.
+\end{definition}
+
+\begin{definition}[Dirichlet's boundary conditions]
+	Consider a finite string, such that $x \in [0,l]$.
+	If the ends of the string are fixed, the boundary conditions
+	\begin{align*}
+		u(0,t) & = 0 \\
+		u(l,t) & = 0
+	\end{align*}
+	are called Dirichlet's boundary conditions.
+\end{definition}
+
+\begin{definition}[General string equation]
+	Consider a PDE
+	\begin{align*}
+		u_{t t}(x,t) & = a^2 u_{x x}(x,t)
+	\end{align*}
+	Let
+	\begin{align*}
+		\zeta & = x - a t \\
+		\eta  & = x + a t
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		u(x,t) & = F(\zeta) + G(\eta) \\
+                       & = F(x - a t) + G(x + a t)
+	\end{align*}
+	where $F$ and $G$ are functions of a single variable, and are differentiable twice.
+\end{definition}
+
+\section{Solution to Cauchy Problem}
+
+\begin{theorem}
+	The solution to the Cauchy problem
+	\begin{align*}
+		u_{t t}(x,t) & = a^2 u_{x x}(x,t) \\
+		u(x,0)       & = f(x)             \\
+		u_x(x,0)     & = g(x)
+	\end{align*}
+	is given by the d'Alembert formula, i.e.
+	\begin{align*}
+		u(x,t) & = \frac{f(x - a t) + f(x + a t)}{2} + \frac{1}{2 a} \int\limits_{x - a t}^{x + a t} g(s) \dif s
+	\end{align*}
+	where $f$ is twice differentiable and $g$ is differentiable.
+\end{theorem}
+
+\begin{align*}
+	u_{t t}(x,t) & = a^2 u_{x x}(x,t) \\
+	u(x,0)       & = f(x)             \\
+	u_x(x,0)     & = g(x)
+\end{align*}
+Let the solution be
+\begin{align*}
+	u(x,t) & = F(x - a t) + G(x + a t)
+\end{align*}
+Therefore,
+\begin{align*}
+	u_t(x,t) & = \dod{u(x,t)}{(x - a t)} \dod{(x - a t)}{t} \\
+                 & = F'(x - a t) (-a) + G'(x + a t) (a)         \\
+                 & = -a F'(x - a t) + a G'(x + a t)
+\end{align*}
+Substituting the initial conditions,
+\begin{align*}
+	u(x,0)   & = f(x)        \\
+                 & = F(x) + G(x) \\
+	u_t(x,0) & = g(x)        \\
+                 & = -a F'(x) + a G'(x)
+\end{align*}
+Therefore,
+\begin{align*}
+	a \int\limits_{0}^{x} \left( -F'(s) + G'(s) \right) \dif s & = \int\limits_{0}^{x} g(s) \dif s \\
+	\therefore -F(x) + G(x)                                    & = \frac{1}{a} \int\limits_{0}^{x} g(s) \dif s + c
+\end{align*}
+Therefore, solving with the initial conditions corresponding to $u(x,0)$,
+\begin{align*}
+	2 G(x)          & = f(x) + \frac{1}{a} \int\limits_{0}^{x} g(s) \dif s + c                       \\
+	\therefore G(x) & = \frac{f(x)}{2} + \frac{1}{2 a} \int\limits_{0}^{x} g(s) \dif s + \frac{c}{2} \\
+	2 F(x)          & = f(x) - \frac{1}{a} \int\limits_{0}^{x} g(s) \dif s - c                       \\
+	\therefore F(x) & = \frac{f(x)}{2} - \frac{1}{2 a} \int\limits_{0}^{x} g(s) \dif s - \frac{c}{2} \\
+\end{align*}
+Therefore,
+\begin{align*}
+	u(x,t) & = F(x - a t) + G(x + a t)                                                                        \\
+               & = \quad \frac{f(x - a t)}{2} - \frac{1}{2 a} \int\limits_{0}^{x - a t} g(s) \dif s - \frac{c}{2} \\
+               & \quad + \frac{f(x + a t)}{2} + \frac{1}{2 a} \int\limits_{0}^{x + a t} g(s) \dif s + \frac{x}{2} \\
+               & = \frac{f(x - a t) + f(x + a t)}{2} + \frac{1}{2 a} \int\limits_{x - a t}^{x + a t} g(s) \dif s
+\end{align*}
+
+\end{document}
