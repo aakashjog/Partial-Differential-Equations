@@ -1,0 +1,552 @@
+\documentclass[fleqn, a4paper, 11pt, oneside]{amsart}
+\usepackage{exsheets}
+\usepackage{amsmath, amssymb, amsthm} %standard AMS packages
+\usepackage{marginnote} %marginnotes
+\usepackage{gensymb} %miscellaneous symbols
+\usepackage{commath} %differential symbols
+\usepackage{xcolor} %colours
+\usepackage{cancel} %cancelling terms
+\usepackage[free-standing-units, space-before-unit]{siunitx} %formatting units
+\usepackage{tikz, pgfplots} %diagrams
+	\usetikzlibrary{calc, hobby, patterns, intersections, decorations.markings}
+\usepackage{graphicx} %inserting graphics
+\usepackage{hyperref} %hyperlinks
+\usepackage{datetime} %date and time
+\usepackage{enumerate,enumitem} %numbered lists
+\usepackage{float} %inserting floats
+\usepackage{circuitikz}[american voltages, american currents] %circuit diagrams
+
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}} %adds numbers to specific equations in non-numbered list of equations
+
+\theoremstyle{definition}
+\newtheorem{example}{Example}
+\newtheorem{definition}{Definition}
+
+\theoremstyle{theorem}
+\newtheorem{theorem}{Theorem}
+
+\makeatletter
+\@addtoreset{section}{part} %resets section numbers in new part
+\makeatother
+
+\SetupExSheets{solution/print = true}
+
+%opening
+\title
+[
+	PDE : Assignent 1
+]
+{
+	Partial Differential Equations\\
+	Assignment 1
+}
+\author
+{
+	Aakash Jog\\
+	ID : 989323563
+}
+\date{\formatdate{3}{3}{2016}}
+
+\begin{document}
+
+\maketitle
+%\setlength{\mathindent}{0pt}
+
+\begin{question}
+	Solve
+	\begin{align*}
+		u_{t t}  & = u_{x x}           \\
+		u(x,0)   & = \frac{x}{1 + x^2} \\
+		u_t(x,0) & = \sin x
+	\end{align*}
+	where $-\infty < x < \infty$, and $t > 0$.
+\end{question}
+
+\begin{solution}
+	Comparing to the standard form,
+	\begin{align*}
+		a    & = 1                 \\
+		f(x) & = \frac{x}{1 + x^2} \\
+		g(x) & = \sin x
+	\end{align*}
+	Therefore, by the d'Alembert formula,
+	\begin{align*}
+		u(x,t) & = \frac{f(x - a t) + f(x + a t)}{2} + \frac{1}{2 a} \int\limits_{x - a t}^{x + a t} g(s) \dif s                                                  \\
+                       & = \frac{f(x - t) + f(x + t)}{2} + \frac{1}{2} \int\limits_{x - t}^{x + t} g(s) \dif s                                                            \\
+                       & = \frac{\frac{x - t}{1 + (x - t)^2} + \frac{x + t}{1 + (x + t)^2}}{2} + \frac{1}{2} \int\limits_{x - t}^{x + t} \sin s \dif s                    \\
+                       & = \frac{\frac{x - t}{1 + (x - t)^2} + \frac{x + t}{1 + (x + t)^2}}{2} + \frac{1}{2} \left. \left( -\cos s \dif s \right) \right|_{x - t}^{x + t} \\
+                       & = \frac{\frac{x - t}{1 + (x - t)^2} + \frac{x + t}{1 + (x + t)^2}}{2} + \frac{1}{2} \left( -\cos(x + t) + \cos(x - t) \right)                    \\
+                       & = \frac{1}{2} \left( \frac{x - t}{1 + (x - t)^2} + \frac{x + t}{1 + (x + t)^2} \right) + \sin x \sin t
+	\end{align*}
+\end{solution}
+
+\begin{question}
+	Solve the problem and sketch the solution for different time segments.
+	\begin{align*}
+		u_{t t} &= 3 u_{x x}\\
+		u(x,0) &=
+			\begin{cases}
+				1 & ;\quad 1 \le x \le 2    \\
+				0 & ;\quad \text{otherwise} \\
+			\end{cases}\\
+		u_t(x,0) &= 0
+	\end{align*}
+\end{question}
+
+\begin{solution}
+	Comparing to the standard form,
+	\begin{align*}
+		a &= 2\\
+		f(x) &=
+			\begin{cases}
+				1 & ;\quad 1 \le x \le 2    \\
+				0 & ;\quad \text{otherwise} \\
+			\end{cases}\\
+		g(x) &= 0
+	\end{align*}
+	Therefore, by the d'Alembert formula,
+	\begin{align*}
+		u(x,t) & = \frac{f(x - a t) + f(x + a t)}{2} + \frac{1}{2 a} \int\limits_{x - a t}^{x + a t} g(s) \dif s \\
+                       & = \frac{f(x - 2 t) + f(x + 2 t)}{2} + \frac{1}{4} \int\limits_{x - 2 t}^{x + 2 t} 0 \dif s      \\
+                       & = \frac{1}{2} \left( f(x - 2 t) + f(x + 2 t) \right)
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		f(x - 2 t) &=
+			\begin{cases}
+				1 & ;\quad 1 \le x - 2 t \le 2 \\
+				0 & ;\quad \text{otherwise}    \\
+			\end{cases}\\
+		&=
+			\begin{cases}
+				1 & ;\quad 1 + 2 t \le x \le 2 + 2 t \\
+				0 & ;\quad \text{otherwise}          \\
+			\end{cases}\\
+		f(x + 2 t) &=
+			\begin{cases}
+				1 & ;\quad 1 \le x + 2 t \le 2 \\
+				0 & ;\quad \text{otherwise}    \\
+			\end{cases}\\
+		&=
+			\begin{cases}
+				1 & ;\quad 1 - 2 t \le x \le 2 - 2 t \\
+				0 & ;\quad \text{otherwise}          \\
+			\end{cases}
+	\end{align*}
+	For $t = 0$,
+	\begin{align*}
+		u(x,t) &= u(x,0)\\
+		&= \frac{1}{2} \left( f(x) + f(x) \right)\\
+		&= f(x)\\
+		&=
+			\begin{cases}
+				1 & ;\quad 1 \le x \le 2    \\
+				0 & ;\quad \text{otherwise} \\
+			\end{cases}
+	\end{align*}
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}[scale = 2.5]
+			\def\xMIN{-1};
+			\def\xMAX{3};
+			\def\yMIN{-2};
+			\def\yMAX{2};
+			\def\t{0};
+
+			\begin{scope}[stealth-stealth, gray]
+				\draw (\xMIN,0) -- (\xMAX,0) node [right] {$x$};
+				\draw (0,\yMIN) -- (0,\yMAX) node [above] {$u(x)$};
+			\end{scope}
+
+			\begin{scope}
+				\draw (\xMIN,0) -- ({1 - 2 * \t},0);
+				\draw ({1 - 2 * \t},1/2) -- ({1 + 2 * \t},1/2);
+				\draw ({1 + 2 * \t},1) -- ({2 - 2 * \t},1);
+				\draw ({2 - 2 * \t},1/2) -- ({2 + 2 * \t},1/2);
+				\draw ({2 + 2 * \t},0) -- (\xMAX,0);
+			\end{scope}
+
+			\begin{scope}[dashed]
+				\draw ({1 - 2 * \t},\yMIN) -- ({1 - 2 * \t},\yMAX);
+				\node [below, fill = white] at ({1 - 2 * \t},0) {$1$};
+				\draw ({1 + 2 * \t},\yMIN) -- ({1 + 2 * \t},\yMAX);
+				\node [below, fill = white] at ({1 + 2 * \t},0) {$1$};
+				\draw ({2 - 2 * \t},\yMIN) -- ({2 - 2 * \t},\yMAX);
+				\node [below, fill = white] at ({2 - 2 * \t},0) {$2$};
+			\end{scope}
+		\end{tikzpicture}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}[scale = 2.5]
+			\def\xMIN{-1};
+			\def\xMAX{3};
+			\def\yMIN{-2};
+			\def\yMAX{2};
+			\def\t{1/8};
+
+			\begin{scope}[stealth-stealth, gray]
+				\draw (\xMIN,0) -- (\xMAX,0) node [right] {$x$};
+				\draw (0,\yMIN) -- (0,\yMAX) node [above] {$u(x + 2 t)$};
+			\end{scope}
+
+			\begin{scope}
+				\draw (\xMIN,0) -- ({1 - 2 * \t},0);
+				\draw ({1 - 2 * \t},1/2) -- ({1 + 2 * \t},1/2);
+				\draw ({1 + 2 * \t},0) -- ({2 - 2 * \t},0);
+				\draw ({2 - 2 * \t},1/2) -- ({2 + 2 * \t},1/2);
+				\draw ({2 + 2 * \t},0) -- (\xMAX,0);
+			\end{scope}
+
+			\begin{scope}[dashed]
+				\draw ({1 - 2 * \t},\yMIN) -- ({1 - 2 * \t},\yMAX);
+				\node [below, fill = white] at ({1 - 2 * \t},0) {$1 - 2 t$};
+				\draw ({1 + 2 * \t},\yMIN) -- ({1 + 2 * \t},\yMAX);
+				\node [below, fill = white] at ({1 + 2 * \t},0) {$1 + 2 t$};
+				\draw ({2 - 2 * \t},\yMIN) -- ({2 - 2 * \t},\yMAX);
+				\node [below, fill = white] at ({2 - 2 * \t},0) {$2 - 2 t$};
+				\draw ({2 + 2 * \t},\yMIN) -- ({2 + 2 * \t},\yMAX);
+				\node [below, fill = white] at ({2 + 2 * \t},0) {$2 + 2 t$};
+			\end{scope}
+		\end{tikzpicture}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}[scale = 2.5]
+			\def\xMIN{-1};
+			\def\xMAX{3};
+			\def\yMIN{-2};
+			\def\yMAX{2};
+			\def\t{1/4};
+
+			\begin{scope}[stealth-stealth, gray]
+				\draw (\xMIN,0) -- (\xMAX,0) node [right] {$x$};
+				\draw (0,\yMIN) -- (0,\yMAX) node [above] {$u(x + \frac{1}{2})$};
+			\end{scope}
+
+			\begin{scope}
+				\draw (\xMIN,0) -- ({1 - 2 * \t},0);
+				\draw ({1 - 2 * \t},1/2) -- ({1 + 2 * \t},1/2);
+				\draw ({1 + 2 * \t},1) -- ({2 - 2 * \t},1);
+				\draw ({2 - 2 * \t},1/2) -- ({2 + 2 * \t},1/2);
+				\draw ({2 + 2 * \t},0) -- (\xMAX,0);
+			\end{scope}
+
+			\begin{scope}[dashed]
+				\draw ({1 - 2 * \t},\yMIN) -- ({1 - 2 * \t},\yMAX);
+				\node [below, fill = white] at ({1 - 2 * \t},0) {$\frac{1}{2}$};
+				\draw ({1 + 2 * \t},\yMIN) -- ({1 + 2 * \t},\yMAX);
+				\node [below, fill = white] at ({1 + 2 * \t},0) {$\frac{3}{2}$};
+				\draw ({2 - 2 * \t},\yMIN) -- ({2 - 2 * \t},\yMAX);
+				\node [below, fill = white] at ({2 - 2 * \t},0) {$\frac{3}{2}$};
+				\draw ({2 + 2 * \t},\yMIN) -- ({2 + 2 * \t},\yMAX);
+				\node [below, fill = white] at ({2 + 2 * \t},0) {$\frac{5}{2}$};
+			\end{scope}
+		\end{tikzpicture}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}[scale = 2.5]
+			\def\xMIN{-1};
+			\def\xMAX{3};
+			\def\yMIN{-2};
+			\def\yMAX{2};
+			\def\t{1/2};
+
+			\begin{scope}[stealth-stealth, gray]
+				\draw (\xMIN,0) -- (\xMAX,0) node [right] {$x$};
+				\draw (0,\yMIN) -- (0,\yMAX) node [above] {$u(x + 2 t)$};
+			\end{scope}
+
+			\begin{scope}
+				\draw (\xMIN,0) -- ({1 - 2 * \t},0);
+				\draw ({1 - 2 * \t},1/2) -- ({2 - 2 * \t},1/2);
+				\draw ({2 - 2 * \t},1) -- ({1 + 2 * \t},1);
+				\draw ({1 + 2 * \t},1/2) -- ({2 + 2 * \t},1/2);
+				\draw ({2 + 2 * \t},0) -- (\xMAX,0);
+			\end{scope}
+
+			\begin{scope}[dashed]
+				\draw ({1 - 2 * \t},\yMIN) -- ({1 - 2 * \t},\yMAX);
+				\node [below, fill = white] at ({1 - 2 * \t},0) {$1 - 2 t$};
+				\draw ({1 + 2 * \t},\yMIN) -- ({1 + 2 * \t},\yMAX);
+				\node [below, fill = white] at ({1 + 2 * \t},0) {$1 + 2 t$};
+				\draw ({2 - 2 * \t},\yMIN) -- ({2 - 2 * \t},\yMAX);
+				\node [below, fill = white] at ({2 - 2 * \t},0) {$2 - 2 t$};
+				\draw ({2 + 2 * \t},\yMIN) -- ({2 + 2 * \t},\yMAX);
+				\node [below, fill = white] at ({2 + 2 * \t},0) {$2 + 2 t$};
+			\end{scope}
+		\end{tikzpicture}
+	\end{figure}
+	For $0 < t < \frac{1}{4}$,
+	\begin{align*}
+		u(x,t) &= \frac{1}{2} \left( f(x - 2 t) + f(x + 2 t) \right)\\
+		&=
+			\begin{cases}
+				0           & ;\quad x < 1 - 2 t               \\
+				\frac{1}{2} & ;\quad 1 - 2 t < x < 1 + 2 t     \\
+				1           & ;\quad 1 + 2 t \le x \le 2 - 2 t \\
+				\frac{1}{2} & ;\quad 2 - 2 t < x < 2 + 2 t     \\
+				0           & ;\quad 2 + 2 t < x               \\
+			\end{cases}
+	\end{align*}
+	For $t = \frac{1}{4}$,
+	\begin{align*}
+		u(x,t) &= u\left( x,\frac{1}{4} \right)\\
+		&=
+			\begin{cases}
+				0           & ;\quad x < \frac{1}{2}                 \\
+				\frac{1}{2} & ;\quad \frac{1}{2} \le x < \frac{3}{2} \\
+				1           & ;\quad x = \frac{3}{2}                 \\
+				\frac{1}{2} & ;\quad \frac{3}{2} < x \le \frac{5}{2} \\
+				0           & ;\quad \frac{5}{2} < x                 \\
+			\end{cases}
+	\end{align*}
+	For $\frac{1}{4} < t$,
+	\begin{align*}
+		u(x,t) &= \frac{1}{2} \left( f(x - 2 t) + f(x + 2 t) \right)\\
+		&=
+			\begin{cases}
+				0           & ;\quad x < 1 - 2 t               \\
+				\frac{1}{2} & ;\quad 1 - 2 t \le x \le 1 + 2 t \\
+				0           & ;\quad 1 + 2 t < x < 2 - 2 t     \\
+				\frac{1}{2} & ;\quad 2 - 2 t \le x \le 2 + 2 t \\
+				0           & ;\quad 2 + 2 t < x               \\
+			\end{cases}
+	\end{align*}
+	Therefore, the graphs of the solution are
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}[scale = 2.5]
+			\def\xMIN{-1};
+			\def\xMAX{3};
+			\def\yMIN{-1};
+			\def\yMAX{2};
+			\def\t{0};
+
+			\begin{scope}[stealth-stealth, gray]
+				\draw (\xMIN,0) -- (\xMAX,0) node [right] {$x$};
+				\draw (0,\yMIN) -- (0,\yMAX) node [above] {$u(x + 2 t)$};
+			\end{scope}
+
+			\begin{scope}
+				\draw (\xMIN,0) -- ({1 - 2 * \t},0);
+				\draw ({1 - 2 * \t},1/2) -- ({1 + 2 * \t},1/2);
+				\draw ({1 + 2 * \t},1) -- ({2 - 2 * \t},1);
+				\draw ({2 - 2 * \t},1/2) -- ({2 + 2 * \t},1/2);
+				\draw ({2 + 2 * \t},0) -- (\xMAX,0);
+			\end{scope}
+
+			\begin{scope}[dashed]
+				\draw ({1 - 2 * \t},\yMIN) -- ({1 - 2 * \t},\yMAX);
+				\node [below, fill = white] at ({1 - 2 * \t},0) {$1$};
+				\draw ({1 + 2 * \t},\yMIN) -- ({1 + 2 * \t},\yMAX);
+				\node [below, fill = white] at ({1 + 2 * \t},0) {$1$};
+				\draw ({2 - 2 * \t},\yMIN) -- ({2 - 2 * \t},\yMAX);
+				\node [below, fill = white] at ({2 - 2 * \t},0) {$2$};
+			\end{scope}
+		\end{tikzpicture}
+		\caption{$t = 0$}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}[scale = 2.5]
+			\def\xMIN{-1};
+			\def\xMAX{3};
+			\def\yMIN{-1};
+			\def\yMAX{2};
+			\def\t{1/8};
+
+			\begin{scope}[stealth-stealth, gray]
+				\draw (\xMIN,0) -- (\xMAX,0) node [right] {$x$};
+				\draw (0,\yMIN) -- (0,\yMAX) node [above] {$u(x + 2 t)$};
+			\end{scope}
+
+			\begin{scope}
+				\draw (\xMIN,0) -- ({1 - 2 * \t},0);
+				\draw ({1 - 2 * \t},1/2) -- ({1 + 2 * \t},1/2);
+				\draw ({1 + 2 * \t},0) -- ({2 - 2 * \t},0);
+				\draw ({2 - 2 * \t},1/2) -- ({2 + 2 * \t},1/2);
+				\draw ({2 + 2 * \t},0) -- (\xMAX,0);
+			\end{scope}
+
+			\begin{scope}[dashed]
+				\draw ({1 - 2 * \t},\yMIN) -- ({1 - 2 * \t},\yMAX);
+				\node [below, fill = white] at ({1 - 2 * \t},0) {$1 - 2 t$};
+				\draw ({1 + 2 * \t},\yMIN) -- ({1 + 2 * \t},\yMAX);
+				\node [below, fill = white] at ({1 + 2 * \t},0) {$1 + 2 t$};
+				\draw ({2 - 2 * \t},\yMIN) -- ({2 - 2 * \t},\yMAX);
+				\node [below, fill = white] at ({2 - 2 * \t},0) {$2 - 2 t$};
+				\draw ({2 + 2 * \t},\yMIN) -- ({2 + 2 * \t},\yMAX);
+				\node [below, fill = white] at ({2 + 2 * \t},0) {$2 + 2 t$};
+			\end{scope}
+		\end{tikzpicture}
+		\caption{$0 < t < \frac{1}{4}$}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}[scale = 2.5]
+			\def\xMIN{-1};
+			\def\xMAX{3};
+			\def\yMIN{-1};
+			\def\yMAX{2};
+			\def\t{1/4};
+
+			\begin{scope}[stealth-stealth, gray]
+				\draw (\xMIN,0) -- (\xMAX,0) node [right] {$x$};
+				\draw (0,\yMIN) -- (0,\yMAX) node [above] {$u(x + 2 t)$};
+			\end{scope}
+
+			\begin{scope}
+				\draw (\xMIN,0) -- ({1 - 2 * \t},0);
+				\draw ({1 - 2 * \t},1/2) -- ({1 + 2 * \t},1/2);
+				\draw ({1 + 2 * \t},1) -- ({2 - 2 * \t},1);
+				\draw ({2 - 2 * \t},1/2) -- ({2 + 2 * \t},1/2);
+				\draw ({2 + 2 * \t},0) -- (\xMAX,0);
+			\end{scope}
+
+			\begin{scope}[dashed]
+				\draw ({1 - 2 * \t},\yMIN) -- ({1 - 2 * \t},\yMAX);
+				\node [below, fill = white] at ({1 - 2 * \t},0) {$\frac{1}{2}$};
+				\draw ({1 + 2 * \t},\yMIN) -- ({1 + 2 * \t},\yMAX);
+				\node [below, fill = white] at ({1 + 2 * \t},0) {$\frac{3}{2}$};
+				\draw ({2 - 2 * \t},\yMIN) -- ({2 - 2 * \t},\yMAX);
+				\node [below, fill = white] at ({2 - 2 * \t},0) {$\frac{3}{2}$};
+				\draw ({2 + 2 * \t},\yMIN) -- ({2 + 2 * \t},\yMAX);
+				\node [below, fill = white] at ({2 + 2 * \t},0) {$\frac{5}{2}$};
+			\end{scope}
+		\end{tikzpicture}
+		\caption{$t = \frac{1}{4}$}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}[scale = 2.5]
+			\def\xMIN{-1};
+			\def\xMAX{3};
+			\def\yMIN{-1};
+			\def\yMAX{2};
+			\def\t{1/2};
+
+			\begin{scope}[stealth-stealth, gray]
+				\draw (\xMIN,0) -- (\xMAX,0) node [right] {$x$};
+				\draw (0,\yMIN) -- (0,\yMAX) node [above] {$u(x + 2 t)$};
+			\end{scope}
+
+			\begin{scope}
+				\draw (\xMIN,0) -- ({1 - 2 * \t},0);
+				\draw ({1 - 2 * \t},1/2) -- ({2 - 2 * \t},1/2);
+				\draw ({2 - 2 * \t},1) -- ({1 + 2 * \t},1);
+				\draw ({1 + 2 * \t},1/2) -- ({2 + 2 * \t},1/2);
+				\draw ({2 + 2 * \t},0) -- (\xMAX,0);
+			\end{scope}
+
+			\begin{scope}[dashed]
+				\draw ({1 - 2 * \t},\yMIN) -- ({1 - 2 * \t},\yMAX);
+				\node [below, fill = white] at ({1 - 2 * \t},0) {$1 - 2 t$};
+				\draw ({1 + 2 * \t},\yMIN) -- ({1 + 2 * \t},\yMAX);
+				\node [below, fill = white] at ({1 + 2 * \t},0) {$1 + 2 t$};
+				\draw ({2 - 2 * \t},\yMIN) -- ({2 - 2 * \t},\yMAX);
+				\node [below, fill = white] at ({2 - 2 * \t},0) {$2 - 2 t$};
+				\draw ({2 + 2 * \t},\yMIN) -- ({2 + 2 * \t},\yMAX);
+				\node [below, fill = white] at ({2 + 2 * \t},0) {$2 + 2 t$};
+			\end{scope}
+		\end{tikzpicture}
+		\caption{$\frac{1}{4} < t$}
+	\end{figure}
+\end{solution}
+
+\begin{question}
+	Solve
+	\begin{enumerate}
+		\item
+			\begin{align*}
+				u_{t t} &= u_{x x}\\
+				u(x,0) &=
+					\begin{cases}
+						\sin x  & ;\quad x \ge 0 \\
+						-\sin x & ;\quad x < 0   \\
+					\end{cases}\\
+				u_t(x,0) &= -\cos x
+			\end{align*}
+			where $-\infty < x < \infty$, and $t > 0$.
+		\item
+			\begin{align*}
+				u_{t t} &= u_{x x}\\
+				u(x,0) &= -\cos x\\
+				u_t(x,0) &=
+					\begin{cases}
+						\sin x  & ;\quad x \ge 0 \\
+						-\sin x & ;\quad x < 0   \\
+					\end{cases}
+			\end{align*}
+			where $-\infty < x < \infty$, and $t > 0$.
+	\end{enumerate}
+\end{question}
+
+\begin{solution}
+	\begin{enumerate}[leftmargin=*]
+		\item
+			Comparing to the standard form,
+			\begin{align*}
+				a &= 1\\
+				f(x) &=
+					\begin{cases}
+						\sin x  & ;\quad x \ge 0 \\
+						-\sin x & ;\quad x < 0   \\
+					\end{cases}\\
+				g(x) &= -\cos x
+			\end{align*}
+			Therefore, by the d'Alembert formula,
+			\begin{align*}
+				u(x,t) &= \frac{f(x - a t) + f(x + a t)}{2} + \frac{1}{2 a} \int\limits_{x - a t}^{x + a t} g(s) \dif s\\
+				&= \frac{f(x - t) + f(x + t)}{2} + \frac{1}{2} \int\limits_{x - t}^{x + t} (-\cos s) \dif s\\
+				&= \frac{f(x - t) + f(x + t)}{2} + \frac{1}{2} \left( \sin(x - t) - \sin(x + t) \right)\\
+				&=
+					\begin{cases}
+						\frac{1}{2} \left( \sin(x - t) + \sin(x + t) \right) + \frac{1}{2} \left( \sin(x - t) - \sin(x + t) \right)  & ;\quad x \ge 0 \\
+						\frac{1}{2} \left( -\sin(x - t) - \sin(x + t) \right) + \frac{1}{2} \left( \sin(x - t) - \sin(x + t) \right) & ;\quad x < 0   \\
+					\end{cases}\\
+				&=
+					\begin{cases}
+						\sin(x - t)  & ;\quad x \ge 0 \\
+						-\sin(x + t) & ;\quad x < 0   \\
+					\end{cases}
+			\end{align*}
+		\item
+			Comparing to the standard form,
+			\begin{align*}
+				a &= 1\\
+				f(x) &= -\cos x\\
+				g(x) &=
+					\begin{cases}
+						\sin x  & ;\quad x \ge 0 \\
+						-\sin x & ;\quad x < 0   \\
+					\end{cases}
+			\end{align*}
+			Therefore, by the d'Alembert formula,
+			\begin{align*}
+				u(x,t) &= \frac{f(x - a t) + f(x + a t)}{2} + \frac{1}{2 a} \int\limits_{x - a t}^{x + a t} g(s) \dif s\\
+				&= \frac{-\cos(x - t) - \cos(x + t)}{2} + \frac{1}{2} \int\limits_{x - t}^{x + t} g(s) \dif s\\
+				&= \quad \frac{-\cos(x - t) - \cos(x + t)}{2}\\
+				&\quad +
+					\begin{cases}
+						\frac{1}{2} \int\limits_{x - t}^{x + t} \sin(s) \dif s                                                      & ;\quad x \ge t \\
+						\frac{1}{2} \left( \int\limits_{x - t}^{0} -\sin(s) \dif s + \int\limits_{0}^{x + t} \sin(s) \dif s \right) & ;\quad x < t   \\
+					\end{cases}\\
+				&= \quad \frac{-\cos(x - t) - \cos(x + t)}{2}\\
+				&\quad +
+					\begin{cases}
+						\frac{1}{2} \left( -\cos(x + t) + \cos(x - t) \right)                                                   & ;\quad x \ge t \\
+						\frac{1}{2} \left( \left( \cos(0) - \cos(x - t) \right) + \left( -\cos(x + t) + \cos(0) \right) \right) & ;\quad x < t   \\
+					\end{cases}\\
+				&= \quad \frac{-\cos(x - t) - \cos(x + t)}{2}\\
+				&\quad +
+					\begin{cases}
+						-\cos(x - t)                  & ;\quad x \ge t \\
+						1 - \cos(x - t) - \cos(x + t) & ;\quad x < t   \\
+					\end{cases}
+			\end{align*}
+	\end{enumerate}
+\end{solution}
+
+\end{document}
