@@ -1,0 +1,279 @@
+\documentclass[fleqn, a4paper, 11pt, oneside]{amsart}
+\usepackage{exsheets}
+\usepackage{amsmath, amssymb, amsthm} %standard AMS packages
+\usepackage{marginnote} %marginnotes
+\usepackage{gensymb} %miscellaneous symbols
+\usepackage{commath} %differential symbols
+\usepackage{xcolor} %colours
+\usepackage{cancel} %cancelling terms
+\usepackage[free-standing-units, space-before-unit]{siunitx} %formatting units
+\usepackage{tikz, pgfplots} %diagrams
+	\usetikzlibrary{calc, hobby, patterns, intersections, decorations.markings}
+\usepackage{graphicx} %inserting graphics
+\usepackage{hyperref} %hyperlinks
+\usepackage{datetime} %date and time
+\usepackage{enumerate,enumitem} %numbered lists
+\usepackage{float} %inserting floats
+\usepackage{circuitikz}[american voltages, american currents] %circuit diagrams
+
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}} %adds numbers to specific equations in non-numbered list of equations
+
+\theoremstyle{definition}
+\newtheorem{example}{Example}
+\newtheorem{definition}{Definition}
+
+\theoremstyle{theorem}
+\newtheorem{theorem}{Theorem}
+
+\makeatletter
+\@addtoreset{section}{part} %resets section numbers in new part
+\makeatother
+
+\renewcommand{\tilde}{\widetilde}
+
+\SetupExSheets{solution/print = true}
+
+%opening
+\title
+[
+	PDE : Assignment 4
+]
+{
+	Partial Differential Equations\\
+	Assignment 4
+}
+\author
+{
+	Aakash Jog\\
+	ID : 989323563
+}
+\date{\formatdate{31}{3}{2016}}
+
+\begin{document}
+
+\maketitle
+%\setlength{\mathindent}{0pt}
+
+\begin{question}
+	Using the energy method, prove uniqueness of the solution to the Dirichlet problem of the heat equation
+	\begin{align*}
+		u_t - k u_{x x} &= F(x,t)\\
+		u(0,t) &= a(t)\\
+		u(L,t) &= b(t)\\
+		u(x,0) &= f(x)
+	\end{align*}
+	where $0 \le x \le L$, $t \ge 0$, and $k$ is a positive constant.\\
+	Hint: Show that the energy
+	\begin{align*}
+		E(t) &= \frac{1}{2} \int\limits_{0}^{L} w^2 \dif x
+	\end{align*}
+	satisfies
+	\begin{align*}
+		E'(t) &\le 0
+	\end{align*}
+	where $w$ is a solution of the homogeneous problem.
+\end{question}
+
+\begin{solution}
+	If possible, let $u_1$ and $u_2$ be two distinct solutions of the problem.\\
+	Let
+	\begin{align*}
+		v(x,t) &= u_1(x,t) - u_2(x,t)
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		v_t - k v_{x x} &= 0\\
+		v(0,t) &= 0\\
+		v(L,t) &= 0\\
+		v(x,0) &= 0
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		E(t) &= \frac{1}{2} \int\limits_{0}^{L} v^2 \dif x\\
+		\therefore E'(t) &= \frac{1}{2} \int\limits_{0}^{L} 2 v v_t \dif x\\
+		&= \int\limits_{0}^{L} k v v_{x x} \dif x\\
+		&= k \int\limits_{0}^{L} v v_{x x} \dif x\\
+		&= \left. k v \int v_{x x} \dif x - k \int v_x \int v_{x x} \dif x \right|_{0}^{L}\\
+		&= \left. k v v_x \right|_{0}^{L} - \int\limits_{0}^{L} k {v_x}^2 \dif x\\
+		&= -\int\limits_{0}^{L} {v_x}^2 \dif x\\
+		&\le 0
+	\end{align*}
+	Also,
+	\begin{align*}
+		E(t) &= \frac{1}{2} \int\limits_{0}^{L} v^2 \dif x\\
+		&\ge 0
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		E(t) &\equiv 0
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		\frac{1}{2} \int\limits_{0}^{L} v^2 \dif x &\equiv 0\\
+		\therefore v &\equiv 0
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		u_1 &\equiv u_2
+	\end{align*}
+	This contradicts the assumption that $u_1$ and $u_2$ are distinct.
+	Therefore, the problem has a unique solution.
+\end{solution}
+
+\begin{question}
+	Using the energy method, prove uniqueness of the solution to the following problem of the string equation
+	\begin{align*}
+		u_{t t} - u_{x x} &= x t\\
+		u_x(0,t) &= g(t)\\
+		u(1,t) &= h(t)\\
+		u(x,0) &= x^2 - 1\\
+		u_t(x,0) &= x^{2016} - 1
+	\end{align*}
+	where $0 \le x \le 1$, $t \ge 0$.
+\end{question}
+
+\begin{solution}
+	If possible, let $u_1$ and $u_2$ be two distinct solutions of the problem.\\
+	Let
+	\begin{align*}
+		v(x,t) &= u_1(x,t) - u_2(x,t)
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		v_{t t} - v_{x x} &= 0\\
+		v_x(0,t) &= 0\\
+		v(1,t) &= 0\\
+		v(x,0) &= 0\\
+		v_t(x,0) &= 0
+	\end{align*}
+	Therefore, comparing to the standard form,
+	\begin{align*}
+		\rho(t) &= 1\\
+		k(x) &= 1
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		E(t) &= \frac{1}{2} \int\limits_{0}^{l} \left( k {v_x}^2 + \rho {v_t}^2 \right) \dif x\\
+		&= \frac{1}{2} \int\limits_{0}^{1} {v_x}^2 + {v_t}^2 \dif x\\
+		\therefore E'(t) &= \frac{1}{2} \int\limits_{0}^{1} 2 v_x v_{x t} + 2 v_t v_{t t} \dif x\\
+		&= \int\limits_{0}^{1} v_x v_{x t} \dif t + \int\limits_{0}^{1} v_t v_{t t} \dif x
+	\end{align*}
+	Assuming the mixed derivatives exist and are continuous,
+	\begin{align*}
+		v_{x t} &= v_{t x}
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		E'(t) &= \int\limits_{0}^{1} v_x v_{t x} \dif x + \int\limits_{0}^{1} v_t v_{t t} \dif x\\
+		&= \int\limits_{0}^{1} v_x v_{t t} \dif x + \left. v_x v_t \right|_{0}^{1} - \int\limits_{0}^{1} v_t v_{x x} \dif x\\
+		&= \left. v_x v_t \right|_{0}^{1}\\
+		&\equiv 0
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		E(t) &\equiv c
+	\end{align*}
+	Therefore, as $v(x,0) = 0$,
+	\begin{align*}
+		v_x(x,0) &= 0
+	\end{align*}
+	Also,
+	\begin{align*}
+		v_t(x,0) &= 0
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		E(t) &\equiv 0
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		v_x &\equiv v_t\\
+		&\equiv 0
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		u_1 &\equiv u_2
+	\end{align*}
+	This contradicts the assumption that $u_1$ and $u_2$ are distinct.
+	Therefore, the problem has a unique solution.
+\end{solution}
+
+\begin{question}
+	Using the energy method, prove uniqueness of the solution to the Neumann problem of the string equation
+	\begin{align*}
+		u_{t t} - 4 u_{x x} &= x t\\
+		u(x,0) &= \cos^2(\pi x)\\
+		u_t(x,0) &= \sin^2(\pi x) \cos(\pi x)\\
+		u_x(0,t) &= 0\\
+		u_x(1,t) &= 0
+	\end{align*}
+	where $0 \le x \le 1$, $t \ge 0$.
+\end{question}
+
+\begin{solution}
+	If possible, let $u_1$ and $u_2$ be two distinct solutions of the problem.\\
+	Let
+	\begin{align*}
+		v(x,t) &= u_1(x,t) - u_2(x,t)
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		v_{t t} - 4 v_{x x} &= 0\\
+		v(x,0) &= 0\\
+		v_t(x,0) &= 0\\
+		v_x(0,t) &= 0\\
+		v_x(1,t) &= 0
+	\end{align*}
+	Therefore, comparing to the standard form,
+	\begin{align*}
+		\rho(t) &= 1\\
+		k(t) &= 4
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		E(t) &= \frac{1}{2} \int\limits_{0}^{l} \left( k {v_x}^2 + \rho {v_t}^2 \right) \dif x\\
+		&= \frac{1}{2} \int\limits_{0}^{1} 4 {v_x}^2 + {v_t}^2 \dif x\\
+		\therefore E'(t) &= \frac{1}{2} \int\limits_{0}^{1} 8 v_x v_{x t} + 2 v_t v_{t t} \dif x\\
+		&= \int\limits_{0}^{1} 4 v_x v_{x t} \dif x + \int\limits_{0}^{1} v_t v_{t t} \dif x
+	\end{align*}
+	Assuming the mixed derivatives exist and are continuous,
+	\begin{align*}
+		v_{x t} &= v_{t x}
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		E'(t) &= \int\limits_{0}^{1} 4 v_x v_{t x} \dif x + \int\limits_{0}^{1} v_t v_{t t} \dif x\\
+		&= \int\limits_{0}^{1} v_t v_{t t} \dif x + \left. 4 v_x v_t \right|_{0}^{1} - \int\limits_{0}^{1} 4 v_t v_{x x} \dif x\\
+		&= \left. 4 v_x v_t \right|_{0}^{1}\\
+		&\equiv 0
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		E(t) &\equiv c
+	\end{align*}
+	Therefore, as $v(x,0) = 0$,
+	\begin{align*}
+		v_x(x,0) &= 0
+	\end{align*}
+	Also,
+	\begin{align*}
+		v_t(x,0) &= 0
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		E(t) &\equiv 0
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		v_x &\equiv v_t\\
+		&\equiv 0
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		u_1 &\equiv u_2
+	\end{align*}
+	This contradicts the assumption that $u_1$ and $u_2$ are distinct.
+	Therefore, the problem has a unique solution.
+\end{solution}
+
+\end{document}

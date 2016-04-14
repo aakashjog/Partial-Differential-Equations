@@ -1,0 +1,174 @@
+\documentclass[fleqn, a4paper, 11pt, oneside]{amsart}
+\usepackage{exsheets}
+\usepackage{amsmath, amssymb, amsthm} %standard AMS packages
+\usepackage{marginnote} %marginnotes
+\usepackage{gensymb} %miscellaneous symbols
+\usepackage{commath} %differential symbols
+\usepackage{xcolor} %colours
+\usepackage{cancel} %cancelling terms
+\usepackage[free-standing-units, space-before-unit]{siunitx} %formatting units
+\usepackage{tikz, pgfplots} %diagrams
+	\usetikzlibrary{calc, hobby, patterns, intersections, decorations.markings}
+\usepackage{graphicx} %inserting graphics
+\usepackage{hyperref} %hyperlinks
+\usepackage{datetime} %date and time
+\usepackage{enumerate,enumitem} %numbered lists
+\usepackage{float} %inserting floats
+\usepackage{circuitikz}[american voltages, american currents] %circuit diagrams
+
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}} %adds numbers to specific equations in non-numbered list of equations
+
+\theoremstyle{definition}
+\newtheorem{example}{Example}
+\newtheorem{definition}{Definition}
+
+\theoremstyle{theorem}
+\newtheorem{theorem}{Theorem}
+
+\makeatletter
+\@addtoreset{section}{part} %resets section numbers in new part
+\makeatother
+
+\renewcommand{\tilde}{\widetilde}
+
+\SetupExSheets{solution/print = true}
+
+%opening
+\title
+[
+	PDE : Assignment 3
+]
+{
+	Partial Differential Equations\\
+	Assignment 3
+}
+\author
+{
+	Aakash Jog\\
+	ID : 989323563
+}
+\date{\formatdate{17}{3}{2016}}
+
+\begin{document}
+
+\maketitle
+%\setlength{\mathindent}{0pt}
+
+\begin{question}
+	\begin{enumerate}
+		\item
+			Using the d'Alembert formula, calculate $u\left( \frac{3}{4},\frac{1}{2} \right)$ for
+			\begin{align*}
+				u_{t t}  & = u_{x x}   \\
+				u(x,0)   & = x (x - 1) \\
+				u_t(x,0) & = 0         \\
+				u(0,t)   & = 0         \\
+				u(1,t)   & = 0
+			\end{align*}
+			where $0 \le x \le 1$, and $t \ge 0$.
+		\item
+			Using the d'Alembert formula, calculate $u\left( \frac{5}{8},\frac{9}{8} \right)$ for
+			\begin{align*}
+				u_{t t}  & = u_{x x}                  \\
+				u(x,0)   & = \sin(\pi x)              \\
+				u_t(x,0) & = x \left( 1 - x^2 \right) \\
+				u(0,t)   & = 0                        \\
+				u(1,t)   & = 0
+			\end{align*}
+			where $0 \le x \le 1$, and $t \ge 0$.
+	\end{enumerate}	
+\end{question}
+
+\begin{solution}
+	\begin{enumerate}[leftmargin=*]
+		\item
+			Comparing to the standard form,
+			\begin{align*}
+				a &= 1\\
+				l &= 1\\
+				f(x) &= x (x - 1)\\
+				g(x) &= 0
+			\end{align*}
+			As the boundary is fixed, let $\tilde{f}(x)$ and $\tilde{g}(x)$ be the odd $2 l$ periodic extensions of $f(x)$ and $g(x)$.
+			Therefore,
+			\begin{align*}
+				\tilde{u}(x,t) &= \frac{\tilde{f}(x - a t) + \tilde{f}(x + a t)}{2} + \frac{1}{2 a} \int\limits_{x - a t}^{x + a t} \tilde{g}(s) \dif s\\
+				&= \frac{\tilde{f}(x - t) + \tilde{f}(x + t)}{2} + \frac{1}{2} \int\limits_{x - t}^{x + t} 0 \dif t\\
+				&= \frac{\tilde{f}(x - t) + \tilde{f}(x + t)}{2}
+			\end{align*}
+			Therefore,
+			\begin{align*}
+				\tilde{u}\left( \frac{3}{4},\frac{1}{2} \right) &= \frac{\tilde{f}\left( \frac{3}{4} - \frac{1}{2} \right) + \tilde{f}\left( \frac{3}{4} + \frac{1}{2} \right)}{2}\\
+				&= \frac{\tilde{f}\left( \frac{1}{4} \right) + \tilde{f}\left( \frac{5}{4} \right)}{2}\\
+				&= \frac{\tilde{f}\left( \frac{1}{4} \right) + \tilde{f}\left( \frac{5}{4} - 2 \right)}{2}\\
+				&= \frac{\tilde{f}\left( \frac{1}{4} \right) + \tilde{f}\left( -\frac{3}{4} \right)}{2}\\
+				&= \frac{f\left( \frac{1}{4} \right) - f\left( \frac{3}{4} \right)}{2}\\
+				&= \frac{\left( \frac{1}{4} \right) \left( -\frac{3}{4} \right) - \left( \frac{3}{4} \right) \left( -\frac{1}{4} \right)}{2}\\
+				&= 0
+			\end{align*}
+		\item
+			Comparing to the standard form,
+			\begin{align*}
+				a &= 1\\
+				l &= 1\\
+				f(x) &= \sin(\pi x)\\
+				g(x) &= x \left( 1 - x^2 \right)
+			\end{align*}
+			As the boundary is fixed, let $\tilde{f}(x)$ and $\tilde{g}(x)$ be the odd $2 l$ periodic extensions of $f(x)$ and $g(x)$.
+			Therefore,
+			\begin{align*}
+				\tilde{u}(x,t) &= \frac{\tilde{f}(x - a t) + \tilde{f}(x + a t)}{2} + \frac{1}{2 a} \int\limits_{x - a t}^{x + a t} \tilde{g}(s) \dif s\\
+				&= \frac{\tilde{f}(x - t) + \tilde{f}(x + t)}{2} + \frac{1}{2} \int\limits_{x - t}^{x + t} \tilde{g}(s) \dif s
+			\end{align*}
+			Therefore,
+			\begin{align*}
+				\tilde{u}\left( \frac{5}{8},\frac{9}{8} \right) &= \frac{\tilde{f}\left( -\frac{4}{8} \right) + \tilde{f}\left( \frac{14}{8} \right)}{2} + \frac{1}{2} \int\limits_{-\frac{4}{8}}^{\frac{14}{8}} \tilde{g}(s) \dif s\\
+				&= \frac{\tilde{f}\left( -\frac{4}{8} \right) + \tilde{f}\left( -\frac{2}{8} \right)}{2} + \frac{1}{2} \left( \int\limits_{-\frac{4}{8}}^{\frac{12}{8}} \tilde{g}(s) \dif s + \int\limits_{\frac{12}{8}}^{\frac{14}{8}} \tilde{g}(s) \dif s \right)\\
+				&= \frac{-f\left( \frac{4}{8} \right) - f\left( \frac{2}{8} \right)}{2} + \frac{1}{2} \left( 0 + \int\limits_{-\frac{4}{8}}^{-\frac{2}{8}} \tilde{g}(s) \dif s \right)\\
+				&= \frac{-f\left( \frac{4}{8} \right) - f\left( \frac{2}{8} \right)}{2} + \frac{1}{2} \left( -\int\limits_{\frac{4}{8}}^{\frac{2}{8}} g(s) \dif s \right)\\
+				&= \frac{-\sin\left( \frac{4}{8} \pi \right) - \sin\left( \frac{2}{8} \pi \right)}{2} - \frac{1}{2} \int\limits_{\frac{4}{8}}^{\frac{2}{8}} s \left( 1 - s^2 \right) \dif s\\
+				&= \frac{-1 - \frac{1}{\sqrt{2}}}{2} - \frac{1}{2} \left( \left. \frac{s^2}{2} - \frac{s^4}{4} \right|_{\frac{4}{8}}^{\frac{2}{8}} \right)\\
+				&= -\frac{1}{2} - \frac{1}{2 \sqrt{2}} - \frac{1}{2} \left( \frac{\frac{1}{16}}{2} - \frac{\frac{1}{256}}{2} - \frac{\frac{1}{4}}{2} + \frac{\frac{1}{16}}{2} \right)\\
+				&= -\frac{1}{2} - \frac{1}{2 \sqrt{2}} - \frac{1}{2} \left( \frac{1}{32} - \frac{1}{512} - \frac{1}{8} + \frac{1}{32} \right)\\
+				&= -\frac{1}{2} - \frac{1}{2 \sqrt{2}} - \frac{1}{32} + \frac{1}{1024} - \frac{1}{16}
+			\end{align*}
+	\end{enumerate}
+\end{solution}
+
+\begin{question}
+	Solve using the separation of variables method.
+	\begin{align*}
+		u_{t t}  & = u_{x x} \\
+		u(x,0)   & = 0       \\
+		u_t(x,0) & = v_0     \\
+		u(0,t)   & = 0       \\
+		u(l,t)   & = 0
+	\end{align*}
+	where $0 \le x \le l$, and $t \ge 0$.
+\end{question}
+
+\begin{question}
+	Solve using the separation of variables method.
+	\begin{align*}
+		u_{t t}  & = a^2 u_{x x}                        \\
+		u(x,0)   & = 0                                  \\
+		u_t(x,0) & = \sin\left( \frac{\pi}{l} x \right) \\
+		u(0,t)   & = 0                                  \\
+		u_x(l,t) & = 0
+	\end{align*}
+	where $0 \le x \le l$, and $t \ge 0$.
+\end{question}
+
+\begin{question}
+	Solve using the separation of variables method.
+	\begin{align*}
+		u_{t t}  & = a^2 u_{x x}                        \\
+		u(x,0)   & = \sin\left( \frac{\pi}{l} x \right) \\
+		u_t(x,0) & = \frac{x (l - x)}{l^2}              \\
+		u_x(0,t) & = 0                                  \\
+		u(l,t)   & = 0
+	\end{align*}
+	where $0 \le x \le l$, and $t \ge 0$.
+\end{question}
+
+\end{document}

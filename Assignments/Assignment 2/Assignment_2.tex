@@ -1,0 +1,201 @@
+\documentclass[fleqn, a4paper, 11pt, oneside]{amsart}
+\usepackage{exsheets}
+\usepackage{amsmath, amssymb, amsthm} %standard AMS packages
+\usepackage{marginnote} %marginnotes
+\usepackage{gensymb} %miscellaneous symbols
+\usepackage{commath} %differential symbols
+\usepackage{xcolor} %colours
+\usepackage{cancel} %cancelling terms
+\usepackage[free-standing-units, space-before-unit]{siunitx} %formatting units
+\usepackage{tikz, pgfplots} %diagrams
+	\usetikzlibrary{calc, hobby, patterns, intersections, decorations.markings}
+\usepackage{graphicx} %inserting graphics
+\usepackage{hyperref} %hyperlinks
+\usepackage{datetime} %date and time
+\usepackage{enumerate,enumitem} %numbered lists
+\usepackage{float} %inserting floats
+\usepackage{circuitikz}[american voltages, american currents] %circuit diagrams
+
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}} %adds numbers to specific equations in non-numbered list of equations
+
+\theoremstyle{definition}
+\newtheorem{example}{Example}
+\newtheorem{definition}{Definition}
+
+\theoremstyle{theorem}
+\newtheorem{theorem}{Theorem}
+
+\makeatletter
+\@addtoreset{section}{part} %resets section numbers in new part
+\makeatother
+
+\renewcommand{\tilde}{\widetilde}
+
+\SetupExSheets{solution/print = true}
+
+%opening
+\title
+[
+	PDE : Assignent 2
+]
+{
+	Partial Differential Equations\\
+	Assignment 2
+}
+\author
+{
+	Aakash Jog\\
+	ID : 989323563
+}
+\date{\formatdate{10}{3}{2016}}
+
+\begin{document}
+
+\maketitle
+%\setlength{\mathindent}{0pt}
+
+\begin{question}
+	Solve
+	\begin{align*}
+		u_{t t}  & = a^2 u_{x x}         \\
+		u(x,0)   & = \frac{x^2}{1 + x^2} \\
+		u_t(x,0) & = 0                   \\
+		u(0,t)   & = 0
+	\end{align*}
+	where $0 \le x \le \infty$, and $t \ge 0$.
+\end{question}
+
+\begin{solution}
+	Comparing to the standard form,
+	\begin{align*}
+		f(x) & = \frac{x^2}{1 + x^2} \\
+		g(x) & = 0
+	\end{align*}
+	Therefore, as the boundary is fixed, let
+	\begin{align*}
+		\tilde{f}(x) &=
+			\begin{cases}
+				f(x)   & ;\quad x \ge 0 \\
+				-f(-x) & ;\quad x < 0   \\
+			\end{cases}\\
+		&=
+			\begin{cases}
+				\frac{x^2}{1 + x^2}        & ;\quad x \ge 0 \\
+				-\frac{(-x)^2}{1 + (-x)^2} & ;\quad x < 0   \\
+			\end{cases}\\
+		&=
+			\begin{cases}
+				\frac{x^2}{1 + x^2}  & ;\quad x \ge 0 \\
+				-\frac{x^2}{1 + x^2} & ;\quad x < 0   \\
+			\end{cases}\\
+		\tilde{g}(x) &=
+			\begin{cases}
+				g(x)   & ;\quad x \ge 0 \\
+				-g(-x) & ;\quad x < 0   \\
+			\end{cases}\\
+		&= 0
+	\end{align*}
+	Therefore, by the d'Alembert formula,
+	\begin{align*}
+		\tilde{u}(x,t) & = \frac{\tilde{f}(x - a t) + \tilde{f}(x + a t)}{2} + \frac{1}{2 a} \int\limits_{x - a t}^{x + a t} \tilde{g}(s) \dif s\\
+		&= \frac{\tilde{f}(x - a t) + \tilde{f}(x + a t)}{2} + \frac{1}{2 a} \int\limits_{x - a t}^{x + a t} 0 \dif s\\
+		&=\quad
+			\begin{cases}
+				\frac{(x - a t)^2}{1 + (x - a t)^2}  & ;\quad x - a t \ge 0 \\
+				-\frac{(x - a t)^2}{1 + (x - a t)^2} & ;\quad x - a t < 0   \\
+			\end{cases}\\
+		&\quad +
+			\begin{cases}
+				\frac{(x + a t)^2}{1 + (x + a t)^2}  & ;\quad x + a t \ge 0 \\
+				-\frac{(x + a t)^2}{1 + (x + a t)^2} & ;\quad x + a t < 0   \\
+			\end{cases}\\
+		&=\quad
+			\begin{cases}
+				\frac{(x - a t)^2}{1 + (x - a t)^2}  & ;\quad x \ge a t \\
+				-\frac{(x - a t)^2}{1 + (x - a t)^2} & ;\quad x < a t   \\
+			\end{cases}\\
+		&\quad +
+			\begin{cases}
+				\frac{(x + a t)^2}{1 + (x + a t)^2}  & ;\quad x \ge -a t \\
+				-\frac{(x + a t)^2}{1 + (x + a t)^2} & ;\quad x < -a t   \\
+			\end{cases}
+	\end{align*}
+	Therefore, the restricted solution, i.e. the solution on the given domain $x > 0$, $t > 0$ is
+	\begin{align*}
+		u(x,t) &=\quad
+			\begin{cases}
+				\frac{(x - a t)^2}{1 + (x - a t)^2}  & ;\quad x \ge a t   \\
+				-\frac{(x - a t)^2}{1 + (x - a t)^2} & ;\quad 0 < x < a t \\
+			\end{cases}\\
+		&\quad + \frac{(x + a t)^2}{1 + (x + a t)^2}\\
+		&=
+			\begin{cases}
+				\frac{(x + a t)^2}{1 + (x + a t)^2} + \frac{(x - a t)^2}{1 + (x - a t)^2} & ;\quad x \ge a t   \\
+				\frac{(x + a t)^2}{1 + (x + a t)^2} - \frac{(x - a t)^2}{1 + (x - a t)^2} & ;\quad 0 < x < a t \\
+			\end{cases}\\
+	\end{align*}
+\end{solution}
+
+\begin{question}
+	Solve
+	\begin{align*}
+		u_{t t}  & = a^2 u_{x x} \\
+		u(x,0)   & = 0           \\
+		u_t(x,0) & = \sin(x)     \\
+		u_x(0,t) & = 0
+	\end{align*}
+	where $0 \le x \le \infty$, and $t \ge 0$.
+\end{question}
+
+\begin{solution}
+	Comparing to the standard form,
+	\begin{align*}
+		f(x) & = 0 \\
+		g(x) & = \sin(x)
+	\end{align*}
+	Therefore, as the boundary is fixed, let
+	\begin{align*}
+		\tilde{f}(x) &=
+			\begin{cases}
+				f(x)  & ;\quad x \ge 0 \\
+				f(-x) & ;\quad x < 0   \\
+			\end{cases}\\
+		&= 0\\
+		\tilde{g}(x) &=
+			\begin{cases}
+				g(x)  & ;\quad x \ge 0 \\
+				g(-x) & ;\quad x < 0   \\
+			\end{cases}\\
+		&=
+			\begin{cases}
+				\sin(x)  & ;\quad x \ge 0 \\
+				\sin(-x) & ;\quad x < 0   \\
+			\end{cases}\\
+		&= \sin|x|
+	\end{align*}
+	Therefore, by the d'Alembert formula,
+	\begin{align*}
+		\tilde{u}(x,t) & = \frac{\tilde{f}(x - a t) + \tilde{f}(x + a t)}{2} + \frac{1}{2 a} \int\limits_{x - a t}^{x + a t} \tilde{g}(s) \dif s \\
+                               & = \frac{1}{2 a} \int\limits_{x - a t}^{x + a t} \sin|s| \dif s
+	\end{align*}
+	Therefore, the restricted solution, i.e. the solution on the given domain $x > 0$, $t > 0$ is
+	\begin{align*}
+		&=
+			\begin{cases}
+				\frac{1}{2 a} \int\limits_{x - a t}^{x + a t} \sin s \dif s                                       & ;\quad x - a t \ge 0 \\
+				\frac{1}{2 a} \int\limits_{x - a t}^{0} \sin(-s) \dif s + \frac{1}{2 a} \int\limits_{0}^{x + 2 t} & ;\quad x - a t < 0   \\
+			\end{cases}\\
+		&=
+			\begin{cases}
+				\frac{1}{2 a} \left( \cos(x - a t) - \cos(x + a t) \right)             & ;\quad x \ge 2 t   \\
+				\frac{1}{2 a} \left( 2 \cos(0) - \cos(x - a t) - \cos(x + a t) \right) & ;\quad 0 < x < 2 t \\
+			\end{cases}\\
+		&=
+			\begin{cases}
+				\frac{1}{2 a} \left( 2 \sin(x) \sin(2 t) \right)     & ;\quad x \ge 2 t   \\
+				\frac{1}{2 a} \left( 2 - 2 \cos(x) \cos(2 t) \right) & ;\quad 0 < x < 2 t \\
+			\end{cases}
+	\end{align*}
+\end{solution}
+
+\end{document}
