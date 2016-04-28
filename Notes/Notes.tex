@@ -31,6 +31,8 @@
 \newtheorem{theorem}{Theorem}
 \newtheorem{law}{Law}
 
+\newcommand{\divergence}{\mathrm{div\,}}
+
 \makeatletter
 \@addtoreset{section}{part} %resets section numbers in new part
 \makeatother
@@ -94,9 +96,9 @@ E-mail: \href{mailto:yakubov@post.tau.ac.il}{yakubov@post.tau.ac.il}\\
 \clearpage
 \pagenumbering{arabic}
 
-\part{Introduction}
+\part{String Equations}
 
-\section{String Equations}
+\section{Solution using d'Alembert Formula}
 
 \begin{definition}[Partial differential equation]
 	An equation
@@ -253,26 +255,26 @@ Therefore,
 \begin{theorem}[Solution to initial boundary value problem for half-infinite string with fixed boundary]
 	The solution to the initial boundary value problem
 	\begin{align*}
-		u_{t t}(x,t) &= a^2 u_{x x}(x,t)\\
-		u(x,0) &= f(x)\\
-		u_t(x,0) &= g(x)\\
-		u(0,t) &= 0
+		u_{t t}(x,t) & = a^2 u_{x x}(x,t) \\
+		u(x,0)       & = f(x)             \\
+		u_t(x,0)     & = g(x)             \\
+		u(0,t)       & = 0
 	\end{align*}
 	where $0 \le x < \infty$, $t \ge 0$ is
 	\begin{align*}
-		\tilde{u}(x,t) &= \frac{\tilde{f}(x - a t) + \tilde{f}(x + a t)}{2} + \frac{1}{2 a} \int\limits_{x - a t}^{x + a t} \tilde{g}(s) \dif s
+		\tilde{u}(x,t) & = \frac{\tilde{f}(x - a t) + \tilde{f}(x + a t)}{2} + \frac{1}{2 a} \int\limits_{x - a t}^{x + a t} \tilde{g}(s) \dif s
 	\end{align*}
 	where
 	\begin{align*}
 		\tilde{f} &=
 			\begin{cases}
-				f(x) &;\quad x \ge 0\\
-				-f(-x) &;\quad x < 0
+				f(x)   & ;\quad x \ge 0 \\
+				-f(-x) & ;\quad x < 0
 			\end{cases}\\
 		\tilde{g} &=
 			\begin{cases}
-				g(x) &;\quad x \ge 0\\
-				-g(-x) &;\quad x < 0
+				g(x)   & ;\quad x \ge 0 \\
+				-g(-x) & ;\quad x < 0
 			\end{cases}
 	\end{align*}
 	where $f$ is twice differentiable, $f(0) = 0$, $g$ is differentiable, and $g(0) = 0$.
@@ -282,71 +284,71 @@ Therefore,
 \begin{proof}
 	By the initial and boundary conditions,
 	\begin{align*}
-		u(x,0) &= f(x)\\
-		\therefore u(0,0) &= f(0)\\
-		u(0,t) &= 0\\
-		\therefore u(0,0) &= 0\\
+		u(x,0)            & = f(x) \\
+		\therefore u(0,0) & = f(0) \\
+		u(0,t)            & = 0    \\
+		\therefore u(0,0) & = 0    \\
 	\end{align*}
 	Therefore,
 	\begin{align*}
-		\therefore f(0) &= 0
+		\therefore f(0) & = 0
 	\end{align*}
 	Similarly,
 	\begin{align*}
-		u_t(x,0) &= g(x)\\
-		\therefore u_t(0,0) &= g(0)\\
-		u(0,t) &= 0\\
-		\therefore u_t(0,t) &= 0\\
-		\therefore u_t(0,0) &= 0
+		u_t(x,0)            & = g(x) \\
+		\therefore u_t(0,0) & = g(0) \\
+		u(0,t)              & = 0    \\
+		\therefore u_t(0,t) & = 0    \\
+		\therefore u_t(0,0) & = 0
 	\end{align*}
 	Therefore,
 	\begin{align*}
-		g(0) &= 0
+		g(0) & = 0
 	\end{align*}
 	These conditions are called compatibility conditions.\\
 	Let
 	\begin{align*}
 		\tilde{f} &=
 			\begin{cases}
-				f(x) &;\quad x \ge 0\\
-				-f(-x) &;\quad x < 0
+				f(x)   & ;\quad x \ge 0 \\
+				-f(-x) & ;\quad x < 0
 			\end{cases}\\
 		\tilde{g} &=
 			\begin{cases}
-				g(x) &;\quad x \ge 0\\
-				-g(-x) &;\quad x < 0
+				g(x)   & ;\quad x \ge 0 \\
+				-g(-x) & ;\quad x < 0
 			\end{cases}
 	\end{align*}
 	Therefore, due to the compatibility conditions, the odd extensions are continuous.\\
 	Therefore, by the \nameref{thm:Solution_to_Cauchy_Problem},
 	\begin{align*}
-		\tilde{u}(x,t) &= \frac{\tilde{f}(x - a t) + \tilde{f}(x + a t)}{2} + \frac{1}{2 a} \int\limits_{x - a t}^{x + a t} \tilde{g}(s) \dif s
+		\tilde{u}(x,t) & = \frac{\tilde{f}(x - a t) + \tilde{f}(x + a t)}{2} + \frac{1}{2 a} \int\limits_{x - a t}^{x + a t} \tilde{g}(s) \dif s
 	\end{align*}
 \end{proof}
 
 \begin{theorem}[Solution to initial boundary value problem for half-infinite string with free boundary]
 	The solution to the initial boundary value problem
 	\begin{align*}
-		u_{t t}(x,t) &= a^2 u_{x x}(x,t)\\
-		u(x,0) &= f(x)\\
-		u_t(x,0) &= g(x)\\
-		u_x(0,t) &= 0
+		u_{t t}(x,t) & = a^2 u_{x x}(x,t) \\
+		u(x,0)       & = f(x)             \\
+		u_t(x,0)     & = g(x)             \\
+		u_x(0,t)     & = 0
 	\end{align*}
 	where $0 \le x < \infty$, $t \ge 0$ is
 	\begin{align*}
-		\tilde{u}(x,t) &= \frac{\tilde{f}(x - a t) + \tilde{f}(x + a t)}{2} + \frac{1}{2 a} \int\limits_{x - a t}^{x + a t} \tilde{g}(s) \dif s
+		\tilde{u}(x,t) & = \frac{\tilde{f}(x - a t) + \tilde{f}(x + a t)}{2} + \frac{1}{2 a} \int\limits_{x - a t}^{x + a t} \tilde{g}(s) \dif s
 	\end{align*}
 	where
 	\begin{align*}
 		\tilde{f} &=
 			\begin{cases}
-				f(x) &;\quad x \ge 0\\
-				-f(-x) &;\quad x < 0
+				f(x)   & ;\quad x \ge 0 \\
+				-f(-x) & ;\quad x < 0
 			\end{cases}\\
 		\tilde{g} &=
 			\begin{cases}
-				g(x) &;\quad x \ge 0\\
-				-g(-x) &;\quad x < 0
+				g(x)   & ;\quad x \ge 0 \\
+				-g(-x) & ;\quad x < 0
 			\end{cases}
 	\end{align*}
 	where $f$ is twice differentiable, $f'(0) = 0$, $g$ is differentiable, and $g'(0) = 0$.
@@ -356,132 +358,56 @@ Therefore,
 \begin{proof}
 	By the initial and boundary conditions,
 	\begin{align*}
-		u(x,0) &= f(x)\\
-		\therefore u_x(x,0) &= f'(x)\\
-		\therefore u_x(0,0) &= f'(0)\\
-		u_x(0,t) &= 0\\
-		\therefore u_x(0,0) &= 0
+		u(x,0)              & = f(x)  \\
+		\therefore u_x(x,0) & = f'(x) \\
+		\therefore u_x(0,0) & = f'(0) \\
+		u_x(0,t)            & = 0     \\
+		\therefore u_x(0,0) & = 0
 	\end{align*}
 	Therefore,
 	\begin{align*}
-		\therefore f'(0) &= 0
+		\therefore f'(0) & = 0
 	\end{align*}
 	Similarly,
 	\begin{align*}
-		u_t(x,0) &= g(x)\\
-		\therefore u_{t x}(x,0) &= g'(x)\\
-		\therefore u_{t x}(0,0) &= g'(0)\\
-		u_x(0,t) &= 0\\
-		\therefore u_{x t}(0,t) &= 0\\
-		\therefore u_{x t}(0,0) &= 0
+		u_t(x,0)                & = g(x)  \\
+		\therefore u_{t x}(x,0) & = g'(x) \\
+		\therefore u_{t x}(0,0) & = g'(0) \\
+		u_x(0,t)                & = 0     \\
+		\therefore u_{x t}(0,t) & = 0     \\
+		\therefore u_{x t}(0,0) & = 0
 	\end{align*}
 	Therefore,
 	\begin{align*}
-		g'(0) &= 0
+		g'(0) & = 0
 	\end{align*}
 	These conditions are called compatibility conditions.\\
 	Let
 	\begin{align*}
 		\tilde{f} &=
 			\begin{cases}
-				f(x) &;\quad x \ge 0\\
-				f(-x) &;\quad x < 0
+				f(x)  & ;\quad x \ge 0 \\
+				f(-x) & ;\quad x < 0
 			\end{cases}\\
 		\tilde{g} &=
 			\begin{cases}
-				g(x) &;\quad x \ge 0\\
-				g(-x) &;\quad x < 0
+				g(x)  & ;\quad x \ge 0 \\
+				g(-x) & ;\quad x < 0
 			\end{cases}
 	\end{align*}
 	Therefore, by the \nameref{thm:Solution_to_Cauchy_Problem},
 	\begin{align*}
-		\tilde{u}(x,t) &= \frac{\tilde{f}(x - a t) + \tilde{f}(x + a t)}{2} + \frac{1}{2 a} \int\limits_{x - a t}^{x + a t} \tilde{g}(s) \dif s
+		\tilde{u}(x,t) & = \frac{\tilde{f}(x - a t) + \tilde{f}(x + a t)}{2} + \frac{1}{2 a} \int\limits_{x - a t}^{x + a t} \tilde{g}(s) \dif s
 	\end{align*}
 \end{proof}
-
-\subsection{Finite Strings}
-
-\begin{theorem}[Solution to boundary value problem for finite string with fixed boundary]
-	The solution to the initial boundary value problem
-	\begin{align*}
-		u_{t t}(x,t) &= a^2 u_{x x}(x,t)\\
-		u(x,0) &= f(x)\\
-		u_t(x,0) &= g(x)\\
-		u(0,t) &= 0\\
-		u(l,t) &= 0
-	\end{align*}
-	where $0 \le x \le l$, $t \ge 0$ is
-	\begin{align*}
-		\tilde{u}(x,t) &= \frac{\tilde{f}(x - a t) + \tilde{f}(x + a t)}{2} + \frac{1}{2 a} \int\limits_{x - a t}^{x + a t} \tilde{g}(s) \dif s
-	\end{align*}
-	where $\tilde{f}$ and $\tilde{g}$ are the $2 l$ periodic extensions of the odd extensions of $f$ and $g$ respectively, where $f$ is twice differentiable, $f'(0) = 0$, $g$ is differentiable, and $g'(0) = 0$.
-	\label{thm:Solution_to_initial_boundary_value_problem_for_finite_string_with_free_boundary}
-\end{theorem}
-
-\section{A Particular Case of Sturm-Liouville Problem}
-
-Consider the problem
-\begin{align*}
-	X''(x) + \lambda X(x) &= 0\\
-	X(0) &= 0\\
-	X(l) &= 0
-\end{align*}
-on $[0,l]$.\\
-Let $\lambda > 0$.
-Therefore, let
-\begin{align*}
-	\lambda &= \omega^2
-\end{align*}
-where $\omega > 0$.\\
-Therefore, the characteristic equation is
-\begin{align*}
-	r^2 + \omega^2 &= 0
-\end{align*}
-Therefore, solving,
-\begin{align*}
-	r &= \pm i \omega
-\end{align*}
-Therefore the solution of the ODE is
-\begin{align*}
-	X(s) &= A \cos(\omega x) + B \sin(\omega x)
-\end{align*}
-Therefore, substituting the given boundary conditions,
-\begin{align*}
-	X(0) &= 0\\
-	\therefore A &= 0\\
-	X(l) &= 0\\
-	\therefore B \sin(\omega l) &= 0\\
-	\therefore \sin(\omega l) &= 0\\
-	\therefore \omega l &= n \pi
-\end{align*}
-where $n \in \mathbb{N}$.
-\marginnote
-{
-	If $n \in \mathbb{Z}$, then $\omega \le 0$.
-	This contradicts the assumption $\omega > 0$.
-}
-\begin{align*}
-	\lambda_n &= {\omega_n}^2\\
-	&= \left( \frac{n \pi}{l} \right)^2
-\end{align*}
-where $n \in \mathbb{N}$, is called an eigenvalue of the problem.\\
-The corresponding solution to the problem is
-\begin{align*}
-	X_n &= B_n \sin\left( \frac{n \pi}{l} x \right)
-\end{align*}
-The function
-\begin{align*}
-	X_n &= \sin\left( \frac{n \pi}{l} x \right)
-\end{align*}
-is called an eigenfunction of the problem, corresponding to the eigenvalue $\lambda_n$.
 
 \begin{question}
 	Solve
 	\begin{align*}
-		u_{t t} &= u_{x x}\\
-		u(x,0) &= x (2 - x)\\
-		u_t(x,0) &= 0\\
-		u(0,t) &= 0
+		u_{t t}  & = u_{x x}   \\
+		u(x,0)   & = x (2 - x) \\
+		u_t(x,0) & = 0         \\
+		u(0,t)   & = 0
 	\end{align*}
 	where $x > 0$, $t > 0$.
 \end{question}
@@ -489,26 +415,26 @@ is called an eigenfunction of the problem, corresponding to the eigenvalue $\lam
 \begin{solution}
 	Comparing to the standard form,
 	\begin{align*}
-		a &= 1\\
-		f(x) &= x (2 - x)\\
-		g(x) &= 0
+		a    & = 1         \\
+		f(x) & = x (2 - x) \\
+		g(x) & = 0
 	\end{align*}
 	Therefore, as the boundary is fixed, let
 	\begin{align*}
 		\tilde{f} &=
 			\begin{cases}
-				f(x) &;\quad x \ge 0\\
-				-f(-x) &;\quad x < 0
+				f(x)   & ;\quad x \ge 0 \\
+				-f(-x) & ;\quad x < 0
 			\end{cases}\\
 		&=
 			\begin{cases}
-				x (2 - x) &;\quad x \ge 0\\
-				- \left( -x (2 + x) \right) &;\quad x < 0\\
+				x (2 - x)                   & ;\quad x \ge 0 \\
+				- \left( -x (2 + x) \right) & ;\quad x < 0   \\
 			\end{cases}\\
 		\tilde{g} &=
 			\begin{cases}
-				g(x) &;\quad x \ge 0\\
-				-g(-x) &;\quad x < 0
+				g(x)   & ;\quad x \ge 0 \\
+				-g(-x) & ;\quad x < 0
 			\end{cases}\\
 		&= 0
 	\end{align*}
@@ -518,31 +444,31 @@ is called an eigenfunction of the problem, corresponding to the eigenvalue $\lam
 		&= \frac{\tilde{f}(x - t) + \tilde{f}(x + t)}{2}\\
 		&= \quad
 			\begin{cases}
-				\frac{1}{2} (x - t) \left( 2 - (x - t) \right) &;\quad x - t \ge 0\\
-				\frac{1}{2} (x - t) \left( 2 + (x - t) \right) &;\quad x - t < 0\\
+				\frac{1}{2} (x - t) \left( 2 - (x - t) \right) & ;\quad x - t \ge 0 \\
+				\frac{1}{2} (x - t) \left( 2 + (x - t) \right) & ;\quad x - t < 0   \\
 			\end{cases}\\
 		&\quad +
 			\begin{cases}
-				\frac{1}{2} (x + t) \left( 2 - (x + t) \right) &;\quad x - t \ge 0\\
-				\frac{1}{2} (x + t) \left( 2 + (x + t) \right) &;\quad x - t < 0\\
+				\frac{1}{2} (x + t) \left( 2 - (x + t) \right) & ;\quad x - t \ge 0 \\
+				\frac{1}{2} (x + t) \left( 2 + (x + t) \right) & ;\quad x - t < 0   \\
 			\end{cases}\\
 		&= \quad
 			\begin{cases}
-				\frac{1}{2} (x - t) \left( 2 - (x - t) \right) &;\quad x \ge t\\
-				\frac{1}{2} (x - t) \left( 2 + (x - t) \right) &;\quad x < t\\
+				\frac{1}{2} (x - t) \left( 2 - (x - t) \right) & ;\quad x \ge t \\
+				\frac{1}{2} (x - t) \left( 2 + (x - t) \right) & ;\quad x < t   \\
 			\end{cases}\\
 		&\quad +
 			\begin{cases}
-				\frac{1}{2} (x + t) \left( 2 - (x + t) \right) &;\quad x \ge -t\\
-				\frac{1}{2} (x + t) \left( 2 + (x + t) \right) &;\quad x < -t\\
+				\frac{1}{2} (x + t) \left( 2 - (x + t) \right) & ;\quad x \ge -t \\
+				\frac{1}{2} (x + t) \left( 2 + (x + t) \right) & ;\quad x < -t   \\
 			\end{cases}
 	\end{align*}
 	Therefore, the restricted solution, i.e. the solution on the given domain $x > 0$, $t > 0$ is
 	\begin{align*}
 		u(x,t) &=
 			\begin{cases}
-				\frac{1}{2} \left( (x + t) (2 - x - t) + (x - t) (2 + x - t) \right) &;\quad 0 < x < t\\
-				\frac{1}{2} \left( (x + t) (2 - x - t) + (x - t) (2 - x + t) \right) &;\quad t \le x\\
+				\frac{1}{2} \left( (x + t) (2 - x - t) + (x - t) (2 + x - t) \right) & ;\quad 0 < x < t \\
+				\frac{1}{2} \left( (x + t) (2 - x - t) + (x - t) (2 - x + t) \right) & ;\quad t \le x   \\
 			\end{cases}
 	\end{align*}
 \end{solution}
@@ -550,10 +476,10 @@ is called an eigenfunction of the problem, corresponding to the eigenvalue $\lam
 \begin{question}
 	Solve
 	\begin{align*}
-		u_{t t} &= 2 u_{x x}\\
-		u(x,0) &= x^2\\
-		u_t(x,0) &= \sin x\\
-		u_x(0,t) &= 0
+		u_{t t}  & = 2 u_{x x} \\
+		u(x,0)   & = x^2       \\
+		u_t(x,0) & = \sin x    \\
+		u_x(0,t) & = 0
 	\end{align*}
 	where $x > 0$, $t > 0$.
 \end{question}
@@ -561,66 +487,2509 @@ is called an eigenfunction of the problem, corresponding to the eigenvalue $\lam
 \begin{solution}
 	Comparing to the standard form,
 	\begin{align*}
-		a &= 2\\
-		f(x) &= x^2\\
-		g(x) &= \sin x
+		a    & = 2   \\
+		f(x) & = x^2 \\
+		g(x) & = \sin x
 	\end{align*}
 	Therefore, as the boundary is free, let
 	\begin{align*}
 		\tilde{f} &=
 			\begin{cases}
-				f(x) &;\quad x \ge 0\\
-				f(-x) &;\quad x < 0
+				f(x)  & ;\quad x \ge 0 \\
+				f(-x) & ;\quad x < 0
 			\end{cases}\\
 		&=
 			\begin{cases}
-				x^2 &;\quad x \ge 0\\
-				(-x)^2 &;\quad x < 0\\
+				x^2    & ;\quad x \ge 0 \\
+				(-x)^2 & ;\quad x < 0   \\
 			\end{cases}\\
 		&= x^2\\
 		\tilde{g} &=
 			\begin{cases}
-				g(x) &;\quad x \ge 0\\
-				g(-x) &;\quad x < 0
+				g(x)  & ;\quad x \ge 0 \\
+				g(-x) & ;\quad x < 0
 			\end{cases}\\
 		&=
 			\begin{cases}
-				\sin x &;\quad x \ge 0\\
-				\sin(-x) &;\quad x < 0\\
+				\sin x   & ;\quad x \ge 0 \\
+				\sin(-x) & ;\quad x < 0   \\
 			\end{cases}\\
 		&= \sin|x|
 	\end{align*}
 	Therefore,
 	\begin{align*}
-		\tilde{u}(x,t) &= \frac{\tilde{f}(x - a t) + \tilde{f}(x + a t)}{2} + \frac{1}{2 a} \int\limits_{x - a t}^{x + a t} \tilde{g}(s) \dif s\\
-		&= \frac{(x - 2 t)^2 + (x + 2 t)^2}{2} + \frac{1}{4} \int\limits_{x - 2 t}^{x + 2 t} \sin|s| \dif s\\
-		&= \frac{2 x^2 + 8 t^2}{2} +  \frac{1}{4} \int\limits_{x - 2 t}^{x + 2 t} \sin|s| \dif s\\
-		&= x^2 + 4 t^2 + \frac{1}{4} \int\limits_{x - 2 t}^{x + 2 t} \sin|s| \dif s
+		\tilde{u}(x,t) & = \frac{\tilde{f}(x - a t) + \tilde{f}(x + a t)}{2} + \frac{1}{2 a} \int\limits_{x - a t}^{x + a t} \tilde{g}(s) \dif s \\
+                               & = \frac{(x - 2 t)^2 + (x + 2 t)^2}{2} + \frac{1}{4} \int\limits_{x - 2 t}^{x + 2 t} \sin|s| \dif s                      \\
+                               & = \frac{2 x^2 + 8 t^2}{2} +  \frac{1}{4} \int\limits_{x - 2 t}^{x + 2 t} \sin|s| \dif s                                 \\
+                               & = x^2 + 4 t^2 + \frac{1}{4} \int\limits_{x - 2 t}^{x + 2 t} \sin|s| \dif s
 	\end{align*}
 	Therefore, the restricted solution, i.e. the solution on the given domain $x > 0$, $t > 0$ is
 	\begin{align*}
 		u(x,t) &= x^2 + 4 t^2 + 
 			\begin{cases}
-				\frac{1}{4} \int\limits_{x - 2 t}^{x + 2 t} \sin s \dif s &;\quad x - 2 t \ge 0\\
-				\frac{1}{4} \int\limits_{x - 2 t}^{0} \sin(-s) \dif s + \frac{1}{4} \int\limits_{0}^{x + 2 t} \sin s \dif s &;\quad x - 2 t < 0\\
+				\frac{1}{4} \int\limits_{x - 2 t}^{x + 2 t} \sin s \dif s                                                   & ;\quad x - 2 t \ge 0 \\
+				\frac{1}{4} \int\limits_{x - 2 t}^{0} \sin(-s) \dif s + \frac{1}{4} \int\limits_{0}^{x + 2 t} \sin s \dif s & ;\quad x - 2 t < 0   \\
 			\end{cases}\\
 		&= x^2 + 4 t^2 +
 			\begin{cases}
-				\frac{1}{4} \left( \cos(x - 2 t) - \cos(x + 2 t) \right) &;\quad x \ge 2 t\\
-				\frac{1}{4} \left( 2 \cos(0) - \cos(x - 2 t) - \cos(x + 2 t) \right) &;\quad 0 < x < 2 t\\
+				\frac{1}{4} \left( \cos(x - 2 t) - \cos(x + 2 t) \right)             & ;\quad x \ge 2 t   \\
+				\frac{1}{4} \left( 2 \cos(0) - \cos(x - 2 t) - \cos(x + 2 t) \right) & ;\quad 0 < x < 2 t \\
 			\end{cases}\\
 		&= x^2 + 4 t^2 +
 			\begin{cases}
-				\frac{1}{4} \left( 2 \sin x \sin(2 t) \right) &;\quad x \ge 2 t\\
-				\frac{1}{4} \left( 2 - 2 \cos x \cos(2 t) \right) &;\quad 0 < x < 2 t\\
+				\frac{1}{4} \left( 2 \sin x \sin(2 t) \right)     & ;\quad x \ge 2 t   \\
+				\frac{1}{4} \left( 2 - 2 \cos x \cos(2 t) \right) & ;\quad 0 < x < 2 t \\
 			\end{cases}\\
 		&=
 			\begin{cases}
-				x^2 + 4 t^2 + \frac{1}{2} \sin x \sin(2 t) &;\quad x \ge 2 t\\
-				x^2 + 4 t^2 + \frac{1}{2} \left( 1 - \cos x \cos(2 t) \right) &;\quad 0 < x < 2 t\\
+				x^2 + 4 t^2 + \frac{1}{2} \sin x \sin(2 t)                    & ;\quad x \ge 2 t   \\
+				x^2 + 4 t^2 + \frac{1}{2} \left( 1 - \cos x \cos(2 t) \right) & ;\quad 0 < x < 2 t \\
 			\end{cases}
 	\end{align*}
 	In this case, even though $g'(0) \neq 0$, the calculated solution is a valid solution for the problem.
 \end{solution}
+
+\subsection{Finite Strings}
+
+\begin{theorem}[Solution to boundary value problem for finite string with fixed boundary]
+	The solution to the initial boundary value problem
+	\begin{align*}
+		u_{t t}(x,t) & = a^2 u_{x x}(x,t) \\
+		u(x,0)       & = f(x)             \\
+		u_t(x,0)     & = g(x)             \\
+		u(0,t)       & = 0                \\
+		u(l,t)       & = 0
+	\end{align*}
+	where $0 \le x \le l$, $t \ge 0$ is
+	\begin{align*}
+		\tilde{u}(x,t) & = \frac{\tilde{f}(x - a t) + \tilde{f}(x + a t)}{2} + \frac{1}{2 a} \int\limits_{x - a t}^{x + a t} \tilde{g}(s) \dif s
+	\end{align*}
+	where $\tilde{f}$ and $\tilde{g}$ are the $2 l$ periodic extensions of the odd extensions of $f$ and $g$ respectively, where $f$ is twice differentiable, $f'(0) = 0$, $g$ is differentiable, and $g'(0) = 0$.
+	\label{thm:Solution_to_initial_boundary_value_problem_for_finite_string_with_free_boundary}
+\end{theorem}
+
+\section{A Particular Case of Sturm-Liouville Problem}
+
+Consider the problem
+\begin{align*}
+	X''(x) + \lambda X(x) & = 0 \\
+	X(0)                  & = 0 \\
+	X(l)                  & = 0
+\end{align*}
+on $[0,l]$.\\
+Let $\lambda > 0$.
+Therefore, let
+\begin{align*}
+	\lambda & = \omega^2
+\end{align*}
+where $\omega > 0$.\\
+Therefore, the characteristic equation is
+\begin{align*}
+	r^2 + \omega^2 & = 0
+\end{align*}
+Therefore, solving,
+\begin{align*}
+	r & = \pm i \omega
+\end{align*}
+Therefore the solution of the ODE is
+\begin{align*}
+	X(s) & = A \cos(\omega x) + B \sin(\omega x)
+\end{align*}
+Therefore, substituting the given boundary conditions,
+\begin{align*}
+	X(0)                        & = 0 \\
+	\therefore A                & = 0 \\
+	X(l)                        & = 0 \\
+	\therefore B \sin(\omega l) & = 0 \\
+	\therefore \sin(\omega l)   & = 0 \\
+	\therefore \omega l         & = n \pi
+\end{align*}
+where $n \in \mathbb{N}$.
+\marginnote
+{
+	If $n \in \mathbb{Z}$, then $\omega \le 0$.
+	This contradicts the assumption $\omega > 0$.
+}
+\begin{align*}
+	\lambda_n & = {\omega_n}^2 \\
+                  & = \left( \frac{n \pi}{l} \right)^2
+\end{align*}
+where $n \in \mathbb{N}$, is called an eigenvalue of the problem.\\
+The corresponding solution to the problem is
+\begin{align*}
+	X_n & = B_n \sin\left( \frac{n \pi}{l} x \right)
+\end{align*}
+The function
+\begin{align*}
+	X_n & = \sin\left( \frac{n \pi}{l} x \right)
+\end{align*}
+is called an eigenfunction of the problem, corresponding to the eigenvalue $\lambda_n$.
+
+\section{Method of Separation of Variables (Fourier Method)}
+
+\begin{theorem}[Fourier Method solution to boundary value problem for finite string with fixed boundary]
+	The solution to the initial boundary value problem
+	\begin{align*}
+		u_{t t}(x,t) & = a^2 u_{x x}(x,t) \\
+		u(0,t)       & = 0                \\
+		u(l,t)       & = 0                \\
+		u(x,0)       & = f(x)             \\
+		u_t(x,0)     & = g(x)
+	\end{align*}
+	where $0 \le x \le l$, $t \ge 0$ is
+	\begin{align*}
+		u(x,t) & = \left( A_n \cos\left( \frac{n \pi a}{l} t \right) + B_n \sin\left( \frac{n \pi a}{l} t \right) \right) \sin\left( \frac{n \pi}{l} x \right)
+	\end{align*}
+	where
+	\begin{align*}
+		A_n & = \frac{2}{l} \int\limits_{0}^{l} f(x) \sin\left( \frac{k \pi}{l} x \right) \dif x \\
+		B_n & = \frac{2}{n \pi a} \int\limits_{0}^{l} g(x) \sin\left( \frac{n \pi}{l} x \right) \dif x
+	\end{align*}
+	\label{thm:Fourier_Method_solution_to_boundary_value_problem_for_finite_string_with_fixed_boundary}
+\end{theorem}
+
+\begin{proof}
+	Let
+	\begin{align*}
+		u(x,t) & = X(x) T(t)
+	\end{align*}
+	Therefore, substituting into the problem,
+	\begin{align*}
+		u_{t t}(x,t)                       & = a^2 u_{x x}(x,t) \\
+		\therefore X(x) T''(t)             & = a^2 X''(x) T(t)  \\
+		\therefore \frac{T''(t)}{a^2 T(t)} & = \frac{X''(x)}{X(x)}
+	\end{align*}
+	Therefore, the LHS is dependent only on $t$, and the RHS is dependent only on $x$.
+	Therefore, for them to be equal, both sides must be constant.\\
+	Therefore, let
+	\begin{align*}
+		\frac{X''(x)}{X(x)}               & = -\lambda \\
+		\therefore X''(x) + \lambda X(x)  & = 0        \\
+		\frac{T''(t)}{a^2 T(t)}           & = -\lambda \\
+		\therefore T'' + a^2 \lambda T(t) & = 0
+	\end{align*}
+	Therefore, substituting into the boundary conditions,
+	\begin{align*}
+		u(0,t)               & = 0 \\
+		\therefore X(0) T(t) & = 0 \\
+		u(l,t)               & = 0 \\
+		\therefore X(l) T(t) & = 0
+	\end{align*}
+	Therefore, as $T(t) \not\equiv 0$,
+	\begin{align*}
+		X(0) & = 0 \\
+		X(l) & = 0
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		X''(x) + \lambda X(x) & = 0 \\
+		X(0)                  & = 0 \\
+		X(l)                  & = 0
+	\end{align*}
+	This is a particular case of the Strum-Liouville problem.
+	Therefore, the eigenvalues are
+	\begin{align*}
+		\lambda_n & = {\omega_n}^2 \\
+                          & = \left( \frac{n \pi}{l} \right)^2
+	\end{align*}
+	where $n \in \mathbb{N}$, and the corresponding eigenfunctions are
+	\begin{align*}
+		X_n(x) & = \sin\left( \frac{n \pi}{l} x \right)
+	\end{align*}
+	Similarly,
+	\begin{align*}
+		T''(x) + a^2 \lambda T(t)                                     & = 0 \\
+		\therefore T''(x) + a^2 \left( \frac{n \pi}{l} \right)^2 T(t) & = 0
+	\end{align*}
+	Therefore, the characteristic equation is
+	\begin{align*}
+		r^2 + a^2 \left( \frac{n \pi}{l} \right)^2 & = 0 \\
+		\therefore r                               & = \pm i a \frac{n \pi}{l}
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		T_n(t) & = A_n \cos\left( \frac{n \pi a}{l} t \right) + B_n \sin\left( \frac{n \pi a}{l} t \right)
+	\end{align*}
+	where $n \in \mathbb{N}$.\\
+	Therefore,
+	\begin{align*}
+		u_n(x,t) & = X_n(x) T_n(t) \\
+                         & = \left( A_n \cos\left( \frac{n \pi a}{l} t \right) + B_n \sin\left( \frac{n \pi a}{l} t \right) \right) \sin\left( \frac{n \pi}{l} x \right)
+	\end{align*}
+	Therefore, taking the infinite summation,
+	\begin{align*}
+		u(x,t) & = \sum\limits_{n = 1}^{\infty} u_n(x,t) \\
+                       & = \sum\limits_{n = 1}^{\infty} \left( A_n \cos\left( \frac{n \pi a}{l} t \right) + B_n \sin\left( \frac{n \pi a}{l} t \right) \right) \sin\left( \frac{n \pi}{l} x \right)
+	\end{align*}
+	Substituting the first initial condition,
+	\begin{align*}
+		f(x)                                                                            & = u(x,0)                                                                                                                         \\
+                                                                                                & = \sum\limits_{n = 1}^{\infty} A_n \sin\left( \frac{n \pi}{l} x \right)                                                          \\
+		\therefore f(x) \sin\left( \frac{k \pi}{l} x \right)                            & = \sum\limits_{n = 1}^{\infty} A_n \sin\left( \frac{n \pi}{l} x \right) \sin\left( \frac{k \pi}{l} x \right)                     \\
+		\therefore \int\limits_{0}^{l} f(x) \sin\left( \frac{k \pi}{l} x \right) \dif x & = \sum\limits_{n = 1}^{\infty} A_n \int\limits_{0}^{l} \sin\left( \frac{n \pi}{l} x \right) \sin\left( \frac{k \pi}{l} x \right) \\
+                                                                                                & = \sum\limits_{n = 1}^{\infty} A_n \frac{l}{2} \delta_{n k}                                                                      \\
+                                                                                                & = A_n \frac{l}{2}                                                                                                                \\
+		\therefore A_n                                                                  & = \frac{2}{l} \int\limits_{0}^{l} f(x) \sin\left( \frac{k \pi}{l} x \right) \dif x
+	\end{align*}
+	Similarly,
+	\begin{align*}
+		u(x,t)              & = \sum\limits_{n = 1}^{\infty} \left( A_n \cos\left( \frac{n \pi a}{l} t \right) + B_n \sin\left( \frac{n \pi a}{l} t \right) \right) \sin\left( \frac{n \pi}{l} x \right) \\
+		\therefore u_t(x,t) & = \sum\limits_{n = 1}^{\infty} \left( -A_n \frac{n \pi a}{l} \sin\left( \frac{n \pi a}{l} t \right) + B_n \frac{n \pi a}{l} \cos\left( \frac{n \pi a}{l} t \right) \right) \sin\left( \frac{n \pi}{l} x \right)
+	\end{align*}
+	Therefore, substituting the second initial condition,
+	\begin{align*}
+		\therefore g(x)                                                                 & = u_t(x,0)                                                                                                                                                \\
+                                                                                                & = \sum\limits_{n = 1}^{\infty} B_n \frac{n \pi a}{l} \sin\left( \frac{n \pi x}{l} \right)                                                                 \\
+		\therefore g(x) \sin\left( \frac{k \pi}{l} x \right)                            & = \sum\limits_{n = 1}^{\infty} B_n \frac{n \pi a}{l} \sin\left( \frac{n \pi x}{l} \right) \sin\left( \frac{n \pi x}{l} \right)                            \\
+		\therefore \int\limits_{0}^{l} g(x) \sin\left( \frac{k \pi}{l} x \right) \dif x & = \sum\limits_{n = 1}^{\infty} B_n \int\limits_{0}^{l} \frac{n \pi a}{l} \sin\left( \frac{n \pi x}{l} \right) \sin\left( \frac{n \pi x}{l} \right) \dif x \\
+                                                                                                & = \sum\limits_{n = 1}^{\infty} B_n \frac{n \pi a}{l} \frac{l}{2} \delta_{n k}                                                                             \\
+                                                                                                & = B_n \frac{n \pi a}{2}                                                                                                                                   \\
+		\therefore B_n                                                                  & = \frac{2}{n \pi a} \int\limits_{0}^{l} g(x) \sin\left( \frac{n \pi}{l} x \right) \dif x
+	\end{align*}
+	Therefore, the solution is
+	\begin{align*}
+		u(x,t) & = \sum\limits_{n = 1}^{\infty} \left( A_n \cos\left( \frac{n \pi a}{l} t \right) + B_n \sin\left( \frac{n \pi a}{l} t \right) \right) \sin\left( \frac{n \pi}{l} x \right) \\
+	\end{align*}
+	where
+	\begin{align*}
+		A_n & = \frac{2}{l} \int\limits_{0}^{l} f(x) \sin\left( \frac{k \pi}{l} x \right) \dif x \\
+		B_n & = \frac{2}{n \pi a} \int\limits_{0}^{l} g(x) \sin\left( \frac{n \pi}{l} x \right) \dif x
+	\end{align*}
+\end{proof}
+
+\begin{definition}[Standing wave]
+Let
+	\begin{align*}
+		u_n(x,t) & = \left( A_n \cos\left( \frac{n \pi a}{l} t \right) + B_n \sin\left( \frac{n \pi a}{l} t \right) \right) \sin\left( \frac{n \pi}{l} x \right)
+	\end{align*}
+	where $n \in \mathbb{N}$.\\
+	Therefore,
+	\begin{align*}
+		u_n(x,t) & = F_n \sin\left( \frac{n \pi a}{l} t + \varphi_n \right) \sin\left( \frac{n \pi}{l} x \right)
+	\end{align*}
+	where
+	\begin{align*}
+		F_n            & = \sqrt{{A_n}^2 + {B_n}^2} \\
+		\tan \varphi_n & = \frac{A_n}{B_n}
+	\end{align*}
+	Therefore, every point on the string at distance $x_0$ oscillates with amplitude $F_n \sin\left( \frac{n \pi}{l} x_0 \right)$ and phase $\varphi_n$.
+	Such oscillations are called standing waves.\\
+\end{definition}
+
+\begin{definition}[Node]
+	The points on a standing wave, for which the solution is zero are called nodes.
+\end{definition}
+
+At the nodes,
+\begin{align*}
+	\sin\left( \frac{n \pi}{l} x \right) & = 0     \\
+	\frac{n \pi}{l} x                    & = k \pi \\
+	\therefore x                         & = \frac{k l}{n}
+\end{align*}
+where $k \in \mathbb{N}$.
+
+\begin{question}
+	Solve
+	\begin{align*}
+		u_{t t} &= a^2 u_{x x}\\
+		u(0,t) &= 0\\
+		u(l,t) &= 0\\
+		u(x,0) &=
+			\begin{cases}
+				\frac{h x}{c}           & ;\quad 0 \le x \le c \\
+				\frac{h (l - x)}{l - c} & ;\quad c \le x \le l \\
+			\end{cases}\\
+		u_t(x,0) &= 0
+	\end{align*}
+	where $0 \le x \le l$, $t \ge 0$.
+\end{question}
+
+\begin{solution}
+	Comparing to the standard form,
+	\begin{align*}
+		f(x) &=
+			\begin{cases}
+				\frac{h x}{c}           & ;\quad 0 \le x \le c \\
+				\frac{h (l - x)}{l - c} & ;\quad c \le x \le l \\
+			\end{cases}\\
+		g(x) &= 0
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		A_n & = \frac{2}{l} \int\limits_{0}^{l} f(x) \sin\left( \frac{k \pi}{l} x \right) \dif x                                                                                                                \\
+                    & = \frac{2}{l} \int\limits_{0}^{c} \frac{h x}{c} \sin\left( \frac{k \pi}{l} x \right) \dif x + \frac{2}{l} \int\limits_{c}^{l} \frac{h (l - x)}{l - c} \sin\left( \frac{k \pi}{l} x \right) \dif x \\
+                    & = \frac{2 h l^2}{n^2 \pi^2 c (l - c)} \sin\left( \frac{n \pi c}{l} \right)                                                                                                                        \\
+		B_n & = \frac{2}{n \pi a} \int\limits_{0}^{l} g(x) \sin\left( \frac{n \pi}{l} x \right) \dif x                                                                                                          \\
+                    & = \frac{2}{n \pi a} \int\limits_{0}^{l} 0 \dif x                                                                                                                                                  \\
+                    & = 0
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		u(x,t) & = \sum\limits_{n = 1}^{\infty} \left( \frac{2 h l^2}{n^2 \pi^2 c (l - c)} \sin\left( \frac{n \pi c}{l} \right) \cos\left( \frac{n \pi a}{l} t \right) \right) \sin\left( \frac{n \pi}{l} x \right) \\
+	\end{align*}
+\end{solution}
+
+\begin{question}
+	Given
+	\begin{align*}
+		u_{t t} &= u_{x x}\\
+		u(0,t) &= 0\\
+		u(2,t) &= 0\\
+		u(x,0) &= 0
+		u_t(x,0) &=
+			\begin{cases}
+				x     & ;\quad 0 \le x \le 1 \\
+				2 - x & ;\quad 1 \le x \le 2 \\
+			\end{cases}
+	\end{align*}
+	where $0 \le x \le 2$, $t \ge 0$, find $u(1.5,5.3)$.
+\end{question}
+
+\begin{solution}
+	Comparing to the standard form,
+	\begin{align*}
+		a &= 1\\
+		l &= 2\\
+		f(x) &= 0\\
+		g(x) &=
+			\begin{cases}
+				x     & ;\quad 0 \le x \le 1 \\
+				2 - x & ;\quad 1 \le x \le 2 \\
+			\end{cases}
+	\end{align*}
+	As the boundary is fixed, let $\tilde{f}(x)$ and $\tilde{g}(x)$ be the $2 l$ periodic extensions of $f(x)$ and $g(x)$.
+	Therefore,
+	\begin{align*}
+		\tilde{u}(x,t) & = \frac{\tilde{f}(x - a t) + \tilde{f}(x + a t)}{2} + \frac{1}{2 a} \int\limits_{x - a t}^{x + a t} \tilde{g}(s) \dif s \\
+                               & = \frac{1}{2} \int\limits_{x - t}^{x + t} \tilde{g}(s) \dif s
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		u(1.5,5.3) & = \tilde{u}(1.5,5.3)                                                                                                                                                  \\
+                           & = \frac{1}{2} \int\limits_{-3.8}^{6.8} \tilde{g}(s) \dif s                                                                                                            \\
+                           & = \frac{1}{2} \left( \int\limits_{-3.8}^{0.2} \tilde{g}(s) \dif s + \int\limits_{0.2}^{4.2} \tilde{g}(s) \dif s + \int\limits_{4.2}^{6.8} \tilde{g}(s) \dif s \right) \\
+                           & = \frac{1}{2} \left( 0 + 0 + \frac{4.2}{6.8} \tilde{g}(s) \dif s \right)                                                                                              \\
+                           & = \frac{1}{2} \int\limits_{0.2}^{2.8} \tilde{g}(s) \dif s                                                                                                             \\
+                           & = \frac{1}{2} \left( \int\limits_{0.2}^{1} s \dif s + \int\limits_{1}^{2.8} (2 - s) \dif s \right)                                                                    \\
+                           & = 0.33
+	\end{align*}
+\end{solution}
+
+\begin{question}
+	Solve
+	\begin{align*}
+		u_{t t}  & = 4 u_{x x}                 \\
+		u(x,0)   & = \cos^2(\pi x)             \\
+		u_t(x,0) & = \sin^2(\pi x) \cos(\pi x) \\
+		u_x(0,t) & = 0                         \\
+		u_x(1,t) & = 0
+	\end{align*}
+	where $0 \le x \le 1$, $t \ge 0$.
+\end{question}
+
+\section{Impulse Response}
+
+\begin{theorem}
+	The solution to the initial boundary value probelm
+	\begin{align*}
+		u_{t t} &= a^2 u_{x x}\\
+		u(0,t) &= 0\\
+		u(l,t) &= 0\\
+		u(x,0) &= 0\\
+		u_t(x,0) &=
+			\begin{cases}
+				v_0 & ;\quad \alpha \le x \le \beta \\
+				0   & ;\quad \text{otherwise}       \\
+			\end{cases}
+	\end{align*}
+	where $0 \le x \le l$, $t \ge 0$ is
+	\begin{align*}
+		u(x,t) & = \frac{2 v_0 l}{\pi^2 a} \sum\limits_{n = 1}^{\infty} \frac{1}{n^2} \left( \cos\left( \frac{n \pi \alpha}{l} \right) - \cos\left( \frac{n \pi \beta}{l} \right) \right) \sin\left( \frac{n \pi a}{l} t \right) \sin\left( \frac{n \pi}{l} x \right)
+	\end{align*}
+\end{theorem}
+
+\begin{proof}
+	Comparing to the standard form,
+	\begin{align*}
+		f(x) &= 0\\
+		g(x) &=
+			\begin{cases}
+				v_0 & ;\quad \alpha \le x \le \beta \\
+				0   & ;\quad \text{otherwise}       \\
+			\end{cases}
+	\end{align*}
+	Therefore, by \nameref{thm:Fourier_Method_solution_to_boundary_value_problem_for_finite_string_with_fixed_boundary},
+	\begin{align*}
+		A_n & = 0                                                                                              \\
+		B_n & = \frac{2}{n \pi a} \int\limits_{0}^{l} v_0 \sin\left( \frac{n \pi}{l} x \right) \dif x          \\
+                    & = \frac{2 v_0}{n \pi a} \int\limits_{\alpha}^{\beta} \sin\left( \frac{n \pi}{l} x \right) \dif x \\
+                    & = \frac{2 v_0 l}{n^2 \pi^2 a} \left( \cos\left( \frac{n \pi \alpha}{a} \right) - \cos\left( \frac{n \pi \beta}{l} \right) \right)
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		u(x,t) & = \frac{2 v_0 l}{\pi^2 a} \sum\limits_{n = 1}^{\infty} \frac{1}{n^2} \left( \cos\left( \frac{n \pi \alpha}{l} \right) - \cos\left( \frac{n \pi \beta}{l} \right) \right) \sin\left( \frac{n \pi a}{l} t \right) \sin\left( \frac{n \pi}{l} x \right)
+	\end{align*}
+\end{proof}
+
+The solution to the initial boundary value problem
+\begin{align*}
+	u_{t t}  & = a^2 u_{x x} \\
+	u(0,t)   & = 0           \\
+	u(l,t)   & = 0           \\
+	u(x,0)   & = 0           \\
+	u_t(x,0) & = \delta(x - c)
+\end{align*}
+where $0 \le x \le l$, $t \ge 0$, $0 \le c \le l$ is
+\begin{align*}
+	u(x,t) & = \lim\limits_{\varepsilon \to 0} \frac{I l}{\varepsilon \rho \pi^2 a} \sum\limits_{n = 1}^{\infty} \frac{1}{n^2} \left( \cos\left( \frac{n \pi (c - \varepsilon)}{l} \right) - \cos\left( \frac{n \pi (c + \varepsilon)}{l} \right) \right) \sin\left( \frac{n \pi a}{l} t \right) \sin\left( \frac{n \pi}{l} x \right)
+\end{align*}
+
+\begin{proof}
+	Let the impulse be $I$.\\
+	Let the impulse act on the interval $(c - \varepsilon , c + \varepsilon)$.\\
+	Therefore,
+	\begin{align*}
+		I & = \Delta p
+	\end{align*}
+	where $p$ is the momentum.
+	Therefore,
+	\begin{align*}
+		\Delta p & = \Delta m v_0 \\
+                         & = \rho \Delta x
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		I              & = 2 \varepsilon \rho v_0 \\
+		\therefore v_0 & = \frac{I}{2 \varepsilon \rho}
+	\end{align*}
+	Let the solution to the problem be $u_{\varepsilon}(x,t)$.
+	Therefore,
+	\begin{align*}
+		u_{\varepsilon}(x,t) & = \frac{2 v_0 l}{\pi^2 a} \sum\limits_{n = 1}^{\infty} \frac{1}{n^2} \left( \cos\left( \frac{n \pi \alpha}{l} \right) - \cos\left( \frac{n \pi \beta}{l} \right) \right) \sin\left( \frac{n \pi a}{l} t \right) \sin\left( \frac{n \pi}{l} x \right)
+	\end{align*}
+	Therefore, the solution to the impulse response problem is
+	\begin{align*}
+		\lim\limits_{\varepsilon \to 0} u_{\varepsilon}(x,t) & = \lim\limits_{\varepsilon \to 0} \frac{I l}{\varepsilon \rho \pi^2 a} \sum\limits_{n = 1}^{\infty} \frac{1}{n^2} \left( \cos\left( \frac{n \pi (c - \varepsilon)}{l} \right) - \cos\left( \frac{n \pi (c + \varepsilon)}{l} \right) \right) \sin\left( \frac{n \pi a}{l} t \right) \sin\left( \frac{n \pi}{l} x \right)
+	\end{align*}
+\end{proof}
+
+\section{Uniqueness of Solution using Energy Method}
+
+\begin{theorem}[Uniqueness Theorem]
+	If there exists a solution to the problem
+	\begin{align*}
+		\rho(x) u_{t t} & = \left( k(x) u_x \right)_x + F(x,t) \\
+		u(x,0)          & = f(x)                               \\
+		u_t(x,0)        & = g(x)                               \\
+		u(0,t)          & = h_1(t)                             \\
+		u(l,t)          & = h_2(t)
+	\end{align*}
+	where $0 \le x \le l$, $t \ge 0$, $k(x) > 0$, $\rho(x) > 0$, then the solution is unique.
+	\label{thm:Uniqueness_Theorem}
+\end{theorem}
+
+\begin{proof}
+	If possible, let there be two distinct solutions $u_1(x,t)$ and $u_2(x,t)$.\\
+	Therefore,
+	\begin{align*}
+		\rho(x) (u_1)_{t t} & = \left( k(x) (u_1)_{x} \right)_x + F(x,t) \\
+		u_1(x,0)            & = f(x)                                     \\
+		(u_1)_t(x,0)        & = g(x)                                     \\
+		u_1(0,t)            & = h_1(t)                                   \\
+		u_1(l,t)            & = h_2(t)                                   \\
+		\rho(x) (u_2)_{t t} & = \left( k(x) (u_2)_{x} \right)_x + F(x,t) \\
+		u_2(x,0)            & = f(x)                                     \\
+		(u_2)_t(x,0)        & = g(x)                                     \\
+		u_2(0,t)            & = h_1(t)                                   \\
+		u_2(l,t)            & = h_2(t)
+	\end{align*}
+	Let
+	\begin{align*}
+		v(x,t) & = u_1(x,t) - u_2(x,t)
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		\rho(x) v_{t t}(x,t) & = \left( k(x) v_x(x,t) \right) \\
+		v(x,0)               & = 0                            \\
+		v_t(x,0)             & = 0                            \\
+		v(0,t)               & = 0                            \\
+		v(l,t)               & = 0
+	\end{align*}
+	Therefore, the total energy of the string at time $t$ is
+	\begin{align*}
+		E(t) & = \frac{1}{2} \int\limits_{0}^{l} \left( k {v_x}^2 + \varepsilon {v_t}^2 \right) \dif x
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		E'(t) & = \frac{1}{2} \int\limits_{0}^{l} \left( 2 k v_x v_{x t} + 2 \rho v_t v_{t t} \right) \dif x \\
+                      & = \int\limits_{0}^{l} \left( k v_x v_{x t} + \rho v_t v_{t t} \right) \dif x
+	\end{align*}
+	Assuming the mixed derivatives exist and are continuous,
+	\begin{align*}
+		v_{x t} & = v_{t x}
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		E'(t) & = \int\limits_{0}^{l} k v_x v_{t x} \dif x + \int\limits_{0}^{l} \rho v_t v_{t t} \dif x
+	\end{align*}
+	Substituting the initial conditions,
+	\begin{align*}
+		\int\limits_{0}^{l} k v_x v_{t x} \dif x & = -\int\limits_{0}^{l} v_t(k v_x)_x \dif x
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		E'(x) & = \int\limits_{0}^{l} \rho v_t v_{t t} \dif x - \int\limits_{0}^{l} v_t (k v_x)_x \dif x \\
+                      & = \int\limits_{0}^{l} v_t \left( \rho v_{t t} - (k v_x)_x \right) \dif x
+	\end{align*}
+	Therefore, as $\rho(x) v_{t t}(x,t) = \left( k(x) v_x(x,t) \right)$,
+	\begin{align*}
+		E'(x) & = 0
+	\end{align*}
+	Therefore, $E(t)$ is constant.\\
+	As $v(x,0) = 0$,
+	\begin{align*}
+		v_x(x,0) & = 0
+	\end{align*}
+	Also, $v_t(x,0) = 0$.
+	Therefore,
+	\begin{align*}
+		E(0) & = \frac{1}{2} \int\limits_{0}^{l} \left( k {v_x(x,0)}^2 + \rho {v_t(x,0)}^2 \right) \dif x \\
+                     & = 0
+	\end{align*}
+	Therefore, as $k$ and $\rho$ are positive,
+	\begin{align*}
+		v_x(x,t) & = 0 \\
+		v_t(x,t) & = 0
+	\end{align*}
+	Therefore, $v(x,t)$ must be constant.\\
+	Therefore, let
+	\begin{align*}
+		v(x,t) & = c
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		v(x,0)       & = c \\
+		\therefore 0 & = c
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		v(x,t)              & = 0 \\
+		\therefore u_1(x,t) & = u_2(x,t)
+	\end{align*}
+	This contradicts the assumption that $u_1$ and $u_2$ are distinct.
+	Therefore, the solution to the problem is unique.
+\end{proof}
+
+\section{Well-posedness}
+
+\begin{definition}[Well-posed problem]
+	A problem is said to be well-posed if it has a unique solution, continuously dependent on the conditions of the problem.
+\end{definition}
+
+\begin{definition}[Continuous dependence]
+	If small changes in the conditions of a problem imply small changes in the solution, it is called continuous dependence.
+\end{definition}
+
+\begin{theorem}
+	The Cauchy problem
+	\begin{align*}
+		u_{t t}(x,t) & = a^2 u_{x x}(x,t) \\
+		u(x,0)       & = f(x)             \\
+		u_t(x,0)     & = g(x)
+	\end{align*}
+	where $-\infty < x < \infty$, $t \ge 0$ is well-posed.
+\end{theorem}
+
+\begin{proof}
+	Let $u_1(x,t)$ and $u_2(x,t)$ be two solutions of the Cauchy problem.
+	Therefore,
+	\begin{align*}
+		(u_1)_{t t}(x,t) & = a^2 (u_2)_{x x}(x,t) \\
+		u_1(x,0)         & = f_1(x)               \\
+		(u_1)_t(x,0)     & = g_1(x)               \\
+		u_2(x,0)         & = f_2(x)               \\
+		(u_2)_t(x,0)     & = g_2(x)
+	\end{align*}
+	$\forall x$, let
+	\begin{align*}
+		\left| f_1(x) - f_2(x) \right| & < \varepsilon \\
+		\left| g_1(x) - g_2(x) \right| & < \varepsilon
+	\end{align*}
+	Therefore, by \nameref{thm:Solution_to_Cauchy_Problem},
+	\begin{align*}
+		u_1(x,t) & = \frac{f_1(x - a t) + f_1(x + a t)}{2} + \frac{1}{2 a} \int\limits_{x - a t}^{x + a t} g_1(s) \dif s \\
+		u_2(x,t) & = \frac{f_2(x - a t) + f_2(x + a t)}{2} + \frac{1}{2 a} \int\limits_{x - a t}^{x + a t} g_2(s) \dif s
+	\end{align*}
+	Therefore, for $0 \le t \le t_0$,
+	\begin{align*}
+		\left| u_1(x,t) - u_2(x,t) \right|            & \le \frac{\left| f_1(x - a t) - f_2(x - a t) \right| + \left| f_1(x + a t) - f_2(x + a t) \right|}{2} + \frac{1}{2 a} \int\limits_{x - a t}^{x + a t} \left| g_1(s) - g_2(s) \right| \dif s \\
+                                                              & \le \frac{\varepsilon + \varepsilon}{2} + \frac{1}{2 a} \int\limits_{x - a t}^{x + a t} \varepsilon \dif x                                                                                  \\
+                                                              & = \varepsilon + \varepsilon t                                                                                                                                                               \\
+                                                              & \le \varepsilon + \varepsilon t_0                                                                                                                                                           \\
+		\therefore \left| u_1(x,t) - u_2(x,t) \right| & \le \varepsilon (1 + t_0)
+	\end{align*}
+	Therefore, as a small change in $\varepsilon$ implies a small change in $u(x,t)$, the problem is well-posed.
+\end{proof}
+
+\begin{question}
+	The telegraph problem describes the voltage inside a piece of wire with some specific electrical properties.
+	Prove the uniqueness of the solution of the following particular case of the telegraph problem.
+	\begin{align*}
+		u_{t t} + c^2 u_t - u_{x x} & = 0    \\
+		u(x,0)                      & = f(x) \\
+		u_t(x,0)                    & = g(x) \\
+		u(a,t)                      & = 0    \\
+		u_x(b,t)                    & = 0
+	\end{align*}
+	where $a \le x \le b$, $t \ge 0$.\\
+	Hint: Use the energy integral
+	\begin{align*}
+		E(t) & = \frac{1}{2} \int\limits_{a}^{b} \left( {v_t}^2 + {v_x}^2 \right) \dif x
+	\end{align*}
+\end{question}
+
+\begin{solution}
+	If possible, let $u_1$ and $u_2$ be two distinct solutions of the problem.\\
+	Let
+	\begin{align*}
+		v(x,t) & = u_1(x,t) - u_2(x,t)
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		v_{t t} + c^2 v_t - v_{x x} & = 0 \\
+		v(x,0)                      & = 0 \\
+		v(x,0)                      & = 0 \\
+		v(a,t)                      & = 0 \\
+		v_x(b,t)                    & = 0
+	\end{align*}
+	Let
+	\begin{align*}
+		E(t) & = \frac{1}{2} \int\limits_{a}^{b} \left( {v_t}^2 + {v_x}^2 \right) \dif x
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		E'(t) & = \int\limits_{a}^{b} (v_t v_{t t} + v_x v_{x t}) \dif x
+	\end{align*}
+	Assuming the mixed derivatives exist and are continuous,
+	\begin{align*}
+		v_{x t} & = v_{t x}
+	\end{align*}
+	Solving using integration by parts and substituting the initial conditions,
+	\begin{align*}
+		\int\limits_{a}^{b} v_x v_{x t} \dif x & = \int\limits_{a}^{b} v_x v_{t x} \dif x                                         \\
+                                                       & = v_x(b,t) v_t(b,t) - v_x(a,t) v_t(a,t) - \int\limits_{a}^{b} v_t v_{x x} \dif t \\
+                                                       & = -\int\limits_{a}^{b} v_t v_{x x} \dif x
+	\end{align*}
+	Therefore, substituting $v_{t t} + c^2 v_t - v_{x x} = 0$,
+	\begin{align*}
+		E'(t) & = \int\limits_{a}^{b} \left( v_t v_{t t} - v_t v_{x x} \right) \dif x \\
+                      & = \int\limits_{a}^{b} v_t \left( v_{t t} - v_{x x} \right) \dif x     \\
+                      & = -c^2 \int\limits_{a}^{b} (v_t)^2 \dif x                             \\
+                      & \le 0
+	\end{align*}
+	Therefore, $E(t)$ is a decreasing function, i.e.,
+	\begin{align*}
+		E(t) & \le E(0)
+	\end{align*}
+	Also,
+	\begin{align*}
+		E(0) & = \frac{1}{2} \int\limits_{a}^{b} \left( {v_t}^2(x,0) + {v_x}^2(x,0) \right) \dif x
+	\end{align*}
+	Therefore, substituting the given conditions,
+	\begin{align*}
+		E(0) & = 0
+	\end{align*}
+	Therefore, $\forall t \ge 0$,
+	\begin{equation*}
+		0 \le E(t) \le 0
+	\end{equation*}
+	Therefore,
+	\begin{align*}
+		E(t) & \equiv 0
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		v_t(x,t)            & = 0     \\
+		v_x(x,t)            & = 0     \\
+		\therefore v(x,t)   & = c(x)  \\
+		\therefore v_x(x,t) & = c'(x) \\
+		\therefore c'(x)    & = 0
+	\end{align*}
+	Therefore, let
+	\begin{align*}
+		c(x) & = c
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		v(x,t)            & = c \\
+		\therefore v(x,0) & = c \\
+		\therefore 0      & = c
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		v(x,t)              & = 0 \\
+		\therefore u_1(x,t) & = u_2(x,t)
+	\end{align*}
+	This contradicts the assumption that $u_1$ and $u_2$ are distinct.
+	Therefore, the solution to the problem is unique.
+\end{solution}
+
+\clearpage
+\part{General Second Order Partial Differential Equations}
+
+\section{Classification}
+
+Consider a PDE
+\begin{align*}
+	a_{1 1} u_{x x} + 2 a_{1 2} u_{x y} + a_{2 2} u_{y y} + b_1 u_x + b_2 u_y + c u + f & = 0
+\end{align*}
+where the coefficients are functions of $x$ and $y$.\\
+Therefore, the PDE can be written as
+\begin{align*}
+	a_{1 1} u_{x x} + 2 a_{1 2} u_{x y} + a_{2 2} u_{y y} + F(x,y,u,u_x,u_y) & = 0
+\end{align*}
+If
+\begin{align*}
+	a_{1 1} & = 0 \\
+	a_{2 2} & = 0
+\end{align*}
+the equation is said to be of a simple form.\\
+If
+\begin{align*}
+	a_{1 1} & \neq 0
+\end{align*}
+or
+\begin{align*}
+	a_{2 2} & \neq 0
+\end{align*}
+then, let
+\begin{align*}
+	\xi  & = \varphi(x,y) \\
+	\eta & = \psi(x,t)
+\end{align*}
+such that the Jacobian
+\begin{align*}
+	J                          & =
+		\begin{vmatrix}
+			\varphi_x  & \varphi_y \\
+			\psi_x     & \psi_y    \\
+		\end{vmatrix}     \\
+                                   & \neq 0
+\end{align*}
+Therefore,
+\begin{align*}
+	u_x     & = u_{\xi} \xi_x + u_{\eta} \eta_x                                                   \\
+	u_y     & = u_{\xi} \xi_y + u_{\eta} \eta_y                                                   \\
+	u_{x x} & = (u_{\xi})_x \xi_x + u_{\xi} \xi_{x x} + (u_{\eta})_x \eta_x + u_{\eta} \eta_{x x} \\
+                & = (u_{\xi \xi} \xi_x + u_{\xi \eta} \eta_x) \xi_x + (u_{\eta \xi} \xi_x + u_{\eta \eta} \eta_x) \eta_x + u_{\xi} \xi_{x x} + u_{\eta} \eta_{x x}
+\end{align*}
+Therefore,
+\begin{align*}
+	u_{x x} & = (u_{\xi \xi} \xi_x + u_{\xi \eta} \eta_x) \xi_x + (u_{\eta \xi} \xi_x + u_{\eta \eta} \eta_x) \eta_x + u_{\xi} \xi_{x x} + u_{\eta} \eta_{x x} \\
+	u_{x y} & = (u_{\xi \xi} \xi_y + u_{\xi \eta} \eta_y) \xi_x + (u_{\eta \xi} \xi_y + u_{\eta \eta} \eta_y) \eta_x + u_{\xi} \xi_{x y} + u_{\eta} \eta_{x y} \\
+	u_{y y} & = (u_{\xi \xi} \xi_y + u_{\xi \eta} \eta_y) \xi_y + (u_{\eta \xi} \xi_y + u_{\eta \eta} \eta_y) \eta_y + u_{\xi} \xi_{y y} + u_{\eta} \eta_{y y}
+\end{align*}
+Therefore, substituting into the shorter form of the original PDE,
+\begin{align*}
+	\tilde{a_{1 1}} u_{\xi \xi} + 2 \tilde{a_{1 2}} u_{\xi \eta} + \tilde{a_{2 2}} u_{\eta \eta} + \tilde{F} & = 0
+\end{align*}
+where
+\begin{align*}
+	\tilde{a_{1 1}} & = a_{1 1} {\xi_x}^2 + 2 a_{1 2} \xi_x \xi_y + a_{2 2} {\xi_y}^2                       \\
+	\tilde{a_{1 2}} & = a_{1 1} \xi_x \eta_x + a_{1 2} (\xi_x \eta_y + \xi_y \eta_x) + a_{2 2} \xi_y \eta_y \\
+	\tilde{a_{2 2}} & = a_{1 1} {\eta_x}^2 + 2 a_{1 2} \eta_x \eta_y + a_{2 2} {\eta_y}^2
+\end{align*}
+Let $\xi$ and $\eta$ be chosen such that
+\begin{align*}
+	0 & = \tilde{a_{1 1}} \\
+          & = a_{1 1} {\varphi_x}^2 + 2 a_{1 2} \varphi_x \varphi_y + a_{2 2} {\varphi_y}^2
+\end{align*}
+Let
+\begin{align*}
+	a_{1 1} & \neq 0
+\end{align*}
+If $\varphi_y$ is zero, $\varphi_x$ must also be zero.
+Therefore,
+\begin{align*}
+	J & = 0
+\end{align*}
+Therefore, as the Jacobian must be non-zero, $\varphi_y$ also must be non-zero.
+Therefore,
+\begin{align*}
+	a_{1 1} {\varphi_x}^2 + 2 a_{1 2} \varphi_x \varphi_y + a_{2 2} {\varphi_y}^2                                                      & = 0 \\
+	\therefore a_{1 1} \left( -\frac{\varphi_x}{\varphi_y} \right)^2 - 2 a_{1 2} \left( -\frac{\varphi_x}{\varphi_y} \right) + a_{2 2} & = 0
+\end{align*}
+Also, $-\frac{\varphi_x}{\varphi_y}$ is the derivative of the implicit function of $\varphi(x,y) = c$.
+Therefore, substituting,
+\begin{align*}
+	a_{1 1} {y'}^2 - 2 a_{1 2} y' + a_{2 2} & = 0
+\end{align*}
+Therefore, $\varphi(x,y)$ satisfies the equation if and only if
+\begin{align*}
+	\varphi(x,y) & = c
+\end{align*}
+is the general solution of the ODE.\\
+The equation
+\begin{align*}
+	a_{1 1} {y'}^2 - 2 a_{1 2} y' + a_{2 2} & = 0
+\end{align*}
+is called the characteristic equation of the original PDE.
+Its solutions are called characteristic curves of the original PDE.\\
+Therefore, solving,
+\begin{align*}
+	y' & = \frac{a_{1 2} \pm \sqrt{{a_{1 2}}^2 - a_{1 1} a_{2 2}}}{a_{1 1}}
+\end{align*}
+Therefore, the two roots are
+\begin{align*}
+	k_1 & = \frac{a_{1 2} + \sqrt{{a_{1 2}}^2 - a_{1 1} a_{2 2}}}{a_{1 1}} \\
+	k_2 & = \frac{a_{1 2} - \sqrt{{a_{1 2}}^2 - a_{1 1} a_{2 2}}}{a_{1 1}}
+\end{align*}
+As $a_{1 1}$, $a_{1 2}$, and $a_{2 2}$ depend on $x$ and $y$, $k_1$ and $k_2$ are also dependent on $x$ and $y$.\\
+If $k_1(x,y)$ and $k_2(x,y)$ are real and distinct, the PDE is said to be hyperbolic at $(x,y)$.\\
+If $k_1(x,y)$ and $k_2(x,y)$ are real and equal, the PDE is said to be parabolic at $(x,y)$.\\
+If $k_1(x,y)$ and $k_2(x,y)$ are complex, the PDE is said to be elliptical at $(x,y)$.\\
+~\\
+$k_1(x,y)$ and $k_2(x,y)$ are real and distinct, if and only if
+\begin{align*}
+	{a_{1 2}}^2 - a_{1 1} a_{2 2} & > 0
+\end{align*}
+Therefore, the two solutions of the PDE correspond to 
+\begin{align*}
+	y' & = k_1(x,y) \\
+	y' & = k_2(x,y)
+\end{align*}
+Therefore, let the two solutions of the PDE be
+\begin{align*}
+	\varphi(x,y) & = c \\
+	\psi(x,y)    & = c
+\end{align*}
+Therefore, let
+\begin{align*}
+	\xi  & = \varphi(x,y) \\
+	\eta & = \psi(x,y)
+\end{align*}
+Therefore,
+\begin{align*}
+	\tilde{a_{1 1}} & = 0 \\
+	\tilde{a_{2 2}} & = 0
+\end{align*}
+Therefore, substituting,
+\begin{align*}
+	2 \tilde{a_{1 2}} u_{\xi \eta} + \tilde{F} & = 0
+\end{align*}
+Therefore,
+\begin{align*}
+	u_{\xi \eta} & = \Phi(\xi,\eta,u,u_{\xi},u_{\eta})
+\end{align*}
+is the canonical form of the PDE.\\
+~\\
+$k_1(x,y)$ and $k_2(x,y)$ are real and equal, if and only if
+If the equation is parabolic, i.e.
+\begin{align*}
+	{a_{1 2}}^2 - a_{1 1} a_{2 2} & = 0
+\end{align*}
+Therefore, the solution of the PDE corresponds to
+\begin{align*}
+	y' & = k_1(x,y) \\
+           & = k_2(x,y)
+\end{align*}
+Therefore, let the solution of the PDE be
+\begin{align*}
+	\varphi(x,y) & = c
+\end{align*}
+Therefore, let
+\begin{align*}
+	\xi  & = \varphi(x,y) \\
+	\eta & = \psi(x,y)
+\end{align*}
+where $\psi(x,y)$ is any function such that the Jacobian is non zero.\\
+Therefore,
+\begin{align*}
+	{a_{1 2}}^2 - a_{1 1} a_{2 2} & = 0 \\
+	\therefore a_{1 2}            & = \pm \sqrt{a_{1 1} a_{2 2}}
+\end{align*}
+Therefore,
+\begin{align*}
+	\tilde{a_{1 1}} a_{1 1} {\varphi_x}^2 + 2 \sqrt{a_{1 1} a_{2 2}} \varphi_x \varphi_y + a_{2 2} {\varphi_y}^2 & = 0 \\
+	\therefore \left( \sqrt{a_{1 1}} \varphi_x + \sqrt{a_{2 2}} \varphi_y \right)^2                              & = 0
+\end{align*}
+Therefore,
+\begin{align*}
+	\tilde{a_{1 2}} & = a_{1 1} \varphi_x \psi_x + a_{1 2} \left( \varphi_x \psi_y + \varphi_y \psi_x \right) + a_{2 2} \varphi_y \psi_y                \\
+                        & = \left( \sqrt{a_{1 1}} \varphi_x + \sqrt{a_{2 2}} \varphi_y \right) \left( \sqrt{a_{1 1}} \psi_x + \sqrt{a_{2 2}} \psi_y \right) \\
+                        & = 0
+\end{align*}
+Therefore, substituting,
+\begin{align*}
+	\therefore \tilde{a_{2 2}} u_{\eta \eta} + \tilde{F} & = 0
+\end{align*}
+Therefore,
+\begin{align*}
+	\therefore u_{\eta \eta} & = \Phi(\xi,\eta,u,u_{\xi},u_{\eta})
+\end{align*}
+is the canonical form of the PDE.\\
+~\\
+$k_1(x,y)$ and $k_2(x,y)$ are complex, if and only if
+\begin{align*}
+	{a_{1 2}}^2 - a_{1 1} a_{2 2} & < 0
+\end{align*}
+Therefore, the two solutions of the PDE correspond to
+\begin{align*}
+	y' & = k(x,y) \\
+	y' & = \overline{k(x,y)}
+\end{align*}
+Therefore, let the two solutions of the PDE be
+\begin{align*}
+	\varphi(x,y)            & = c \\
+	\overline{\varphi(x,y)} & = c
+\end{align*}
+Therefore, let
+\begin{align*}
+	\xi  & = \varphi(x,y) \\
+	\eta & = \overline{\varphi(x,y)}
+\end{align*}
+Therefore,
+\begin{align*}
+	\tilde{a_{1 1}} & = 0 \\
+	\tilde{a_{2 2}} & = 0
+\end{align*}
+Therefore, substituting,
+\begin{align*}
+	2 \tilde{a_{1 2}} u_{\xi \eta} + \tilde{F} & = 0
+\end{align*}
+where the coefficients are complex.\\
+Therefore, let
+\begin{align*}
+	\alpha & = \frac{\xi + \eta}{2} \\
+               & = \Re\{\xi\}           \\
+	\beta  & = \frac{\xi - \eta}{2} \\
+               & = \Im\{\xi\}
+\end{align*}
+Therefore, with respect to $\alpha$ and $\beta$,
+\begin{align*}
+	\tilde{a_{1 2}} & = 0 \\
+	\tilde{a_{1 1}} & = \tilde{a_{2 2}}
+\end{align*}
+Therefore,
+\begin{align*}
+	u_{\alpha \alpha} + u_{\beta \beta} &= \Phi(\alpha,\beta,u,u_{\alpha},u_{\beta})
+\end{align*}
+is the canonical form of the PDE.
+
+\begin{question}
+	Reduce the equation
+	\begin{align*}
+		u_{x x} + 2 u_{x y} - 3 u_{y y} & = 0
+	\end{align*}
+	to a canonical form and solve the equation.
+\end{question}
+
+\begin{solution}
+	Comparing to the standard form,
+	\begin{align*}
+		a_{1 1} & = 1 \\
+		a_{1 2} & = 1 \\
+		a_{2 2} & = -3
+	\end{align*}
+	Therefore, the characteristic equation is
+	\begin{align*}
+		{y'}^2 - 2 y' - 3 & = 0
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		k_1 & = -1 \\
+		k_2 & = 3
+	\end{align*}
+	Therefore, the PDE is hyperbolic.\\
+	Therefore,
+	\begin{align*}
+		y_1 & = -x + c \\
+		y_2 & = -3 x + c
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		\xi  & = x + y \\
+		\eta & = 3 x - y
+	\end{align*}
+	Therefore, substituting,
+	\begin{align*}
+		\tilde{a_{1 1}} & = a_{1 1} {\xi_x}^2 + 2 a_{1 2} \xi_x \xi_y + a_{2 2} {\xi_y}^2     \\
+                                & = 0                                                                 \\
+		\tilde{a_{2 2}} & = a_{1 1} {\eta_x}^2 + 2 a_{1 2} \eta_x \eta_y + a_{2 2} {\eta_y}^2 \\
+                                & = 0
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		2 \tilde{a_{1 2}} u_{\xi \eta} + \tilde{F} & = 0
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		u_{\xi \eta} & = \Phi(\xi,\eta,u,u_{\xi},u_{\eta})
+	\end{align*}
+	is a canonical form of the PDE.\\
+	Therefore,
+	\begin{align*}
+		u_x     & = x_{\xi} \xi_x + u_{\eta} \eta_x                                   \\
+                        & = u_{\xi} + 3 u_{\eta}                                              \\
+		u_y     & = u_{\xi} \xi_y + u_{\eta} \eta_y                                   \\
+                        & = u_{\xi} - u_{\eta}                                                \\
+		u_{x x} & = (u_{\xi})_x + 3 (u_{\eta})_x                                      \\
+                        & = u_{\xi \xi} + 3 u_{\xi \eta} + 3 (u_{\eta \xi} + 3 u_{\eta \eta}) \\
+                        & = u_{\xi \xi} + 6 u_{\xi \eta} + 9 u_{\eta \eta}                    \\
+		u_{x y} & = (u_{\xi})_y + 3 (u_{\eta})_y                                      \\
+                        & = u_{\xi \xi} - u_{\xi \eta} + 3 (u_{\eta \xi} - u_{\eta \eta})     \\
+                        & = u_{\xi \xi} + 2 u_{\xi \eta} - 3 u_{\eta \eta}                    \\
+		u_{y y} & = (u_{\xi})_y - (u_{\eta})_y                                        \\
+                        & = u_{\xi \xi} - u_{\xi \eta} - (u_{\eta \xi} - u_{\eta \eta})       \\
+                        & = u_{\xi \xi} - 2 u_{\xi \eta} + u_{\eta \eta}
+	\end{align*}
+	Therefore, substituting into the original equation and solving,
+	\begin{align*}
+		u_{\xi \eta} & = 0
+	\end{align*}
+	This is a canonical form of the PDE.\\
+	Therefore, integrating with respect to $\eta$,
+	\begin{align*}
+		u_{\xi} & = f(\xi)
+	\end{align*}
+	Therefore, integrating with respect to $\xi$,
+	\begin{align*}
+		u & = \int f(\xi) \dif \xi + G(\eta) \\
+                  & = F(\xi) + G(\eta)               \\
+                  & = F(x + y) + G(3 x - y)
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		u(x,y) & = F(x + y) + G(3 x - y)
+	\end{align*}
+	where $F$ and $G$ are twice differentiable.
+\end{solution}
+
+\begin{question}
+	Consider the equation
+	\begin{align*}
+		u_{x x} + 2 u_{x y} - 3 u_{y y} & = -2 (y - 3 x)^2 + \sin\left( 2 (x + y) \right)
+	\end{align*}
+	\begin{enumerate}
+		\item
+			Assume that the canonical form of the corresponding homogeneous PDE is
+			\begin{align*}
+				16 u_{\xi \eta} & = 0
+			\end{align*}
+			and that the homogeneous PDE is hyperbolic.\\
+			Classify the given equation and bring it to a canonical form.
+		\item
+			Find a general solution.
+		\item
+			Find a solution which satisfies
+			\begin{align*}
+				u(x,3x) & = x^2 \\
+				u(x,-x) & = -\frac{1}{8} x
+			\end{align*}
+	\end{enumerate}
+\end{question}
+
+\begin{question}
+	Consider the equation
+	\begin{align*}
+		x^2 u_{x x} - 2 x y u_{x y} + y^2 u_{y y} + x u_x + y u_y & = 0
+	\end{align*}
+	where $x > 0$.
+	\begin{enumerate}
+		\item Classify the equation.
+		\item Find the canonical form of the equation.
+		\item Find the general solution.
+	\end{enumerate}
+\end{question}
+
+\begin{solution}
+	\begin{enumerate}[leftmargin=*]
+		\item
+			Comparing to the standard form
+			\begin{align*}
+				a_{1 1} & = x^2  \\
+				a_{1 2} & = -x y \\
+				a_{2 2} & = y^2
+			\end{align*}
+			Therefore,
+			\begin{align*}
+				{a_{1 2}}^2 - a_{1 1} a_{2 2} & = x^2 y^2 - x^2 y^2 \\
+                                                              & = 0
+			\end{align*}
+			Therefore, the equation is parabolic.
+		\item
+			The characteristic equation is
+			\begin{align*}
+				x^2 {y'}^2 + 2 x y y' + y^2          & = 0 \\
+				\therefore \left( x y' + y \right)^2 & = 0
+			\end{align*}
+			Therefore,
+			\begin{align*}
+				y' & = -\frac{y}{x}
+			\end{align*}
+			Therefore,
+			\begin{align*}
+				\frac{\dif y}{y}  & = -\frac{\dif x}{x} \\
+				\therefore \ln|y| & = -\ln x + c_1      \\
+				\therefore |y|    & = \frac{1}{x} + c_2 \\
+                                                  & = \frac{c_2}{x}     \\
+				\therefore x y    & = c_2
+			\end{align*}
+			Therefore, let
+			\begin{align*}
+				\xi  & = x y \\
+				\eta & = x
+			\end{align*}
+			Therefore,
+			\begin{align*}
+				J &=
+					\begin{vmatrix}
+						\varphi_x & \varphi_y \\
+						\psi_x    & \psi_y    \\
+					\end{vmatrix}\\
+				&=
+					\begin{vmatrix}
+						y & x \\
+						1 & 0 \\
+					\end{vmatrix}\\
+				&= -x
+			\end{align*}
+			Therefore, as the Jacobian is non-zero, the choice of $\eta$ is valid.\\
+			Therefore,
+			\begin{align*}
+				u_x     & = u_{\xi} \xi_x + u_{\eta} \eta_x                    \\
+                                        & = y u_{\xi} + u_{\eta}                               \\
+				u_y     & = u_{\xi} \xi_y + u_{\eta} \eta_y                    \\
+                                        & = x u_{\xi}                                          \\
+				u_{x x} & = y^2 u_{\xi \xi} + 2 y U_{\xi \eta} + u_{\eta \eta} \\
+				u_{x y} & = u_{\xi} + x y u_{\xi \xi} + x u_{\xi \eta}         \\
+				u_{y y} & = x^2 u_{\xi \xi}
+			\end{align*}
+			Therefore, substituting,
+			\begin{align*}
+				x^2 u_{\eta \eta} + x u_{\eta}           & = 0 \\
+				\therefore x u_{\eta \eta} + u_{\eta}    & = 0 \\
+				\therefore \eta u_{\eta \eta} + u_{\eta} & = 0
+			\end{align*}
+			Therefore, a canonical form is
+			\begin{align*}
+				u_{\eta \eta} & = -\frac{1}{\eta} u_{\eta}
+			\end{align*}
+		\item
+			Let
+			\begin{align*}
+				w & = u_{\eta}
+			\end{align*}
+			Therefore,
+			\begin{align*}
+				w_{\eta} & = u_{\eta \eta}
+			\end{align*}
+			Therefore, substituting in the canonical form,
+			\begin{align*}
+				w & = w_{\eta}
+			\end{align*}
+			Therefore, solving,
+			\begin{align*}
+				\ln|w|         & = -\ln \eta + f(\xi) \\
+				\therefore |w| & = \frac{1}{\eta} e^{f(\xi)}
+			\end{align*}
+			Also,
+			\begin{align*}
+				u_{\eta}     & = w                                    \\
+                                             & = \frac{1}{\eta} F(\xi)                \\
+				\therefore u & = \int \frac{1}{\eta} \dif \eta F(\xi) \\
+                                             & = \ln \eta F(\xi) + G(\xi)
+			\end{align*}
+			Therefore,
+			\begin{align*}
+				u(x,y) & = F(x y) \ln x + G(x y)
+			\end{align*}
+	\end{enumerate}
+\end{solution}
+
+\section{Laplace and Poisson Equations}
+
+\begin{definition}[Laplacian]
+	\begin{align*}
+		\Delta & = \dpd[2]{}{x} + \dpd[2]{}{y}
+	\end{align*}
+	is called the Laplacian.
+\end{definition}
+
+\begin{definition}[Laplace equation]
+	The equation
+	\begin{align*}
+		\Delta u & = 0
+	\end{align*}
+	is called the Laplace equation.
+\end{definition}
+
+\begin{definition}[Harmonic function]
+	A function which satisfies the Laplace equation is called a harmonic function.
+\end{definition}
+
+\begin{definition}
+	The equation
+	\begin{align*}
+		\Delta u & = F(x,y)
+	\end{align*}
+	is called the Poisson equation.
+\end{definition}
+
+\begin{definition}[Dirichlet problem]
+	Let $D$ be an open and bounded domain in $\mathbb{R}^2$.
+	Let $\partial D$ be the boundary of the domain $D$.
+	Then, the problem
+	\begin{align*}
+		\Delta u & = F(x,y) \\
+		u(x,y)   & = f(x,y)
+	\end{align*}
+	for all $(x,y) \in D$ is called the Dirichlet problem.\\
+	The boundary condition
+	\begin{align*}
+		u(x,y) & = f(x,y)
+	\end{align*}
+	is called the Dirichlet boundary condition.
+\end{definition}
+
+\subsection{Maximum Principle}
+
+\begin{theorem}[Maximum Principle]
+	Let $u$ be continuous on a bounded and closed domain $D \cup \partial D$, twice differentiable on the open domain $D$ and satisfying the Poisson equation
+	\begin{align*}
+		\Delta u(x,y) & = F(x,y)
+	\end{align*}
+	Let
+	\begin{align*}
+		F & \ge 0
+	\end{align*}
+	on $D$.\\
+	Then, the maximum value of $u$ in $D \cup \partial D$ is on the boundary $\partial D$.
+	\label{thm:Maximum_Principle}
+\end{theorem}
+
+\begin{proof}
+	Let
+	\begin{align*}
+		F & > 0
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		\Delta u & > 0
+	\end{align*}
+	If there is a point of maximum inside the domain, then at this point,
+	\begin{align*}
+		u_x     & = 0   \\
+		u_y     & = 0   \\
+		u_{x x} & \le 0 \\
+		u_{y y} & \le 0
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		u_{x x} + u_{y y}   & \le 0 \\
+		\therefore \Delta u & \le 0
+	\end{align*}
+	This contradicts the assumption that
+	\begin{align*}
+		\Delta u & > 0
+	\end{align*}
+	Therefore, there cannot be a point of maximum inside the domain.\\
+	Let
+	\begin{align*}
+		F & \ge 0
+	\end{align*}
+	Let
+	\begin{align*}
+		M & = \max\limits_{(x,y) \in \partial D} u(x,y)
+	\end{align*}
+	Let
+	\begin{align*}
+		w(x,y) & = x^2 + y^2
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		\Delta w & = 4
+	\end{align*}
+	Let
+	\begin{align*}
+		v(x,y) & = u(x,y) + \varepsilon w(x,y)
+	\end{align*}
+	for all $\varepsilon > 0$.\\
+	Therefore,
+	\begin{align*}
+		\Delta v & = \Delta u + e \Delta w \\
+                         & = F + 4 \varepsilon     \\
+                         & > 0
+	\end{align*}
+	Therefore, as there cannot be a point of maximum inside the domain, $\forall (x,y) \in D$,
+	\begin{align*}
+		v(x,y) & \le \max\limits_{(x,y) \in \partial D} v(x,y)                                             \\
+                       & \le \max\limits_{(x,y) \in \partial D} u(x,y) + \max\limits_{(x,y) \in \partial D} v(x,y) \\
+                       & \le \max\limits_{(x,y) \in \partial D} u(x,y) + \max\limits_{(x,y) \in \partial D} x^2 + y^2
+	\end{align*}
+	Let
+	\begin{align*}
+		x^2 + y^2 & \le {R_0}^2
+	\end{align*}
+	in the domain $D$.\\
+	Therefore,
+	\begin{align*}
+		v(x,y) & \le M + \varepsilon {R_0}^2
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		u(x,y) & \le v(x,y) \\
+                       & \le M + \varepsilon {R_0}^2
+	\end{align*}
+	Therefore, as $\varepsilon \to 0$, $\forall (x,y) \in D$,
+	\begin{align*}
+		u(x,y) & \le M
+	\end{align*}
+\end{proof}
+
+\begin{theorem}
+	Let $u$ be continuous on a bounded and closed domain $D \cup \partial D$, twice differentiable on the open domain $D$ and satisfying the Poisson equation
+	\begin{align*}
+		\Delta u(x,y) & = F(x,y)
+	\end{align*}
+	Let
+	\begin{align*}
+		F & \le 0
+	\end{align*}
+	on $D$.\\
+	Then, the minimum value of $u$ in $D \cup \partial D$ is on the boundary $\partial D$.
+\end{theorem}
+
+\begin{proof}
+	\begin{align*}
+		\Delta u(x,y) & = F(x,y)
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		-\Delta u(x,y) & = -F(x,y)
+	\end{align*}
+	Therefore, $-u$ gets its maximum value on the boundary.
+	Therefore, $u$ gets its minimum value on the boundary.
+\end{proof}
+
+\begin{theorem}
+	Let $u$ be continuous on a bounded and closed domain $D \cup \partial D$, twice differentiable on the open domain $D$ and satisfying the Poisson equation
+	\begin{align*}
+		\Delta u(x,y) & = F(x,y)
+	\end{align*}
+	Let
+	\begin{align*}
+		F & = 0
+	\end{align*}
+	on $D$.\\
+	Then, the minimum value and the maximum value of $u$ in $D \cup \partial D$ are on the boundary $\partial D$, i.e. if
+	\begin{align*}
+		\max\limits_{(x,y) \in \partial D} u & = M \\
+		\min\limits_{(x,y) \in \partial D} u & = m
+	\end{align*}
+	then
+	\begin{equation*}
+		m \le u(x,y) \le M
+	\end{equation*}
+	in $D$.
+\end{theorem}
+
+\begin{theorem}
+	If there exists a solution to the Dirichlet problem
+	\begin{align*}
+		\Delta u & = F(x,y) \\
+		u(x,y)   & = f(x,y)
+	\end{align*}
+	where $F$ is defined on $D$ and $f$ is defined on $\partial D$, then the problem is well-posed.
+\end{theorem}
+
+\begin{proof}
+	If possible let $u_1$ and $u_2$ be two solutions to
+	\begin{align*}
+		\Delta u & = F(x,y) \\
+		u(x,y)   & = f(x,y)
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		\Delta u_1 & = F(x,y) \\
+		u_1(x,y)   & = f(x,y) \\
+		\Delta u_2 & = F(x,y) \\
+		u_2(x,y)   & = f(x,y)
+	\end{align*}
+	Let
+	\begin{align*}
+		v(x,y) & = u_1(x,y) - u_2(x,y)
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		\Delta v_1 & = 0 \\
+		v(x,y)     & = 0
+	\end{align*}
+	Therefore, $u$ gets it minimum and maximum values on the boundary $\partial D$, but on $\partial D$,
+	\begin{align*}
+		v(x,y) & = 0
+	\end{align*}
+	Therefore,
+	\begin{equation*}
+		0 \le v(x,y) \le 0
+	\end{equation*}
+	Therefore,
+	\begin{align*}
+		v(x,y) & \equiv 0
+	\end{align*}
+\end{proof}
+
+\begin{question}
+	Let
+	\begin{align*}
+		D & = (-1,1) \times (-1,1)
+	\end{align*}
+	Let $u \in \mathcal{C}^2(D) \cap \mathcal{C}\left( \overline{D} \right)$ be a solution to the Dirichlet problem
+	\begin{align*}
+		\Delta u & = -1
+	\end{align*}
+	where $(x,y) \in D$, and
+	\begin{align*}
+		u(x,y) & = 0
+	\end{align*}
+	where $(x,y) \in \partial D$.\\
+	Prove
+	\begin{equation*}
+		\frac{1}{4} \le u(0,0) \le \frac{1}{2}
+	\end{equation*}
+	Hint: Define the function
+	\begin{align*}
+		v(x,y) & = u(x,y) + \frac{1}{4} \left( x^2 + y^2 \right)
+	\end{align*}
+\end{question}
+
+\begin{solution}
+	\begin{align*}
+		\Delta v & = \Delta u + \frac{1}{4} \Delta\left( x^2 + y^2 \right) \\
+                         & = -1 + 1                                                \\
+                         & = 0
+	\end{align*}
+	Therefore, by the \nameref{thm:Maximum_Principle}, the maximum and minimum of $v(x,y)$ are on the boundary of $D$.\\
+	Therefore, as $u(x,y)$ is zero on the boundary of $D$,
+	\begin{align*}
+		\max\limits_{(x,y) \in \partial D} v(x,y) & = \max\limits_{(x,y) \in \partial D} \frac{1}{4} \left( x^2 + y^2 \right) \\
+                                                          & = \frac{1}{2}                                                             \\
+		\min\limits_{(x,y) \in \partial D} v(x,y) & = \min\limits_{(x,y) \in \partial D} \frac{1}{4} \left( x^2 + y^2 \right) \\
+                                                          & = \frac{1}{4}
+	\end{align*}
+	Therefore, $\forall (x,y) \in D$,
+	\begin{equation*}
+		\frac{1}{4} \le v(x,y) \le \frac{1}{2}
+	\end{equation*}
+	Also,
+	\begin{align*}
+		v(0,0) & = u(0,0)
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		\frac{1}{4} \le u(0,0) \le \frac{1}{2}
+	\end{align*}
+\end{solution}
+
+\subsection{Solution of the Laplace Equation in a Rectangular Domain}
+
+\begin{theorem}
+	A solution to
+	\begin{align*}
+		\Delta u & = 0
+	\end{align*}
+	for all $(x,y) \in D$, where $D = [0,a] \times [0,b]$, with boundary conditions
+	\begin{align*}
+		u(x,0) & = \varphi_0(x) \\
+		u(x,b) & = \varphi_1(x) \\
+		u(0,y) & = \psi_0(y)    \\
+		u(a,y) & = \psi_1(y)
+	\end{align*}
+	is
+	\begin{align*}
+		u(x,y) & = v(x,y) + w(x,y)
+	\end{align*}
+	where
+	\begin{align*}
+		v(x,y) & = \sum\limits_{n = 1}^{\infty} \left( A_n \sinh\left( \frac{n \pi}{a} y \right) + B_n \sinh\left( \frac{n \pi}{a} (b - y) \right) \right) \sin\left( \frac{n \pi}{a} x \right) \\
+		w(x,y) & = \sum\limits_{n = 1}^{\infty} \left( C_n \sinh\left( \frac{n \pi}{b} x \right) + D_n \sinh\left( \frac{n \pi}{b} (a - x) \right) \right) \sin\left( \frac{n \pi}{a} y \right)
+	\end{align*}
+	where
+	\begin{align*}
+		A_n & = \frac{2}{a \sinh\left( \frac{n \pi}{a} b \right)} \int\limits_{0}^{a} \varphi_1(x) \sin\left( \frac{n \pi}{a} x \right) \dif x \\
+		B_n & = \frac{2}{a \sinh\left( \frac{n \pi}{a} b \right)} \int\limits_{0}^{a} \varphi_0(x) \sin\left( \frac{n \pi}{a} x \right) \dif x \\
+		C_n & = \frac{2}{b \sinh\left( \frac{n \pi}{b} a \right)} \int\limits_{0}^{b} \psi_1 \sin\left( \frac{n \pi}{b} y \right) \dif y       \\
+		D_n & = \frac{2}{b \sinh\left( \frac{n \pi}{b} a \right)} \int\limits_{0}^{b} \psi_0 \sin\left( \frac{n \pi}{b} y \right) \dif y
+	\end{align*}
+\end{theorem}
+
+\begin{proof}
+	Let
+	\begin{align*}
+		\Delta v & = 0            \\
+		v(x,0)   & = \varphi_0(x) \\
+		v(x,b)   & = \varphi_1(x) \\
+		v(0,y)   & = 0            \\
+		v(a,y)   & = 0            \\
+		\Delta w & = 0            \\
+		w(x,0)   & = 0            \\
+		w(x,b)   & = 0            \\
+		w(0,y)   & = \psi_0(y)    \\
+		w(a,y)   & = \psi_1(y)
+	\end{align*}
+	for all $(x,y) \in D$.\\
+	Therefore,
+	\begin{align*}
+		u(x,y) & = v(x,y) + w(x,y)
+	\end{align*}
+	is a solution to the problem.\\
+	Let
+	\begin{align*}
+		V(x,y) & = X(x) Y(y)
+	\end{align*}
+	Therefore, substituting, let
+	\begin{align*}
+		-\frac{X''(x)}{X(x)} & = \lambda \\
+		\frac{Y''(y)}{Y(y)}  & = \lambda
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		X''(x) + \lambda X(x) & = 0 \\
+		X(0)                  & = 0 \\
+		X(a)                  & = 0
+	\end{align*}
+	Therefore, the eigenvalues of the Strum-Liouville problem are
+	\begin{align*}
+		\lambda_n & = {\omega_n}^2 \\
+                          & = \left( \frac{n \pi}{a} \right)^2
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		X_n(x) & = \sin\left( \frac{n \pi}{a} x \right)
+	\end{align*}
+	Similarly,
+	\begin{align*}
+		Y''(y) - \lambda Y(y)                                     & = 0 \\
+		\therefore Y''(y) - \left( \frac{n \pi}{a} \right)^2 Y(y) & = 0
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		Y_n(y) & = \tilde{A}_n e^{\frac{n \pi}{a} y} + \tilde{B}_n e^{-\frac{n \pi}{a} y} \\
+                       & = A_n \sinh\left( \frac{n \pi}{a} y \right) + B_n \sinh\left( \frac{n \pi}{a} (b - h) \right)
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		v(x,y) & = \sum\limits_{n = 1}^{\infty} \left( A_n \sinh\left( \frac{n \pi}{a} y \right) + B_n \sinh\left( \frac{n \pi}{a} (b - y) \right) \right) \sin\left( \frac{n \pi}{a} x \right)
+	\end{align*}
+	Therefore, substituting the boundary conditions,
+	\begin{align*}
+		v(x,0)                  & = \sum\limits_{n = 1}^{\infty} B_n \sinh\left( \frac{n \pi}{a} b \right) \sin\left( \frac{n \pi}{a} x \right) \\
+		\therefore \varphi_0(x) & = \sum\limits_{n = 1}^{\infty} B_n \sinh\left( \frac{n \pi}{a} b \right) \sin\left( \frac{n \pi}{a} x \right) \\
+		v(x,b)                  & = \sum\limits_{n = 1}^{\infty} A_n \sinh\left( \frac{n \pi}{a} b \right) \sin\left( \frac{n \pi}{a} x \right) \\
+		\varphi_1(x)            & = \sum\limits_{n = 1}^{\infty} A_n \sinh\left( \frac{n \pi}{a} b \right) \sin\left( \frac{n \pi}{a} x \right)
+	\end{align*}
+	Therefore, multiplying both sides by $\sin\left( \frac{k \pi}{a} x \right)$ and integrating from $0$ to $a$,
+	\begin{align*}
+		\int\limits_{0}^{a} \varphi_0(x) \sin\left( \frac{k \pi}{a} x \right) \dif x & = B_k \sinh\left( \frac{k \pi}{a} b \right) \frac{a}{2} \\
+		\int\limits_{0}^{a} \varphi_1(x) \sin\left( \frac{k \pi}{a} x \right) \dif x & = A_k \sinh\left( \frac{k \pi}{a} b \right) \frac{a}{2}
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		A_n & = \frac{2}{a \sinh\left( \frac{n \pi}{a} b \right)} \int\limits_{0}^{a} \varphi_1(x) \sin\left( \frac{n \pi}{a} x \right) \dif x \\
+		B_n & = \frac{2}{a \sinh\left( \frac{n \pi}{a} b \right)} \int\limits_{0}^{a} \varphi_0(x) \sin\left( \frac{n \pi}{a} x \right) \dif x
+	\end{align*}
+	Similarly,
+	\begin{align*}
+		w(x,y) & = \sum\limits_{n = 1}^{\infty} \left( C_n \sinh\left( \frac{n \pi}{b} x \right) + D_n \sinh\left( \frac{n \pi}{b} (a - x) \right) \right) \sin\left( \frac{n \pi}{a} y \right)
+	\end{align*}
+	where
+	\begin{align*}
+		C_n & = \frac{2}{b \sinh\left( \frac{n \pi}{b} a \right)} \int\limits_{0}^{b} \psi_1 \sin\left( \frac{n \pi}{b} y \right) \dif y \\
+		D_n & = \frac{2}{b \sinh\left( \frac{n \pi}{b} a \right)} \int\limits_{0}^{b} \psi_0 \sin\left( \frac{n \pi}{b} y \right) \dif y
+	\end{align*}
+\end{proof}
+
+\begin{question}
+	Solve
+	\begin{align*}
+		u_{x x} + u_{y y} & = 0        \\
+		u(x,0)            & = \sin^3 x \\
+		u(x,1)            & = \sin^3 x \\
+		u(0,y)            & = 0        \\
+		u(\pi,y)          & = 0
+	\end{align*}
+	where $0 \le x \le \pi$ and $0 \le y \le 1$.
+\end{question}
+
+\begin{solution}
+	Let
+	\begin{align*}
+		u(x,y) & = \psi(x) \varphi(y)
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		\psi''(x) \varphi(y) + \psi(x) \varphi''(y) & = 0
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		\frac{\varphi''(y)}{\varphi(y)} & = \lambda \\
+		\frac{\psi''(x)}{\psi(x)}       & = \lambda
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		\psi''(x) + \lambda \psi(x) & = 0 \\
+		\psi(0)                     & = 0 \\
+		\psi(\pi)                   & = 0
+	\end{align*}
+	Therefore, for $\lambda \le 0$, there exists a trivial solution.\\
+	If $\lambda > 0$,
+	\begin{align*}
+		\psi(x) & = c_1 \cos\left( \sqrt{\lambda} x \right) + c^2 \sin\left( \sqrt{\lambda} x \right)
+	\end{align*}
+	Substituting the boundary conditions and solving,
+	\begin{align*}
+		c_1 & = 0
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		\lambda_n & = n^2 \\
+		\psi_n(x) & = \sin(n x)
+	\end{align*}
+	Similarly,
+	\begin{align*}
+		{\varphi_n}''(y) + n^2 \varphi_n & = 0
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		\varphi_n(y) & = A_n \sinh\left( n (1 - y) \right) + B_n \sinh(n y)
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		u(x,y) & = \sum\limits_{n = 1}^{\infty} \left( A_n \sinh\left( n (1 - y) \right) + B_n \sinh(n y) \right) \sin(n x)
+	\end{align*}
+	Therefore, substituting the boundary conditions,
+	\begin{align*}
+		A_n &=
+			\begin{cases}
+				\frac{3}{4 \sinh(1)}  & ;\quad n = 1            \\
+				-\frac{1}{4 \sinh(3)} & ;\quad n = 3            \\
+				0                     & ;\quad \text{otherwise} \\
+			\end{cases}\\
+		B_n &=
+			\begin{cases}
+				\frac{3}{4 \sinh(1)}  & ;\quad n = 1            \\
+				-\frac{1}{4 \sinh(3)} & ;\quad n = 3            \\
+				0                     & ;\quad \text{otherwise} \\
+			\end{cases}
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		u(x,y) & = \quad \left( \frac{3}{4 \sinh(1)} \sinh(1 - y) + \frac{3}{4 \sinh(1)} \sinh(y) \right) \sin(x)       \\
+                       & \quad - \left( \frac{1}{4 \sinh(3)} \sinh(3 - 3 y) + \frac{1}{4 \sinh(3)} \sinh(3 y) \right) \sin(3 x) \\
+	\end{align*}
+\end{solution}
+
+\subsection{Solution of the Laplace Equation in a Disk}
+
+\begin{theorem}
+	A solution to
+	\begin{align*}
+		\Delta u & = 0
+	\end{align*}
+	for all $(x,y) \in D$, where $D = \left\{ (x,y) | x^2 + y^2 < {R_0}^2 \right\}$, with boundary conditions
+	\begin{align*}
+		u(x,y) & = f(x,y)
+	\end{align*}
+	where $(x,y) \in \partial D$, is
+	\begin{align*}
+		u(r,\theta) & = C_0 + D_0 \ln(r) + \sum\limits_{n = 1}^{\infty} \left( C_n r^n + D_n r^{-n} \right) \left( A_n \cos(n \theta) + B_n \sin(n \theta) \right)
+	\end{align*}
+	where
+	\begin{align*}
+		A_0 & = \frac{1}{2 \pi} \int\limits_{0}^{2 \pi} h(\theta) \dif \theta                      \\
+		A_n & = \frac{1}{\pi {R_0}^n} \int\limits_{0}^{2 \pi} h(\theta) \cos(n \theta) \dif \theta \\
+		B_n & = \frac{1}{\pi {R_0}^n} \int\limits_{0}^{2 \pi} h(\theta) \sin(n \theta) \dif \theta
+	\end{align*}
+\end{theorem}
+
+\begin{proof}
+	\begin{align*}
+		\Delta u & = u_{x x} + u_{y y}
+	\end{align*}
+	Therefore, substituting the polar form of the coordinates,
+	\begin{align*}
+		\Delta u & = u_{r r} + \frac{1}{r} u_r + \frac{1}{r^2} u_{\theta \theta}
+	\end{align*}
+	Let
+	\begin{align*}
+		u(r,\theta) & = R(r) \Theta(\theta)
+	\end{align*}
+	Therefore, substituting,
+	\begin{align*}
+		0 & = \Delta u \\
+                  & = R''(r) \Theta(\theta) + \frac{1}{r} R'(r) \Theta(\theta) + \frac{1}{r^2} R(r) \Theta''(\theta)
+	\end{align*}
+	Therefore, multiplying by $r^2$ and dividing by $R(r) \Theta(\theta)$,
+	\begin{align*}
+		r^2 \frac{R''(r)}{R(r)} + r \frac{R'(r)}{R(r)} + \frac{\Theta''(\theta)}{\Theta(\theta)} & = 0
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		r^2 \frac{R''(r)}{R(r)} + r \frac{R'(r)}{R(r)} & = \lambda \\
+		-\frac{\Theta''(\theta)}{\Theta(\theta)}       & = \lambda
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		\Theta''(\theta) + \lambda \Theta(\theta) & = 0
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		\lambda_n & = n^2
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		\Theta_n(\theta) & = A_n \cos(n \theta) + B_n \sin(n \theta)
+	\end{align*}
+	where $\Theta(\theta)$ is $2 \pi$ periodic.\\
+	Therefore,
+	\begin{align*}
+		r^2 R''(r) + r R'(r) - n^2 R(r) & = 0
+	\end{align*}
+	Therefore, the characteristic equation for this Euler's ODE is
+	\begin{align*}
+		r^2 \alpha (\alpha - 1) r^{\alpha - 2} + r \alpha r^{\alpha - 1} + \left( -n^2 \right) r^{\alpha} & = 0
+	\end{align*}
+	where
+	\begin{align*}
+		\alpha & = \pm n
+	\end{align*}
+	If $n = 0$,
+	\begin{align*}
+		r R''(r) + r R'(r) & = 0
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		R_0(r) & = C_0 + D_0 \ln(r)
+	\end{align*}
+	If $n \neq 0$,
+	\begin{align*}
+		R_n(r) & = C_n r^n + D_n r^{-n}
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		u(r,\theta) & = \sum\limits_{n = 0}^{\infty} R_n(r) \Theta_n(\theta) \\
+                            & = C_0 + D_0 \ln(r) + \sum\limits_{n = 1}^{\infty} \left( C_n r^n + D_n r^{-n} \right) \left( A_n \cos(n \theta) + B_n \sin(n \theta) \right)
+	\end{align*}
+	~\\
+	As $\ln(r)$ and $r^{-n}$ are undefined at $r = 0$, the solution to the equation for a region inside a disk is
+	\begin{align*}
+		u(r,\theta) & = A_0 + \sum\limits_{n = 1}^{\infty} \left( A_n \cos(n \theta) + B_n \sin(n \theta) \right) r^n
+	\end{align*}
+	~\\
+	As $\ln(r)$ and $r^n$ are unbounded as $r \to \infty$, the solution to the equation for a region outside a disk is
+	\begin{align*}
+		u(r,\theta) & = A_0 + \sum\limits_{n = 1}^{\infty} \left( A_n \cos(n \theta) + B_n \sin(n \theta) \right) r^{-n}
+	\end{align*}
+	~\\
+	For an annular region,
+	\begin{align*}
+		u(r,\theta) & = C_0 + D_0 \ln(r) + \sum\limits_{n = 1}^{\infty} \left( C_n r^n + D_n r^{-n} \right) \left( A_n \cos(n \theta) + B_n \sin(n \theta) \right)
+	\end{align*}
+	Let the boundary condition in polar coordinates be
+	\begin{align*}
+		u(R_0,\theta) & = h(\theta)
+	\end{align*}
+	Therefore, solving using the Fourier Series method,
+	\begin{align*}
+		A_0         & = \frac{1}{2 \pi} \int\limits_{0}^{2 \pi} h(\theta) \dif \theta              \\
+		A_n {R_0}^n & = \frac{1}{\pi} \int\limits_{0}^{2 \pi} h(\theta) \cos(n \theta) \dif \theta \\
+		B_n {R_0}^n & = \frac{1}{\pi} \int\limits_{0}^{2 \pi} h(\theta) \sin(n \theta) \dif \theta
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		A_0 & = \frac{1}{2 \pi} \int\limits_{0}^{2 \pi} h(\theta) \dif \theta                      \\
+		A_n & = \frac{1}{\pi {R_0}^n} \int\limits_{0}^{2 \pi} h(\theta) \cos(n \theta) \dif \theta \\
+		B_n & = \frac{1}{\pi {R_0}^n} \int\limits_{0}^{2 \pi} h(\theta) \sin(n \theta) \dif \theta
+	\end{align*}
+\end{proof}
+
+\begin{definition}[Poisson kernel]
+	The expression
+	\begin{align*}
+		I & = \frac{{R_0}^2 - r^2}{{R_0}^2 - 2 R_0 r \cos(\theta - \psi) + r^2}
+	\end{align*}
+	is called the Poisson kernel.
+\end{definition}
+
+\begin{definition}
+	\begin{align*}
+		G(r,\theta - \psi) & = \frac{1}{2 \pi} I
+	\end{align*}
+	where $I$ is the Poisson kernel, is called the Green function for the Dirichlet problem of the Laplace equation in a disk.
+\end{definition}
+
+\begin{theorem}
+	The solution to 
+	\begin{align*}
+		u_{r r} + \frac{1}{r} u_r + \frac{1}{r^2} u_{\theta \theta} & = 0 \\
+		u(R_0,\theta)                                               & = h(\theta)
+	\end{align*}
+	where $0 \le r \le R_0$, $0 \le \theta \le 2 \pi$, is
+	\begin{align*}
+		u(r,\theta) & = \frac{1}{2 \pi} \int\limits_{0}^{2 \pi} \frac{{R_0}^2 - r^2}{{R_0}^2 2 R_0 r \cos(\theta - \psi) + r^2} h(\psi) \dif \psi
+	\end{align*}
+	and the boundary condition is
+	\begin{align*}
+		h(\theta_0) & = \lim\limits_{(r,\theta) \to (R_0,\theta_0)} u(r,\theta)
+	\end{align*}
+\end{theorem}
+
+\begin{question}
+	Solve
+	\begin{align*}
+		u_{r r} + \frac{1}{r} u_{r} + \frac{1}{r^2} u_{\theta \theta} & = 0 \\
+		u(r,0)                                                        & = 0 \\
+		u_{\theta}\left( r,\frac{\pi}{2} \right)                      & = 0 \\
+		u(1,\theta)                                                   & = \theta
+	\end{align*}
+	where $0 \le r \le 1$, $0 \le \theta \le \frac{\pi}{2}$.
+\end{question}
+
+\begin{solution}
+	Let
+	\begin{align*}
+		u(r,\theta) & = \Psi(r) \Phi(\theta)
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		\Psi''(r) \Phi(\theta) + \frac{1}{r} \Psi'(r) \Phi(\theta) + \frac{1}{r^2} \Psi(r) \Phi''(\theta) & = 0
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		\frac{r^2 \Psi''(r) + r \Psi'(r)}{\Psi(r)} & = \lambda \\
+		-\frac{\Phi''(\theta)}{\Phi(\theta)}       & = \lambda
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		\Phi''(\theta) + \lambda \Phi(\theta) & = 0 \\
+		\Phi(0)                               & = 0 \\
+		\Phi'\left( \frac{\pi}{2} \right)     & = 0
+	\end{align*}
+	For $\lambda \le 0$, there exists a trivial solution.
+	If $\lambda > 0$,
+	\begin{align*}
+		\Phi(\theta) & = c_1 \cos\left( \sqrt{\lambda} \theta \right) + c_2 \sin\left( \sqrt{\lambda} \theta \right)
+	\end{align*}
+	Substituting the boundary condition $\Phi(0) = 0$,
+	\begin{align*}
+		c_1 & = 0
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		\Phi(\theta) & = c_2 \sin\left( \sqrt{\lambda} \theta \right)
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		\Phi'(\theta) & = c_2 \sqrt{\lambda} \cos\left( \sqrt{\lambda} \theta \right)
+	\end{align*}
+	Therefore, substituting the boundary condition $\Phi'\left( \frac{\pi}{2} \right) = 0$,
+	\begin{align*}
+		\sqrt{\lambda} \frac{\pi}{2} = \frac{\pi}{2} + k \pi
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		\sqrt{\lambda_k} & = 1 + 2 k
+	\end{align*}
+	Therefore, the eigenvalues are
+	\begin{align*}
+		\lambda_k & = (1 + 2 k)^2
+	\end{align*}
+	and the corresponding eigenfunctions are
+	\begin{align*}
+		\Phi_k(\theta) & = \sin\left( (1 + 2 k) \varphi \right)
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		\Psi_k(r) & = A_k r^{1 + 2 k} + B_k e^{-(1 + 2 k)}
+	\end{align*}
+	As the solution is continuous at $r = 0$,
+	\begin{align*}
+		B_k & = 0
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		\Psi_k(r) & = B_k e^{-(1 + 2 k)}
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		u(r,\theta) & = \sum\limits_{k = 0}^{\infty} \Psi_k(r) \Phi_k(\theta) \\
+                            & = \sum\limits_{k = 0}^{\infty} A_k e^{2 k + 1} \sin\left( (2 k + 1) \theta \right)
+	\end{align*}
+	Therefore, substituting the boundary condition $u(1,\theta) = \theta$,
+	\begin{align*}
+		A_n & = \frac{4}{\pi} \frac{(-1)^n}{(2 n + 1)^2}
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		u(r,\theta) & = \frac{4}{\pi} \sum\limits_{k = 0}^{\infty} \frac{(-1)^k}{(2 k + 1)^2} r^{2 k + 1} \sin\left( (2 k + 1) \theta \right)
+	\end{align*}
+\end{solution}
+
+\subsection{Ill-posedness of the Cauchy Problem for the Laplace-Hadamard Example}
+
+\begin{theorem}
+	The problem
+	\begin{align*}
+		\Delta u & = 0    \\
+		u(x,0)   & = f(x) \\
+		u_y(x,0) & = g(x)
+	\end{align*}
+	is ill-posed, i.e. small changes in the initial conditions may result in large changes in the solution.
+\end{theorem}
+
+\begin{proof}
+	\begin{align*}
+		\Delta u & = 0    \\
+		u(x,0)   & = f(x) \\
+		u_y(x,0) & = g(x)
+	\end{align*}
+	Therefore, let
+	\begin{align*}
+		f_n(x) & = 0 \\
+		g_n(x) & = \frac{\cos(n x)}{n}
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		u_n(x,y) & = \frac{1}{n^2} \cos(n x) \sinh(n y)
+	\end{align*}
+	is a solution to the problem.\\
+	Therefore,
+	\begin{align*}
+		\lim\limits_{n \to \infty} f_n(x) & = 0 \\
+		\lim\limits_{n \to \infty} g_n(x) & = 0
+	\end{align*}
+	However,
+	\begin{align*}
+		\lim\limits_{n \to \infty} u_n(x,y) & \neq 0
+	\end{align*}
+	Therefore, the problem is ill-posed.
+\end{proof}
+
+\section{Green's Formula}
+
+\begin{theorem}
+	Let $\dpd{u}{n}$ be the directional derivative of $u(x,y)$ with respect to the unit outward normal $\hat{n}$ to $\partial D$.
+	Then,
+	\begin{align*}
+		\iint\limits_{D} \Delta u \dif x \dif y & = \int\limits_{\partial D} \dpd{u}{n} \dif s
+	\end{align*}
+\end{theorem}
+
+\begin{proof}
+	\begin{align*}
+		\divergence(\nabla u) & = \divergence\left( (u_x,u_y) \right) \\
+                                      & = (u_x)_x + (u_y)_y                   \\
+                                      & = u_{x x} + u_{y y}                   \\
+                                      & = \Delta u
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		\iint\limits_{D} \Delta u \dif x \dif y & = \iint\limits_{D} \divergence(\nabla u) \dif x \dif y
+	\end{align*}
+	Therefore, by Green's Theorem,
+	\begin{align*}
+		\iint\limits_{D} \divergence(\nabla u) \dif x \dif y & = \int\limits_{\partial D} \nabla u \cdot \hat{n} \dif s \\
+                                                                     & = \int\limits_{\partial D} \dpd{u}{n} \dif s
+	\end{align*}
+\end{proof}
+
+\begin{theorem}[First Green's Formula]
+	Let $\dpd{u}{n}$ be the directional derivative of $u(x,y)$ with respect to the unit outward normal $\hat{n}$ to $\partial D$.
+	Then,
+	\begin{align*}
+		\iint\limits_{D} u \Delta v \dif x \dif y & = \int\limits_{\partial D} u \dpd{v}{n} \dif s - \iint\limits_{D} \nabla u \cdot \nabla v \dif x \dif y
+	\end{align*}
+	\label{thm:First_Green's_Formula}
+\end{theorem}
+
+\begin{proof}
+	\begin{align*}
+		\divergence(u \nabla v) & = \divergence\left( (u v_x,u v_y) \right)   \\
+                                        & = (u v_x)_x + (u v_y)_y                     \\
+                                        & = u_x v_x + u v_{x x} + u_y v_y + u v_{y y} \\
+                                        & = u \Delta v + \nabla u \cdot \nabla v
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		\iint\limits_{D} u \Delta v \dif x \dif y & = \iint\limits_{D} \divergence(u \nabla ) \dif x \dif y - \iint\limits_{D} \nabla u \cdot \nabla v \dif x \dif y \\
+                                                          & = \iint\limits_{D} u \nabla v \cdot \hat{n} \dif s - \iint\limits_{D} \nabla u \cdot \nabla v \dif x \dif y      \\
+                                                          & = \int\limits_{\partial D} \dpd{v}{n} \dif s - \iint\limits_{D} \nabla u \cdot \nabla v \dif x \dif y
+	\end{align*}
+\end{proof}
+
+\begin{theorem}[Second Green's Formula]
+	Let $\dpd{u}{n}$ be the directional derivative of $u(x,y)$ with respect to the unit outward normal $\hat{n}$ to $\partial D$.
+	Then,
+	\begin{align*}
+		\iint\limits_{D} (u \Delta v - v \Delta u) \dif x \dif y & = \int\limits_{\partial D} \left( u \dpd{v}{n} - v \dpd{u}{n} \right) \dif s
+	\end{align*}
+	\label{thm:Second_Green's_Formula}
+\end{theorem}
+
+\begin{proof}
+	By \nameref{thm:First_Green's_Formula},
+	\begin{align*}
+		\iint\limits_{D} u \Delta v \dif x \dif y & = \int\limits_{\partial D} u \dpd{v}{n} \dif s - \iint\limits_{D} \nabla u \cdot \nabla v \dif x \dif y
+	\end{align*}
+	Therefore, replacing $u$ by $v$, and $v$ by $u$,
+	\begin{align*}
+		\iint\limits_{D} v \Delta u \dif x \dif y & = \int\limits_{\partial D} v \dpd{u}{n} \dif s - \iint\limits_{D} \nabla v \cdot \nabla u \dif x \dif y
+	\end{align*}
+	Therefore, subtracting,
+	\begin{align*}
+		\iint\limits_{D} (u \Delta v - v \Delta u) \dif x \dif y & = \int\limits_{\partial D} \left( u \dpd{v}{n} - v \dpd{u}{n} \right) \dif s
+	\end{align*}
+\end{proof}
+
+\section{Neumann Problem of the Poisson Equation}
+
+\begin{theorem}
+	A necessary condition for existence of a solution to the Neumann problem of the Poisson equation
+	\begin{align*}
+		\Delta u & = F(x,y)
+	\end{align*}
+	for $(x,y) \in D$, with boundary condition
+	\begin{align*}
+		\dpd{u(x,y)}{n} & = g(x,y)
+	\end{align*}
+	for $(x,y) \in \partial D$ is
+	\begin{align*}
+		\iint\limits_{D} F(x,y) \dif x \dif y & = \int\limits_{\partial D} g(x,y) \dif s
+	\end{align*}
+\end{theorem}
+
+\begin{proof}
+	By \nameref{thm:First_Green's_Formula},
+	\begin{align*}
+		\iint\limits_{D} \Delta u \dif x \dif y & = \int\limits_{\partial D} \dpd{u}{n} \dif s
+	\end{align*}
+	Therefore, substituting the functions of the Neumann problem,
+	\begin{align*}
+		\iint\limits_{D} F(x,y) \dif x \dif y & = \int\limits_{\partial D} g(x,y) \dif s
+	\end{align*}
+\end{proof}
+
+\begin{theorem}
+	A sufficient condition for existence of a solution to the Neumann problem of the Poisson equation
+	\begin{align*}
+		\Delta u & = F(x,y)
+	\end{align*}
+	for $(x,y) \in D$, with boundary condition
+	\begin{align*}
+		\dpd{u(x,y)}{n} & = g(x,y)
+	\end{align*}
+	for $(x,y) \in \partial D$ is
+	\begin{align*}
+		\iint\limits_{D} F(x,y) \dif x \dif y & = \int\limits_{\partial D} g(x,y) \dif s
+	\end{align*}
+\end{theorem}
+
+\begin{theorem}
+	Let $u_1(x,y)$ and $u_2(x,y)$ be solutions to the Neumann problem of the Poisson equation
+	\begin{align*}
+		\Delta u & = F(x,y)
+	\end{align*}
+	for $(x,y) \in D$, with boundary condition
+	\begin{align*}
+		\dpd{u(x,y)}{n} & = g(x,y)
+	\end{align*}
+	for $(x,y) \in \partial D$.\\
+	Then,
+	\begin{align*}
+		u_1(x,y) - u_2(x,y) & = c
+	\end{align*}
+	where $c$ is a constant.
+\end{theorem}
+
+\begin{proof}
+	Let
+	\begin{align*}
+		v(x,y) & = u_1(x,y) - u_2(x,y)
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		\Delta v & = 0
+	\end{align*}
+	for $(x,y) \in D$, and
+	\begin{align*}
+		\dpd{v}{n} & = 0
+	\end{align*}
+	for $(x,y) \in \partial D$.\\
+	Therefore, substituting $v$ in \nameref{thm:First_Green's_Formula}, for both $u$ and $v$,
+	\begin{align*}
+		\iint\limits_{D} v \Delta v \dif x \dif y & = \int\limits_{\partial D} v \dpd{v}{n} \dif s - \iint\limits_{D} |\nabla v|^2 \dif x \dif y \\
+		\therefore 0                              & = -\iint\limits_{D} |\nabla v|^2 \dif x \dif y
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		\nabla v & = 0
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		v_x & = 0 \\
+		v_y & = 0
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		v & = c(y)
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		v_y          & = c'(y) \\
+		\therefore 0 & = c'(y)
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		c(y) & = c
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		v(x,y) & = c
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		u_1(x,y) - u_2(x,y) & = c
+	\end{align*}
+\end{proof}
+
+\begin{theorem}
+	The solution to the Dirichlet problem of the Poisson equation
+	\begin{align*}
+		\Delta u & = F(x,y)
+	\end{align*}
+	for $(x,y) \in D$, and
+	\begin{align*}
+		u(x,y) & = f(x,y)
+	\end{align*}
+	for $(x,y) \in \partial D$ is unique.
+\end{theorem}
+
+\begin{proof}
+	Let $u_1(x,y)$ and $u_2(x,y)$ be solutions to the Dirichlet problem of the Poisson equation.
+	Let
+	\begin{align*}
+		v(x,y) & = u_1(x,y) + u_2(x,y)
+	\end{align*}
+	Therefore, substituting $v$ in \nameref{thm:First_Green's_Formula}, for both $u$ and $v$,
+	\begin{align*}
+		\iint\limits_{D} v \Delta v \dif x \dif y & = \int\limits_{\partial D} v \dpd{v}{n} \dif s - \iint\limits_{D} |\nabla v|^2 \dif x \dif y \\
+		\therefore 0                              & = -\iint\limits_{D} |\nabla v|^2 \dif x \dif y
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		\nabla v & = 0
+	\end{align*}
+	for $(x,y) \in D$, and
+	\begin{align*}
+		v(x,y) & = 0
+	\end{align*}
+	for $(x,y) \in \partial D$.\\
+	Therefore,
+	\begin{align*}
+		v_x & = 0 \\
+		v_y & = 0
+	\end{align*}
+	Therefore, integrating,
+	\begin{align*}
+		v(x,y) & = c(y)
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		v_y          & = c'(y) \\
+		\therefore 0 & = c'(y)
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		v(x,y) & = c
+	\end{align*}
+	Also, $\forall (x,y) \in \partial D$,
+	\begin{align*}
+		v(x,y) & = 0
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		c & = 0
+	\end{align*}
+	Therefore, $\forall (x,y)$,
+	\begin{align*}
+		v(x,y) & = 0
+	\end{align*}
+\end{proof}
+
+\begin{question}
+	Prove that there is no solution to the problem
+	\begin{align*}
+		\Delta u & = 10
+	\end{align*}
+	for $x^2 + y^2 < 4$, and
+	\begin{align*}
+		\dpd{u}{n} & = 7
+	\end{align*}
+	for $x^2 + y^2 = 4$.
+\end{question}
+
+\begin{solution}
+	Comparing to the standard form,
+	\begin{align*}
+		F(x,y) & = 10 \\
+		g(x,y) & = 7
+	\end{align*}
+	If there exists a solution to the problem,
+	\begin{align*}
+		\iint\limits_{D} F(x,y) \dif x \dif y              & = \int\limits_{\partial D} g(x,y) \dif s \\
+		\iff \iint\limits_{x^2 + y^2 < 4} 10 \dif x \dif y & = \int\limits_{x^2 + y^2 = 4} 7 \dif s   \\
+		\iff 10 \left( \pi 2^2 \right)                     & = 7 \left( (2 \pi) (2) \right)           \\
+		\iff 40 \pi                                        & = 28 \pi
+	\end{align*}
+	Therefore, there is no solution to the problem.
+\end{solution}
+
+\clearpage
+\part{Heat Equation}
+
+\section{Maximum and Minimum Principles}
+
+\begin{definition}[Heat equation]
+	An equation
+	\begin{align*}
+		u_t & = a^2 u_{x x} + F(x,t)
+	\end{align*}
+	where $0 \le x \le l$, $0 \le t \le t_1$, with initial condition
+	\begin{align*}
+		u(x,0) & = f(x)
+	\end{align*}
+	for $0 \le x \le l$, and boundary condition
+	\begin{align*}
+		u(0,t) & = \mu(t) \\
+		u(l,t) & = \nu(t)
+	\end{align*}
+	for $0 \le t \le t_1$, is said to be a non-homogeneous heat equation.\\
+	The function $u(x,t)$ represents the temperature of a wire from $0$ to $l$, at position $x$ at time $t$.
+\end{definition}
+
+\begin{theorem}[Maximum Principle for Heat Equation]
+	Let $u(x,t)$ and $F(x,t)$ be continuous on the domain $0 \le x \le l$, $0 \le t \le t_1$.\\
+	$\forall (x,y)$, let
+	\begin{align*}
+		F(x,t) & \le 0
+	\end{align*}
+	Let $u(x,t)$ satisfy
+	\begin{align*}
+		u_t & = a^2 u_{x x} + F(x,t)
+	\end{align*}
+	Let
+	\begin{align*}
+		u(x,t) & \le M
+	\end{align*}
+	for $t = 0$, $x = 0$, or $x = l$.\\
+	Then, for $0 \le x \le l$, $0 \le t \le t_1$,
+	\begin{align*}
+		u(x,t) & \le M
+	\end{align*}
+	that is, the maximum of $u(x,t)$ is on the boundary of the domain, excluding the top boundary.
+	\label{thm:Maximum_Principle_for_Heat_Equation}
+\end{theorem}
+
+\begin{proof}
+	Let
+	\begin{align*}
+		F & < 0
+	\end{align*}
+	If possible, let the maximum of $u(x,t)$ be at a point $(x,t)$ such that $0 < x < l$, $0 < t < t_1$.
+	Therefore,
+	\begin{align*}
+		u_x(x,t) & = 0 \\
+		u_t(x,t) & = 0 \\
+		u_{x x}  & \le 0
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		u_t - a^2 u_{x x} & \ge 0 \\
+		\therefore F      & \ge 0
+	\end{align*}
+	This contradicts the assumption that $F < 0$.
+	Therefore, the maximum of $u(x,t)$ cannot be at a point $(x,t)$ such that $0 < x < l$, $0 < t < t_1$.\\
+	If possible, let the maximum of $u(x,t)$ be at a point $(x,t_1)$ such that $0 < x < l$.
+	Therefore,
+	\begin{align*}
+		u_x(x,t_1)     & = 0   \\
+		{u_t}^-(x,t_1) & \ge 0 \\
+		u_{x x}(x,t_1) & \le 0
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		u_t - a^2 u_{x x} & \ge 0 \\
+		\therefore F      & \ge 0
+	\end{align*}
+	This contradicts the assumption that $F < 0$.
+	Therefore, the maximum of $u(x,t)$ cannot be at a point $(x,t_1)$ such that $0 < x < l$.\\
+	~\\
+	Let
+	\begin{align*}
+		F & \le 0
+	\end{align*}
+	Let
+	\begin{align*}
+		v(x,t) & = u(x,t) + \varepsilon x^2
+	\end{align*}
+	where $\varepsilon > 0$.\\
+	Therefore,
+	\begin{align*}
+		v_t - a^2 v_{x x} & = u_t - a^2 (u_{x x} + 2 \varepsilon) \\
+                                  & = F - 2 a^2 \varepsilon
+	\end{align*}
+	Let
+	\begin{align*}
+		F_1 & = F - 2 a^2 \varepsilon
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		F_1 & < 0
+	\end{align*}
+	Therefore, for $v(x,t)$ and $F_1 < 0$,
+	\begin{align*}
+		u(x,t) & \le v(x,t)                                                                         \\
+                       & \le \max\limits_{\{t = 0\} \cup \{x = 0\} \cup \{x = l\}} v(x,t)                   \\
+                       & \le \max\limits_{\{t = 0\} \cup \{x = 0\} \cup \{x = l\}} u(x,t) + \varepsilon l^2 \\
+                       & \le M + \varepsilon l^2
+	\end{align*}
+	Therefore, for $\varepsilon \to 0$,
+	\begin{align*}
+		u(x,t) & \le M
+	\end{align*}
+	for $(x,t)$ in the entire domain.
+\end{proof}
+
+\begin{theorem}[Minimum Principle for Heat Equation]
+	Let $u(x,t)$ and $F(x,t)$ be continuous on the domain $0 \le x \le l$, $0 \le t \le t_1$.\\
+	$\forall (x,y)$, let
+	\begin{align*}
+		F(x,t) & \ge 0
+	\end{align*}
+	Let $u(x,t)$ satisfy
+	\begin{align*}
+		u_t & = a^2 u_{x x} + F(x,t)
+	\end{align*}
+	Let
+	\begin{align*}
+		u(x,t) & \ge m
+	\end{align*}
+	for $t = 0$, $x = 0$, or $x = l$.\\
+	Then, for $0 \le x \le l$, $0 \le t \le t_1$,
+	\begin{align*}
+		u(x,t) & \ge m
+	\end{align*}
+	that is, the minimum of $u(x,t)$ is on the boundary of the domain, excluding the top boundary.
+	\label{thm:Minimum_Principle_for_Heat_Equation}
+\end{theorem}
+
+\begin{theorem}[Maximum-minimum Principle for Heat Equation]
+	Let $u(x,t)$ be continuous on the domain $0 \le x \le l$, $0 \le t \le t_1$.\\
+	Let $u(x,t)$ satisfy
+	\begin{align*}
+		u_t & = a^2 u_{x x} + F(x,t)
+	\end{align*}
+	If
+	\begin{equation*}
+		m \le u(x,t) \le M
+	\end{equation*}
+	for $t = 0$, $x = 0$, or $x = l$.\\
+	Then, for $0 \le x \le l$, $0 \le t \le t_1$,
+	\begin{equation*}
+		m \le u(x,t) \le M
+	\end{equation*}
+	\label{thm:Maximum-minimum_Principle_for_Heat_Equation}
+\end{theorem}
+
+\section{Well-posedness}
+
+\begin{theorem}
+	If there exists a solution to the problem
+	\begin{align*}
+		u_t    & = a^2 u_{x x} + F(x,t) \\
+		u(x,0) & = f(x)                 \\
+		u(0,t) & = \mu(t)               \\
+		u(l,t) & = \nu(t)
+	\end{align*}
+	where $0 \le x \le l$, $0 \le t \le t_1$, then the problem is well-posed.
+\end{theorem}
+
+\section{Separation of Variables}
+
+\begin{theorem}
+	The solution to the problem
+	\begin{align*}
+		u_t    & = a^2 u_{x x} \\
+		u(x,0) & = f(x)        \\
+		u(0,t) & = 0           \\
+		u(l,t) & = 0
+	\end{align*}
+	where $0 \le x \le l$, $t \ge 0$, is
+	\begin{align*}
+		u(x,t) & = \sum\limits_{n = 1}^{\infty} \left( \frac{2}{l} \int\limits_{0}^{l} f(x) \sin\left( \frac{n \pi}{l} x \right) \dif x \right) e^{-\left( \frac{n \pi a}{l} \right)^2 t} \sin\left( \frac{n \pi}{l} x \right)
+	\end{align*}
+\end{theorem}
+
+\begin{proof}
+	Let
+	\begin{align*}
+		u(x,t) & = X(x) T(t)
+	\end{align*}
+	Therefore, substituting into the equation,
+	\begin{align*}
+		X(x) T'(t) & = a^2 X''(x) T(t)
+	\end{align*}
+	Therefore, let
+	\begin{align*}
+		\frac{T'(t)}{a^2 T(t)} & = -\lambda \\
+		\frac{X''(x)}{X(x)}    & = -\lambda
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		X''(x) + \lambda X(x) & = 0 \\
+		X(0)                  & = 0 \\
+		X(l)                  & = 0
+	\end{align*}
+	Therefore, the eigenvalues are
+	\begin{align*}
+		\lambda_n & = \left( \frac{n \pi}{l} \right)^2
+	\end{align*}
+	and the corresponding eigenfunctions are
+	\begin{align*}
+		X_n(x) & = \sin\left( \frac{n \pi}{l} x \right)
+	\end{align*}
+	where $n \in \mathbb{N}$.\\
+	Similarly,
+	\begin{align*}
+		{T_n}'(t) + \left( \frac{n \pi}{l} \right)^2 a^2 T_n(t) & = 0
+	\end{align*}
+	Therefore, solving,
+	\begin{align*}
+		T_n & = A_n e^{-\left( \frac{n \pi a}{l} \right)^2 t}
+	\end{align*}
+	where $n \in \mathbb{N}$.\\
+	Therefore,
+	\begin{align*}
+		u(x,t) & = \sum\limits_{n = 1}^{\infty} A_n e^{-\left( \frac{n \pi a}{l} \right)^2 t} \sin\left( \frac{n \pi}{l} x \right)
+	\end{align*}
+	Therefore, substituting the initial condition and solving,
+	\begin{align*}
+		A_n & = \frac{2}{l} \int\limits_{0}^{l} f(x) \sin\left( \frac{n \pi}{l} x \right) \dif x
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		u(x,t) & = \sum\limits_{n = 1}^{\infty} \left( \frac{2}{l} \int\limits_{0}^{l} f(x) \sin\left( \frac{n \pi}{l} x \right) \dif x \right) e^{-\left( \frac{n \pi a}{l} \right)^2 t} \sin\left( \frac{n \pi}{l} x \right)
+	\end{align*}
+\end{proof}
 
 \end{document}
