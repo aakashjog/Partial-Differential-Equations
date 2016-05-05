@@ -33,6 +33,8 @@
 
 \newcommand{\divergence}{\mathrm{div\,}}
 
+\DeclareMathOperator{\erf}{erf}
+
 \makeatletter
 \@addtoreset{section}{part} %resets section numbers in new part
 \makeatother
@@ -2911,6 +2913,65 @@ is the canonical form of the PDE.
 	\label{thm:Maximum-minimum_Principle_for_Heat_Equation}
 \end{theorem}
 
+\begin{question}
+	Find $\max\limits_{0 \le x \le 1 , 0 \le t \le 1} u(x,t)$ for the solution of
+	\begin{align*}
+		u_t - t_{x x} & = -x \\
+		u(0,t)        & = 0  \\
+		u(1,t)        & = t  \\
+		u(x,0)        & = \frac{1}{2} \sin(\pi x)
+	\end{align*}
+	where $0 \le x \le 1$, $0 \le t \le 1$.
+\end{question}
+
+\begin{solution}
+	Comparing to the standard form,
+	\begin{align*}
+		F(x,t) & = -x
+	\end{align*}
+	Therefore, for $0 \le x \le 1$, and $0 \le t \le 1$,
+	\begin{align*}
+		F(x,t) & \le 0
+	\end{align*}
+	Therefore, by \nameref{thm:Maximum_Principle_for_Heat_Equation}, $\max\limits_{0 \le x \le 1 , 0 \le t \le 1} u(x,t)$ is on the boundary of the domain, excluding $t = 1$.\\
+	Therefore,
+	\begin{align*}
+		\max\limits_{0 \le x \le 1 , 0 \le t \le 1} u(x,t) & = \max\left\{ \max\limits_{0 \le x \le 1} \frac{1}{2} \sin(\pi x) , \max\limits_{0 \le t \le 1} (-t) , \max\limits_{0 \le t \le 1} 0 \right\} \\
+                                                                   & = \max\left\{ \frac{1}{2} , 0 , 0 \right\}                                                                                                    \\
+                                                                   & = \frac{1}{2}
+	\end{align*}
+\end{solution}
+
+\begin{question}
+	Prove that
+	\begin{align*}
+		u(x,t) & \le 2
+	\end{align*}
+	in the domain $0 \le x \le 1$, $t \ge 0$, for the solution of the problem
+	\begin{align*}
+		u_t - u_{x x} & = -e^{-t} \sin(\pi x) \\
+		u(0,t)        & = 0                   \\
+		u(1,t)        & = 0                   \\
+		u(x,0)        & = 1 - x + \sin(2 \pi x)
+	\end{align*}
+\end{question}
+
+\begin{solution}
+	Comparing to the standard form,
+	\begin{align*}
+		F(x,t) & = -e^{-t} \sin (\pi x)
+	\end{align*}
+	Therefore, for $0 \le x \le 1$, and $t \ge 0$,
+	\begin{align*}
+		F(x,t) & \le 0
+	\end{align*}
+	Therefore, by \nameref{thm:Maximum_Principle_for_Heat_Equation},
+	\begin{align*}
+		u(x,t) & \le \max\limits\left\{ 0 , 0 , \max\limits_{0 \le x \le 1 } \left( 1 - x + \sin(2 \pi x) \right) \right\} \\
+                       & \le 2
+	\end{align*}
+\end{solution}
+
 \section{Well-posedness}
 
 \begin{theorem}
@@ -2991,5 +3052,154 @@ is the canonical form of the PDE.
 		u(x,t) & = \sum\limits_{n = 1}^{\infty} \left( \frac{2}{l} \int\limits_{0}^{l} f(x) \sin\left( \frac{n \pi}{l} x \right) \dif x \right) e^{-\left( \frac{n \pi a}{l} \right)^2 t} \sin\left( \frac{n \pi}{l} x \right)
 	\end{align*}
 \end{proof}
+
+\section{Cauchy Problem for the Heat Equation}
+
+\begin{theorem}[Solution to the Cauchy Problem for the Heat Equation]
+	\begin{align*}
+		u_t    & = a^2 u_{x x} \\
+		u(x,0) & = f(x)
+	\end{align*}
+	is the Poisson formula, i.e.
+	\begin{align*}
+		u(x,t) & = \int\limits_{-\infty}^{\infty} G(x,y,t) f(y) \dif y
+	\end{align*}
+	where
+	\begin{align*}
+		G(x,y,t) & = \frac{1}{2 a \sqrt{\pi} t} e^{-\frac{(x - y)^2}{4 a^2 t}}
+	\end{align*}
+	is the Green function for the Cauchy problem of the heat equation on an infinite interval.
+	\label{thm:Solution_to_the_Cauchy_Problem_for_the_Heat_Equation}
+\end{theorem}
+
+\begin{proof}
+	The Fourier transform of $g(x)$ is
+	\begin{align*}
+		\hat{g}(\omega) & = \frac{1}{2 \pi} \int\limits_{-\infty}^{\infty} g(x) e^{-i \omega x} \dif x
+	\end{align*}
+	and the inverse Fourier transform of $\hat{g}(\omega)$ is
+	\begin{align*}
+		g(x) & = \hat{g}(\omega) e^{i \omega x} \dif \omega
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		\hat{u}_t(\omega,t) & = \left( \frac{1}{2 \pi} \int\limits_{-\infty}^{\infty} u(x,t) e^{i \omega x} \dif x \right)_t \\
+                                    & = \frac{1}{2 \pi} \int\limits_{-\infty}^{\infty} u_t(x,t) e^{-i \omega x} \dif x               \\
+                                    & = \hat{u_t}(\omega,t)
+	\end{align*}
+	Also,
+	\begin{align*}
+		\hat{g^{(n)}}(\omega) & = (i \omega)^n \hat{g}(\omega)
+	\end{align*}
+	Therefore, taking the Fourier transform of both sides of the PDE,
+	\begin{align*}
+		\hat{u_t}(\omega,t)            & = a^2 \omega^2 \hat{u}(\omega,t) \\
+		\therefore \hat{u}_t(\omega,t) & = a^2 \omega^2 \hat{u}(\omega,t)
+	\end{align*}
+	Similarly, taking the Fourier transform of both sides of the initial condition,
+	\begin{align*}
+		\hat{u}(\omega,t) & = \hat{f}(\omega)
+	\end{align*}
+	Therefore, the problem is an ODE of $\hat{u}(\omega,t)$ in $t$.\\
+	Therefore, solving,
+	\begin{align*}
+		\hat{u}(\omega,t) & = \hat{f}(\omega) e^{-a^2 \omega^2 t}
+	\end{align*}
+	Therefore, taking the inverse Fourier transform,
+	\begin{align*}
+		u(x,t) & = \int\limits_{-\infty}^{\infty} \hat{u}(\omega,t) e^{i \omega x} \dif \omega                                                                                             \\
+                       & = \int\limits_{-\infty}^{\infty} \hat{f}(\omega) e^{-a^2 \omega^2 t} e^{i \omega x} \dif \omega                                                                           \\
+                       & = \int\limits_{-\infty}^{\infty} \frac{1}{2 \pi} \left( \int\limits_{-\infty}^{\infty} f(y) e^{-i \omega y} \dif y \right) e^{-a^2 \omega^2 t} e^{i \omega x} \dif \omega \\
+                       & = \frac{1}{2 \pi} \int\limits_{-\infty}^{\infty} f(y) \int\limits_{-\infty}^{\infty} e^{a^2 \omega^2 t} e^{i \omega (x - y)} \dif \omega \dif y
+	\end{align*}
+	Therefore, for $t \neq 0$,
+	\begin{align*}
+		-a^2 \omega^2 t + i \omega (x - y) & = -\left( a \omega \sqrt{t} - \frac{i (x - y)}{2 a \sqrt{t}} \right)^2 - \frac{(x - y)^2}{4 a^2 t}
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		\int\limits_{-\infty}^{\infty} e^{-a^2 \omega^2 t} e^{i \omega (x - y)} \dif \omega & = e^{-\frac{(x - y)^2}{4 a^2 t}} \int\limits_{-\infty}^{\infty} e^{-\left( a \omega \sqrt{t} - \frac{i (x - y)}{2 a \sqrt{t}} \right)} \dif \omega
+	\end{align*}
+	Let
+	\begin{align*}
+		s & = a \omega \sqrt{t} - \frac{i (x - y)}{2 a \sqrt{t}}
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		\dif s & = a \sqrt{t} \dif \omega
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		\int\limits_{-\infty}^{\infty} e^{-a^2 \omega^2 t} e^{i \omega (x - y)} \dif \omega & = e^{-\frac{(x - y)^2}{4 a^2 t}} \frac{1}{a \sqrt{t}} \int\limits_{-\infty}^{\infty} e^{-s^2} \dif s \\
+                                                                                                    & = e^{-\frac{(x - y)^2}{4 a^2 t}} \frac{\sqrt{\pi}}{a \sqrt{t}}
+	\end{align*}
+	Therefore, substituting,
+	\begin{align*}
+		u(x,t) & = \frac{1}{2 \pi} \int\limits_{-\infty}^{\infty} f(y) \int\limits_{-\infty}^{\infty} e^{a^2 \omega^2 t} e^{i \omega (x - y)} \dif \omega \dif y \\
+                       & = \frac{1}{2 \pi} \int\limits_{-\infty}^{\infty} f(y) e^{-\frac{(x - y)^2}{4 a^2 t}} \frac{\sqrt{\pi}}{a \sqrt{t}} \dif y                       \\
+                       & = \frac{1}{2 a \sqrt{\pi t}} \int\limits_{-\infty}^{\infty} e^{-\frac{(x - y)^2}{4 a^2 t}} f(y) \dif y
+	\end{align*}
+	Let
+	\begin{align*}
+		G(x,y,t) & = \frac{1}{2 a \sqrt{\pi t}} e^{-\frac{(x - y)^2}{4 a^2 t}}
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		u(x,t) & = \int\limits_{-\infty}^{\infty} G(x,y,t) f(y) \dif y
+	\end{align*}
+\end{proof}
+
+\begin{definition}[Gaussian error function]
+	The function
+	\begin{align*}
+		\erf(z) & = \frac{2}{\sqrt{\pi}} \int\limits_{0}^{z} e^{-s^2} \dif s
+	\end{align*}
+	is called the Gaussian error function.
+\end{definition}
+
+\begin{theorem}
+	\begin{align*}
+		\erf(\infty) & = 1
+	\end{align*}
+\end{theorem}
+
+\begin{question}
+	Solve
+	\begin{align*}
+		u_t &= a^2 u_{x x}\\
+		u(x,0) &=
+			\begin{cases}
+				x & ;\quad x \ge 0 \\
+				0 & ;\quad x < 0   \\
+			\end{cases}
+	\end{align*}
+	for $-\infty < x < \infty$, $t > 0$.
+\end{question}
+
+\begin{solution}
+	By \nameref{thm:Solution_to_the_Cauchy_Problem_for_the_Heat_Equation},
+	\begin{align*}
+		u(x,t) & = \frac{1}{2 a \sqrt{\pi t}} \int\limits_{-\infty}^{\infty} e^{-\frac{(x - y)^2}{4 a^2 t}} f(y) \dif y \\
+                       & = \frac{1}{2 a \sqrt{\pi t}} \int\limits_{0}^{\infty} e^{-\frac{(x - y)^2}{4 a^2 t}} y \dif y
+	\end{align*}
+	Let
+	\begin{align*}
+		z & = \frac{x - y}{2 a \sqrt{t}}
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		\dif y & = -2 a \sqrt{t} \dif z
+	\end{align*}
+	Therefore,
+	\begin{align*}
+		u(x,t) & = \frac{1}{2 a \sqrt{\pi t}} \int\limits_{\frac{x}{2 a \sqrt{t}}}^{-\infty} e^{-z^2} \left( x - 2 a z \sqrt{t} \right) \left( -2 a \sqrt{t} \right) \dif z                                                                            \\
+                       & = -\frac{1}{\sqrt{\pi}} \int\limits_{\frac{x}{2 a \sqrt{t}}}^{-\infty} e^{-z^2} \left( x - 2 a z \sqrt{t} \right) \dif z                                                                                                              \\
+                       & = \frac{1}{\sqrt{\pi}} \int\limits_{-\infty}^{\frac{x}{2 a \sqrt{t}}} e^{-z^2} \left( z - 2 a z \sqrt{t} \right) \dif z                                                                                                               \\
+                       & = \frac{x}{\sqrt{\pi}} \int\limits_{-\infty}^{\frac{x}{2 a \sqrt{t}}} e^{-z^2} \dif z + \frac{a \sqrt{t}}{\sqrt{\pi}} \int\limits_{-\infty}^{\frac{x}{2 a \sqrt{t}}} e^{-z^2} (-2 z) \dif z                                           \\
+                       & = \frac{x}{\sqrt{\pi}} \left( \int\limits_{-\infty}^{0} e^{-z^2} \dif z + \int\limits_{0}^{\frac{x}{2 a \sqrt{t}}} e^{-z^2} \dif z \right) + \left. \frac{a \sqrt{t}}{\sqrt{\pi}} e^{-z^2} \right|_{-\infty}^{\frac{x}{2 a \sqrt{t}}} \\
+                       & = \frac{x}{\sqrt{\pi}} \left( \frac{\sqrt{\pi}}{2} + \frac{\sqrt{\pi}}{2} \erf\left( \frac{x}{2 a \sqrt{t}} \right) \right) + \frac{a \sqrt{t}}{\sqrt{\pi}} e^{-\frac{x^2}{4 a^2 t}}                                                  \\
+                       & = \frac{x}{2} \left( 1 + \erf\left( \frac{x}{2 a \sqrt{t}} \right) \right) + \frac{a \sqrt{t}}{\sqrt{\pi}} e^{-\frac{x^2}{4 a^2 t}}
+	\end{align*}
+\end{solution}
 
 \end{document}
